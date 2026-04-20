@@ -292,3 +292,39 @@ select:focus {
     height: fit-content;
   }
 }
+
+/* Aplicação global para todos os inputs e textareas */
+input:not([type='checkbox']):not([type='radio']),
+textarea {
+  background-color: #1f1e1e !important;
+  border: 1px solid #3a4a49 !important;
+  color: #e5e2e1 !important;
+  transition: all 0.2s ease !important;
+}
+
+input:not([type='checkbox']):not([type='radio']):focus,
+textarea:focus {
+  border-color: #00f4f4 !important;
+  box-shadow: 0 0 0 2px rgba(0, 244, 244, 0.2) !important;
+  outline: none !important;
+  color: white !important;
+}
+
+input:not([type='checkbox']):not([type='radio'])::placeholder,
+textarea::placeholder {
+  color: #839493 !important;
+  opacity: 0.6 !important;
+}
+
+/* Remove setas do input number */
+input[type='number'] {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  margin: 0 !important;
+}

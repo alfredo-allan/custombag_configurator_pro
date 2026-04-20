@@ -1,4 +1,4 @@
-# Design System Document: Industria Gráfica Alquistas
+# Design System Document: Industria Gráfica Alquimista
 
 ## 1. Overview & Creative North Star
 **Creative North Star: "The Digital Pressroom"**

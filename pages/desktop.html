@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
     <meta name="theme-color" content="#131313" />
-    <title>Industria Gráfica Alquistas - Custom Paper Bags</title>
+    <title>Idustria Gráfica Alquimista - Custom Paper Bags</title>
 
-    <!-- Google Fonts: Inter & Material Symbols -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
@@ -18,7 +18,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <!-- Tailwind Config (unificado) -->
+    <!-- Tailwind Config -->
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: 'class',
@@ -29,61 +29,26 @@
               'on-primary': '#003737',
               'primary-container': '#00fbfb',
               'on-primary-container': '#007070',
-              'primary-fixed': '#00fbfb',
               'primary-fixed-dim': '#00dddd',
-              'on-primary-fixed': '#002020',
-              'on-primary-fixed-variant': '#004f4f',
               secondary: '#ffabf3',
-              'on-secondary': '#5b005b',
               'secondary-container': '#fe00fe',
-              'on-secondary-container': '#500050',
-              'secondary-fixed': '#ffd7f5',
-              'secondary-fixed-dim': '#ffabf3',
-              'on-secondary-fixed': '#380038',
-              'on-secondary-fixed-variant': '#810081',
               tertiary: '#ffffff',
-              'on-tertiary': '#323200',
               'tertiary-container': '#eaea00',
-              'on-tertiary-container': '#686800',
-              'tertiary-fixed': '#eaea00',
-              'tertiary-fixed-dim': '#cdcd00',
-              'on-tertiary-fixed': '#1d1d00',
-              'on-tertiary-fixed-variant': '#494900',
-              error: '#ffb4ab',
-              'on-error': '#690005',
-              'error-container': '#93000a',
-              'on-error-container': '#ffdad6',
-              background: '#131313',
-              'on-background': '#e5e2e1',
               surface: '#131313',
               'on-surface': '#e5e2e1',
               'surface-variant': '#353534',
               'on-surface-variant': '#b9cac9',
-              'surface-dim': '#131313',
-              'surface-bright': '#393939',
               'surface-container-lowest': '#0e0e0e',
               'surface-container-low': '#1c1b1b',
               'surface-container': '#201f1f',
               'surface-container-high': '#2a2a2a',
               'surface-container-highest': '#353534',
-              'inverse-surface': '#e5e2e1',
-              'inverse-on-surface': '#313030',
-              'inverse-primary': '#006a6a',
               outline: '#839493',
               'outline-variant': '#3a4a49',
               'surface-tint': '#00dddd'
             },
-            borderRadius: {
-              DEFAULT: '0.25rem',
-              lg: '0.5rem',
-              xl: '0.75rem',
-              full: '9999px'
-            },
-            fontFamily: {
-              headline: ['Inter'],
-              body: ['Inter'],
-              label: ['Inter']
-            }
+            borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' },
+            fontFamily: { headline: ['Inter'], body: ['Inter'], label: ['Inter'] }
           }
         }
       }
@@ -91,9 +56,18 @@
 
     <!-- CSS Global -->
     <link href="../css/global.css" rel="stylesheet" />
+    <script src="../js/configurator.js"></script>
 
     <style>
-      /* Ajustes específicos do desktop */
+      .option-card {
+        transition: all 0.2s ease;
+      }
+      .option-card.active {
+        box-shadow:
+          0 0 0 2px #00fbfb,
+          0 0 0 4px rgba(0, 251, 251, 0.2);
+        transform: scale(0.98);
+      }
       @media (min-width: 1024px) {
         .desktop-sidebar-sticky {
           position: sticky;
@@ -107,38 +81,20 @@
   <body
     class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-surface-tint selection:text-on-primary"
   >
-    <!-- TopNavBar Component -->
-    <nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-2xl shadow-2xl bg-zinc-900/40">
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-2xl shadow-2xl">
       <div class="flex justify-between items-center px-6 md:px-10 h-20 w-full">
-        <div class="text-xl md:text-2xl font-black tracking-tighter text-white italic">Industria Gráfica Alquistas</div>
+        <div class="text-xl md:text-2xl font-black tracking-tighter text-white italic">THE Industria Gráfica Alquimista</div>
         <div class="hidden md:flex gap-6 lg:gap-8 items-center">
-          <a
-            class="font-inter tracking-tight uppercase font-bold text-[13px] text-cyan-400 border-b-2 border-cyan-400 pb-1 transition-all duration-300"
-            href="#"
+          <a class="font-inter tracking-tight uppercase font-bold text-[13px] text-cyan-400 border-b-2 border-cyan-400 pb-1" href="#"
+            >Configurator</a
           >
-            Configurator
-          </a>
-          <a
-            class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-all duration-300"
-            href="#"
-          >
-            Materials
-          </a>
-          <a
-            class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-all duration-300"
-            href="#"
-          >
-            Gallery
-          </a>
-          <a
-            class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-all duration-300"
-            href="#"
-          >
-            Process
-          </a>
+          <a class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400" href="#">Materials</a>
+          <a class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400" href="#">Gallery</a>
+          <a class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400" href="#">Process</a>
         </div>
         <button
-          class="bg-primary text-on-primary rounded-2xl px-5 md:px-6 py-2 md:py-3 font-bold uppercase tracking-tight text-[11px] md:text-[13px] hover:bg-zinc-200 transition-colors"
+          class="bg-primary text-on-primary rounded-2xl px-5 md:px-6 py-2 md:py-3 font-bold uppercase tracking-tight text-[11px] md:text-[13px] hover:bg-zinc-200"
         >
           Get Quote
         </button>
@@ -147,10 +103,10 @@
 
     <main class="flex-grow pt-20">
       <!-- Hero Section -->
-      <section class="relative w-full min-h-[600px] md:min-h-[716px] flex items-center overflow-hidden">
+      <section class="relative w-full min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
           <img
-            alt="Close up of an industrial printing press machine with cmyk ink rollers in a dimly lit factory environment"
+            alt="Industrial printing press"
             class="w-full h-full object-cover opacity-30 mix-blend-luminosity"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnjh-fgyFjpsryDosVJ8Jdn-N7RZyICzWhrSIOuHD1Qig_C_QW15kvmaGdetr2EwF6cJ7Vtsox-Y1ULV3Sb6S5HLVJR8QAzIuQUwwOZxLyNSiYeMm9mQLnMMLSZSV50cVApECtCOZKZOzbtvYs19txnHdwqduIAOl2MvnIiUz3PzMgLTIJYlj04Iwh6G2vwIRxhY5_4gaHxQoESKnzrzfpAFT9y3z9DZ02i3uD1DXVzscB1ruqVtfr-pFyYeL_HhNxaZ_OBT9-zWgS"
           />
@@ -159,19 +115,18 @@
         <div class="relative z-10 container mx-auto px-6 md:px-10">
           <div class="max-w-3xl">
             <h1
-              class="font-headline text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-primary mb-6 relative"
+              class="font-headline text-4xl md:text-5xl lg:text-7xl font-black tracking-tighter uppercase leading-[0.9] text-primary mb-6"
             >
-              <span class="absolute -left-4 md:-left-6 top-0 text-surface-tint opacity-50 select-none hidden md:block">"</span>
-              Suas Sacolas<br />
-              Personalizadas<br />
-              <span class="text-transparent bg-clip-text bg-gradient-to-r from-surface-tint to-primary">Qualidade Premium</span>
+              Suas Sacolas<br />Personalizadas<br /><span
+                class="text-transparent bg-clip-text bg-gradient-to-r from-surface-tint to-primary"
+                >Qualidade Premium</span
+              >
             </h1>
-            <p class="font-body text-base md:text-lg text-on-surface-variant max-w-xl mb-8 md:mb-10 leading-relaxed">
-              Do corte à laminação, dominamos toda a produção. Sacolas de alta resistência (suportam aprox. 4kg). Construídas para durar,
-              impressas para impressionar.
+            <p class="font-body text-base md:text-lg text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+              Do corte à laminação, dominamos toda a produção. Sacolas de alta resistência (suportam aprox. 4kg).
             </p>
             <button
-              class="bg-primary text-on-primary rounded-2xl px-6 md:px-8 py-3 md:py-4 font-bold uppercase tracking-widest text-xs md:text-sm hover:scale-95 transition-transform duration-300 shadow-[0_10px_20px_rgba(255,255,255,0.1)]"
+              class="bg-primary text-on-primary rounded-2xl px-6 md:px-8 py-3 md:py-4 font-bold uppercase tracking-widest text-xs md:text-sm hover:scale-95 transition-transform"
             >
               Configurar meu orçamento
             </button>
@@ -179,7 +134,7 @@
         </div>
       </section>
 
-      <!-- Configurator Layout -->
+      <!-- Configurator Section -->
       <section class="container mx-auto px-6 md:px-10 py-12 md:py-20">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <!-- Left Column: Steps -->
@@ -192,44 +147,42 @@
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint text-xl md:text-2xl">straighten</span>
-                1. Tamanho (Size)
+                <span class="material-symbols-outlined text-surface-tint">straighten</span>1. Tamanho (Size)
               </h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <!-- Card P -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="size-options">
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors flex flex-col gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all flex flex-col gap-2 shadow-lg"
+                  data-size="p"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho P</span>
                   <span class="font-bold text-base md:text-lg text-primary">18 x 23,5 x 8cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-outline-variant/30 pt-2"
-                    >Ideal para joias e pequenos acessórios. Suporta até 2kg.</span
+                    >Ideal para joias. Suporta até 2kg.</span
                   >
                 </div>
-                <!-- Card M (Active) -->
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer neon-glow-cyan border border-transparent flex flex-col gap-2 relative"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all flex flex-col gap-2 shadow-lg active"
+                  data-size="m"
                 >
-                  <div class="absolute inset-0 bg-surface-tint/5 rounded-lg pointer-events-none"></div>
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-surface-tint">Tamanho M</span>
                   <span class="font-bold text-base md:text-lg text-primary">23 x 32 x 8cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-surface-tint/30 pt-2"
                     >Padrão vestuário. Suporta até 4kg.</span
                   >
                 </div>
-                <!-- Card G -->
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors flex flex-col gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all flex flex-col gap-2 shadow-lg"
+                  data-size="g"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho G</span>
                   <span class="font-bold text-base md:text-lg text-primary">35 x 24 x 14 cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-outline-variant/30 pt-2"
-                    >Caixas de sapato, casacos. Suporta até 5kg.</span
+                    >Caixas de sapato. Suporta até 5kg.</span
                   >
                 </div>
-                <!-- Card GG -->
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors flex flex-col gap-2 shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all flex flex-col gap-2 shadow-lg"
+                  data-size="gg"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho GG</span>
                   <span class="font-bold text-base md:text-lg text-primary">45,5 x 35 x 12 cm</span>
@@ -245,89 +198,87 @@
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint text-xl md:text-2xl">description</span>
-                2. Papel (Paper)
+                <span class="material-symbols-outlined text-surface-tint">description</span>2. Papel (Paper)
               </h2>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <!-- Card Offset -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="paper-options">
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all shadow-lg"
+                  data-paper="offset"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-primary block mb-2">Offset 180g</span>
-                  <p class="text-[11px] md:text-xs text-on-surface-variant leading-relaxed">
-                    Fosco natural, excelente absorção de tinta. Ideal para estampas chapadas.
-                  </p>
+                  <p class="text-[11px] md:text-xs text-on-surface-variant">Fosco natural, excelente absorção de tinta.</p>
                 </div>
-                <!-- Card Duplex (Active) -->
-                <div class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer neon-glow-cyan relative">
-                  <div class="absolute inset-0 bg-surface-tint/5 rounded-lg pointer-events-none"></div>
+                <div
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all shadow-lg active"
+                  data-paper="duplex"
+                >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-surface-tint block mb-2">Duplex 190g</span>
-                  <p class="text-[11px] md:text-xs text-on-surface-variant leading-relaxed mb-3">
-                    Verso pardo, frente branca. Alta rigidez estrutural.
-                  </p>
+                  <p class="text-[11px] md:text-xs text-on-surface-variant mb-3">Verso pardo, frente branca. Alta rigidez.</p>
                   <div class="bg-surface-container-low/80 p-2 rounded text-[10px] text-tertiary-container flex items-start gap-2">
-                    <span class="material-symbols-outlined text-[12px] md:text-[14px]">warning</span>
-                    <span>Requer laminação para evitar quebras no vinco.</span>
+                    <span class="material-symbols-outlined text-[12px]">warning</span><span>Requer laminação</span>
                   </div>
                 </div>
-                <!-- Card Kraft -->
                 <div
-                  class="bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors shadow-[0_10px_20px_rgba(0,0,0,0.2)]"
+                  class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all shadow-lg"
+                  data-paper="kraft"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-primary block mb-2">Reciclato Kraft 180g</span>
-                  <p class="text-[11px] md:text-xs text-on-surface-variant leading-relaxed">
-                    Rústico, ecológico. Impressão recomenda-se em cores escuras ou preto.
-                  </p>
+                  <p class="text-[11px] md:text-xs text-on-surface-variant">Rústico, ecológico. Impressão em cores escuras.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Step 3: Acabamento (adicionado para completar) -->
+            <!-- Step 3: Acabamento -->
             <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint text-xl md:text-2xl">texture</span>
-                3. Acabamento (Finish)
+                <span class="material-symbols-outlined text-surface-tint">texture</span>3. Acabamento (Finish)
               </h2>
-              <div class="grid grid-cols-3 gap-3 md:gap-4">
+              <div class="grid grid-cols-3 gap-3 md:gap-4" id="finish-options">
                 <div
-                  class="bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors text-center"
+                  class="option-card bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer transition-all text-center"
+                  data-finish="none"
                 >
                   <span class="material-symbols-outlined text-on-surface-variant text-2xl md:text-3xl">block</span>
-                  <p class="font-label text-[10px] md:text-xs tracking-wider uppercase text-on-surface mt-1">Nenhum</p>
-                </div>
-                <div class="bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer neon-glow-cyan text-center">
-                  <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">texture</span>
-                  <p class="font-label text-[10px] md:text-xs tracking-wider uppercase text-primary mt-1">Fosca</p>
+                  <p class="font-label text-[10px] md:text-xs uppercase text-on-surface mt-1">Nenhum</p>
                 </div>
                 <div
-                  class="bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors text-center"
+                  class="option-card bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer transition-all text-center active"
+                  data-finish="matte"
+                >
+                  <span class="material-symbols-outlined text-primary-container text-2xl md:text-3xl">texture</span>
+                  <p class="font-label text-[10px] md:text-xs uppercase text-primary mt-1">Fosca</p>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest py-4 md:py-6 rounded-lg cursor-pointer transition-all text-center"
+                  data-finish="gloss"
                 >
                   <span class="material-symbols-outlined text-on-surface-variant text-2xl md:text-3xl">flare</span>
-                  <p class="font-label text-[10px] md:text-xs tracking-wider uppercase text-on-surface mt-1">Brilho</p>
+                  <p class="font-label text-[10px] md:text-xs uppercase text-on-surface mt-1">Brilho</p>
                 </div>
               </div>
             </div>
 
-            <!-- Step 4: Cores (adicionado para completar) -->
+            <!-- Step 4: Cores -->
             <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint text-xl md:text-2xl">palette</span>
-                4. Cores de Impressão
+                <span class="material-symbols-outlined text-surface-tint">palette</span>4. Cores de Impressão
               </h2>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-2 gap-4" id="printing-options">
                 <div
-                  class="bg-surface-container-highest p-4 rounded-lg cursor-pointer hover:bg-surface-variant transition-colors text-center"
+                  class="option-card bg-surface-container-highest p-4 rounded-lg cursor-pointer transition-all text-center"
+                  data-printing="onecolor"
                 >
-                  <div class="flex gap-1 justify-center mb-2">
-                    <div class="w-4 h-4 rounded-full bg-black"></div>
-                  </div>
+                  <div class="flex gap-1 justify-center mb-2"><div class="w-4 h-4 rounded-full bg-black"></div></div>
                   <span class="font-headline font-bold text-sm">1x0 (Uma Cor)</span>
                 </div>
-                <div class="bg-surface-container-highest p-4 rounded-lg cursor-pointer neon-glow-cyan text-center">
+                <div
+                  class="option-card bg-surface-container-highest p-4 rounded-lg cursor-pointer transition-all text-center active"
+                  data-printing="cmyk"
+                >
                   <div class="flex gap-1 justify-center mb-2">
                     <div class="w-3 h-3 rounded-full bg-primary-container"></div>
                     <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
@@ -337,13 +288,22 @@
                   <span class="font-headline font-bold text-primary text-sm">4x0 (CMYK)</span>
                 </div>
               </div>
+              <div class="mt-4">
+                <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone)</label>
+                <input
+                  type="text"
+                  id="pantone-input"
+                  class="w-full bg-surface-container-highest text-on-surface border-none p-3 rounded-lg mt-1 focus:border-b-primary-container focus:ring-0"
+                  placeholder="Ex: Pantone 213 C"
+                />
+              </div>
             </div>
           </div>
 
           <!-- Right Column: Summary Sidebar -->
           <div class="lg:col-span-4 relative">
             <div
-              class="desktop-sidebar-sticky bg-surface-variant/60 backdrop-blur-2xl p-6 md:p-8 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] border border-outline-variant/10"
+              class="desktop-sidebar-sticky bg-surface-variant/60 backdrop-blur-2xl p-6 md:p-8 rounded-2xl shadow-2xl border border-outline-variant/10"
             >
               <h3
                 class="font-headline text-base md:text-lg font-black uppercase tracking-widest text-primary mb-4 md:mb-6 border-b border-surface-container-low pb-4"
@@ -352,42 +312,50 @@
               </h3>
               <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider text-[10px] md:text-[11px]">Tamanho</span>
-                  <span class="font-bold text-primary">M (25x35x10)</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Tamanho</span
+                  ><span class="font-bold text-primary" id="summary-size">M (23 x 32 x 8cm)</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider text-[10px] md:text-[11px]">Papel</span>
-                  <span class="font-bold text-primary">Duplex 190g</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Papel</span
+                  ><span class="font-bold text-primary" id="summary-paper">Duplex 190g</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider text-[10px] md:text-[11px]">Acabamento</span>
-                  <span class="font-bold text-primary">Laminação Fosca</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Acabamento</span
+                  ><span class="font-bold text-primary" id="summary-finish">Fosca</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider text-[10px] md:text-[11px]">Impressão</span>
-                  <span class="font-bold text-primary">4x0 Cores</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Impressão</span
+                  ><span class="font-bold text-primary" id="summary-printing">4x0 CMYK</span>
+                </li>
+                <li class="flex justify-between items-center text-xs md:text-sm">
+                  <span class="text-on-surface-variant uppercase tracking-wider">Pantone</span
+                  ><span class="font-bold text-primary" id="summary-pantone">Nenhuma</span>
                 </li>
               </ul>
               <div class="mb-6">
                 <label class="block font-label text-[10px] md:text-[11px] uppercase tracking-widest text-on-surface-variant mb-2"
-                  >Quantidade</label
+                  >Quantidade (mín. 500)</label
                 >
                 <input
-                  class="w-full bg-surface-container-highest border-transparent text-primary focus:border-surface-tint focus:ring-0 rounded-md py-2 md:py-3 px-3 md:px-4 shadow-[inset_0_-2px_0_#00dddd] transition-shadow"
+                  id="quantity-input"
+                  class="w-full bg-surface-container-highest border-transparent text-primary focus:border-surface-tint focus:ring-0 rounded-md py-2 md:py-3 px-3 md:px-4 shadow-[inset_0_-2px_0_#00dddd]"
+                  type="number"
                   min="500"
                   step="500"
-                  type="number"
                   value="1000"
                 />
               </div>
               <div
                 class="mb-6 md:mb-8 p-4 md:p-6 border border-dashed border-outline-variant/50 rounded-lg text-center cursor-pointer hover:bg-surface-container-highest transition-colors"
+                id="upload-area"
               >
                 <span class="material-symbols-outlined text-outline mb-2 text-2xl md:text-3xl">upload_file</span>
                 <p class="text-[10px] md:text-xs text-on-surface-variant uppercase tracking-wider">Anexar Arte (PDF/AI)</p>
+                <input type="file" id="artwork-input" accept=".pdf,.ai,.eps,.svg" class="hidden" />
               </div>
               <button
-                class="w-full bg-gradient-to-r from-surface-tint to-primary text-on-primary rounded-2xl py-3 md:py-4 font-black uppercase tracking-widest text-xs md:text-sm hover:opacity-90 transition-opacity shadow-[0_10px_20px_rgba(0,221,221,0.2)]"
+                id="submit-config"
+                class="w-full bg-gradient-to-r from-surface-tint to-primary text-on-primary rounded-2xl py-3 md:py-4 font-black uppercase tracking-widest text-xs md:text-sm hover:opacity-90 transition-opacity shadow-lg"
               >
                 Solicitar Orçamento
               </button>
@@ -397,34 +365,145 @@
       </section>
     </main>
 
-    <!-- Footer Component -->
+    <!-- Footer -->
     <footer
-      class="w-full py-8 md:py-12 px-6 md:px-10 bg-zinc-950 flex flex-col md:flex-row justify-between items-center border-t border-zinc-800/30 gap-4 md:gap-0"
+      class="w-full py-8 md:py-12 px-6 md:px-10 bg-zinc-950 flex flex-col md:flex-row justify-between items-center border-t border-zinc-800/30 gap-4"
     >
-      <div class="text-zinc-400 font-bold text-sm md:text-base">Industria Gráfica Alquistas</div>
+      <div class="text-zinc-400 font-bold text-sm md:text-base tracking-tighter">INDUSTRIA GRÁFICA ALQUIMISTA</div>
       <div class="flex gap-4 md:gap-6 flex-wrap justify-center">
         <a
-          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] font-medium uppercase text-zinc-600 hover:text-cyan-400 transition-colors"
+          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
         >
-          Technical Specs
+          Especificações
         </a>
         <a
-          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] font-medium uppercase text-zinc-600 hover:text-cyan-400 transition-colors"
+          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
         >
-          Material Safety
+          Segurança do Material
         </a>
         <a
-          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] font-medium uppercase text-zinc-600 hover:text-cyan-400 transition-colors"
+          class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
         >
-          Terms of Press
+          Termos de Uso
         </a>
       </div>
-      <div class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] font-medium uppercase text-zinc-500 text-center">
-        © 2024 Industria Gráfica Alquistas. ALL RIGHTS RESERVED.
+      <div class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-500 text-center">
+        © <span class="current-year">2024</span> INDUSTRIA GRÁFICA ALQUIMISTA
       </div>
     </footer>
+
+    <script>
+      // Inicialização e Event Handlers
+      document.addEventListener('DOMContentLoaded', function () {
+        loadFromLocalStorage()
+
+        // Helper para atualizar UI e estado
+        function updateUI() {
+          // Atualiza active states
+          document.querySelectorAll('[data-size]').forEach((el) => {
+            if (el.dataset.size === ConfiguratorState.size.id) el.classList.add('active', 'neon-glow-cyan')
+            else el.classList.remove('active', 'neon-glow-cyan')
+          })
+          document.querySelectorAll('[data-paper]').forEach((el) => {
+            if (el.dataset.paper === ConfiguratorState.paper.id) el.classList.add('active', 'neon-glow-cyan')
+            else el.classList.remove('active', 'neon-glow-cyan')
+          })
+          document.querySelectorAll('[data-finish]').forEach((el) => {
+            if (el.dataset.finish === ConfiguratorState.finish.id) el.classList.add('active', 'neon-glow-cyan')
+            else el.classList.remove('active', 'neon-glow-cyan')
+          })
+          document.querySelectorAll('[data-printing]').forEach((el) => {
+            if (el.dataset.printing === ConfiguratorState.printing.id) el.classList.add('active', 'neon-glow-cyan')
+            else el.classList.remove('active', 'neon-glow-cyan')
+          })
+
+          document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
+          document.getElementById('quantity-input').value = ConfiguratorState.quantity
+          updateSummary()
+          saveToLocalStorage()
+        }
+
+        // Event listeners para opções
+        document.querySelectorAll('[data-size]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const sizeId = el.dataset.size
+            ConfiguratorState.size = { id: sizeId, ...Options.sizes[sizeId] }
+            updateUI()
+          })
+        })
+
+        document.querySelectorAll('[data-paper]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const paperId = el.dataset.paper
+            ConfiguratorState.paper = { id: paperId, ...Options.papers[paperId] }
+            updateUI()
+          })
+        })
+
+        document.querySelectorAll('[data-finish]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const finishId = el.dataset.finish
+            ConfiguratorState.finish = { id: finishId, ...Options.finishes[finishId] }
+            updateUI()
+          })
+        })
+
+        document.querySelectorAll('[data-printing]').forEach((el) => {
+          el.addEventListener('click', () => {
+            const printingId = el.dataset.printing
+            ConfiguratorState.printing = { id: printingId, ...Options.printings[printingId] }
+            updateUI()
+          })
+        })
+
+        document.getElementById('pantone-input').addEventListener('input', (e) => {
+          ConfiguratorState.pantone = e.target.value
+          updateSummary()
+          saveToLocalStorage()
+        })
+
+        document.getElementById('quantity-input').addEventListener('input', (e) => {
+          let val = parseInt(e.target.value)
+          if (val < 500) val = 500
+          ConfiguratorState.quantity = val
+          updateSummary()
+          saveToLocalStorage()
+        })
+
+        // Upload de arte
+        const uploadArea = document.getElementById('upload-area')
+        const artworkInput = document.getElementById('artwork-input')
+        uploadArea.addEventListener('click', () => artworkInput.click())
+        artworkInput.addEventListener('change', (e) => {
+          if (e.target.files.length > 0) {
+            ConfiguratorState.artwork = e.target.files[0].name
+            uploadArea.classList.add('neon-glow-cyan')
+            setTimeout(() => uploadArea.classList.remove('neon-glow-cyan'), 1000)
+            saveToLocalStorage()
+          }
+        })
+
+        // Submit
+        document.getElementById('submit-config').addEventListener('click', () => {
+          saveToLocalStorage()
+          window.location.href = 'review.html'
+        })
+
+        updateUI()
+      })
+    </script>
+    <script>
+      // Atualização automática do ano no footer
+      ;(function updateFooterYear() {
+        const currentYear = new Date().getFullYear()
+        const yearSpan = document.querySelector('.current-year')
+        if (yearSpan) {
+          yearSpan.textContent = currentYear
+        }
+      })()
+    </script>
   </body>
 </html>

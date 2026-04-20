@@ -1,0 +1,410 @@
+<!doctype html>
+<html class="dark" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
+    <meta name="theme-color" content="#131313" />
+    <title>Industrial Alchemist | Configuração de Sacolas</title>
+
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Tailwind Config (unificado) -->
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#ffffff',
+              'on-primary': '#003737',
+              'primary-container': '#00fbfb',
+              'on-primary-container': '#007070',
+              'primary-fixed': '#00fbfb',
+              'primary-fixed-dim': '#00dddd',
+              'on-primary-fixed': '#002020',
+              'on-primary-fixed-variant': '#004f4f',
+              secondary: '#ffabf3',
+              'on-secondary': '#5b005b',
+              'secondary-container': '#fe00fe',
+              'on-secondary-container': '#500050',
+              'secondary-fixed': '#ffd7f5',
+              'secondary-fixed-dim': '#ffabf3',
+              'on-secondary-fixed': '#380038',
+              'on-secondary-fixed-variant': '#810081',
+              tertiary: '#ffffff',
+              'on-tertiary': '#323200',
+              'tertiary-container': '#eaea00',
+              'on-tertiary-container': '#686800',
+              'tertiary-fixed': '#eaea00',
+              'tertiary-fixed-dim': '#cdcd00',
+              'on-tertiary-fixed': '#1d1d00',
+              'on-tertiary-fixed-variant': '#494900',
+              error: '#ffb4ab',
+              'on-error': '#690005',
+              'error-container': '#93000a',
+              'on-error-container': '#ffdad6',
+              background: '#131313',
+              'on-background': '#e5e2e1',
+              surface: '#131313',
+              'on-surface': '#e5e2e1',
+              'surface-variant': '#353534',
+              'on-surface-variant': '#b9cac9',
+              'surface-dim': '#131313',
+              'surface-bright': '#393939',
+              'surface-container-lowest': '#0e0e0e',
+              'surface-container-low': '#1c1b1b',
+              'surface-container': '#201f1f',
+              'surface-container-high': '#2a2a2a',
+              'surface-container-highest': '#353534',
+              'inverse-surface': '#e5e2e1',
+              'inverse-on-surface': '#313030',
+              'inverse-primary': '#006a6a',
+              outline: '#839493',
+              'outline-variant': '#3a4a49',
+              'surface-tint': '#00dddd'
+            },
+            borderRadius: {
+              DEFAULT: '0.25rem',
+              lg: '0.5rem',
+              xl: '0.75rem',
+              full: '9999px'
+            },
+            fontFamily: {
+              headline: ['Inter'],
+              body: ['Inter'],
+              label: ['Inter']
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- CSS Global -->
+    <link href="../css/global.css" rel="stylesheet" />
+
+    <style>
+      /* Estilos específicos da página mobile (mantém comportamento original) */
+      body {
+        padding-bottom: 120px;
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-surface text-on-surface font-body antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"
+  >
+    <!-- TopAppBar -->
+    <header
+      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#131313]/60 backdrop-blur-3xl shadow-2xl shadow-black/40 z-50"
+    >
+      <button
+        class="text-white hover:text-[#00FFFF] transition-colors scale-95 active:scale-90 flex items-center justify-center p-2"
+        aria-label="Menu"
+      >
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">menu</span>
+      </button>
+      <h1 class="font-['Inter'] font-black uppercase tracking-tighter text-lg tracking-widest text-white">INDUSTRIAL ALCHEMIST</h1>
+      <button
+        class="text-white hover:text-[#00FFFF] transition-colors scale-95 active:scale-90 flex items-center justify-center p-2"
+        aria-label="Sacola"
+      >
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">shopping_bag</span>
+      </button>
+    </header>
+
+    <!-- Main Content -->
+    <main class="w-full">
+      <!-- Hero Section -->
+      <section
+        class="relative w-full h-[751px] flex flex-col justify-end p-6 bg-surface-container-low overflow-hidden pt-24"
+        style="
+          background-image:
+            linear-gradient(to bottom, rgba(19, 19, 19, 0.2) 0%, rgba(19, 19, 19, 1) 100%),
+            url('https://lh3.googleusercontent.com/aida-public/AB6AXuBBBjEHtflVmbKzXyX1gbSSylJF7fMJUknmN2Erpf8FFLD7Retd81X2LI8Kcq102eAjmLAHCmQa4iYc3jF-B-KaWIyk77nAP3juXX625cY3ZlvkCTeYuARGyVovzBYHaa8Uy29_xvSAQudDyk5wA27scqz1HyfrE0z1w78Nib7VS4hoHk6FHB5XuiiM3DB1nuYdfhIH2y5cUqzQjseoYQlZ6mAytAMBLKRga6yN4aDwDcg02j6O9-F5eHjo9e-qSetyHZbTcTO-02R_');
+          background-size: cover;
+          background-position: center;
+        "
+      >
+        <div class="z-10 w-full max-w-4xl mx-auto flex flex-col items-start gap-4 mb-8">
+          <span
+            class="font-label text-primary-container uppercase tracking-[0.1em] text-xs font-bold bg-surface-container-high/50 px-3 py-1 rounded backdrop-blur-sm"
+          >
+            Produção Industrial
+          </span>
+          <h2 class="font-headline text-4xl md:text-6xl font-black text-primary uppercase tracking-tighter leading-none w-full md:w-[80%]">
+            Suas Sacolas Personalizadas com Qualidade Premium
+          </h2>
+          <p class="font-body text-on-surface-variant text-base md:text-lg max-w-lg mt-2 leading-relaxed">
+            Do corte à laminação, dominamos toda a produção. Sacolas de alta resistência (suportam aprox. 4kg).
+          </p>
+          <a
+            class="mt-6 w-full md:w-auto bg-primary text-on-primary rounded-xl px-8 py-5 font-bold text-center uppercase tracking-wider text-sm transition-transform active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+            href="#configurator"
+          >
+            Configurar meu orçamento
+            <span class="material-symbols-outlined text-lg">arrow_downward</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- Configurator Section -->
+      <section class="w-full max-w-3xl mx-auto px-4 py-12 flex flex-col gap-12" id="configurator">
+        <!-- Step 1: Size -->
+        <div class="flex flex-col gap-6">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">01</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Tamanho da Sacola</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <button
+              class="bg-surface-container-highest p-5 rounded-lg flex flex-col items-center justify-center gap-2 drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all relative overflow-hidden group text-left"
+            >
+              <div class="absolute inset-0 bg-gradient-to-br from-primary-container/10 to-transparent"></div>
+              <span class="font-headline text-3xl font-black text-primary">P</span>
+              <span class="font-label text-on-surface-variant text-xs tracking-wider">18x23,5x 8cm </span>
+            </button>
+            <button
+              class="bg-surface-container-high p-5 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <span class="font-headline text-3xl font-black text-on-surface">M</span>
+              <span class="font-label text-on-surface-variant text-xs tracking-wider">23x32x8 cm</span>
+            </button>
+            <button
+              class="bg-surface-container-high p-5 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <span class="font-headline text-3xl font-black text-on-surface">G</span>
+              <span class="font-label text-on-surface-variant text-xs tracking-wider">35x24x14 cm</span>
+            </button>
+            <button
+              class="bg-surface-container-high p-5 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <span class="font-headline text-3xl font-black text-on-surface">GG</span>
+              <span class="font-label text-on-surface-variant text-xs tracking-wider">45,5x35x12 cm</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Paper Type -->
+        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">02</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Papel &amp; Gramatura</h3>
+          </div>
+          <div class="flex flex-col gap-4">
+            <button
+              class="bg-surface-container-high p-5 rounded-lg flex justify-between items-center hover:bg-surface-container-highest transition-colors text-left w-full"
+            >
+              <div class="flex flex-col">
+                <span class="font-headline text-lg font-bold text-on-surface">Offset 180g</span>
+                <span class="font-body text-sm text-on-surface-variant">Fosco, alta absorção de tinta.</span>
+              </div>
+            </button>
+            <button
+              class="bg-surface-container-highest p-5 rounded-lg flex justify-between items-center drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all text-left w-full relative"
+            >
+              <div class="flex flex-col gap-1 z-10">
+                <span class="font-headline text-lg font-bold text-primary">Duplex 190g</span>
+                <span class="font-body text-sm text-on-surface-variant">Brilho em um lado, fosco no outro.</span>
+                <span class="font-label text-[10px] text-secondary-container uppercase tracking-widest mt-2 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[14px]">warning</span>
+                  Exige Laminação
+                </span>
+              </div>
+            </button>
+            <button
+              class="bg-surface-container-high p-5 rounded-lg flex justify-between items-center hover:bg-surface-container-highest transition-colors text-left w-full"
+            >
+              <div class="flex flex-col">
+                <span class="font-headline text-lg font-bold text-on-surface">Reciclato Kraft 180g</span>
+                <span class="font-body text-sm text-on-surface-variant">Aspecto rústico e sustentável.</span>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3: Finish -->
+        <div class="flex flex-col gap-6">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">03</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Acabamento</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <button
+              class="bg-surface-container-high py-6 rounded-lg flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <span class="material-symbols-outlined text-on-surface-variant text-3xl">block</span>
+              <span class="font-label text-xs tracking-wider uppercase text-on-surface">Nenhum</span>
+            </button>
+            <button
+              class="bg-surface-container-highest py-6 rounded-lg flex flex-col items-center gap-2 drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all"
+            >
+              <span class="material-symbols-outlined text-primary-container text-3xl">texture</span>
+              <span class="font-label text-xs tracking-wider uppercase text-primary">Fosca</span>
+            </button>
+            <button
+              class="bg-surface-container-high py-6 rounded-lg flex flex-col items-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <span class="material-symbols-outlined text-on-surface-variant text-3xl">flare</span>
+              <span class="font-label text-xs tracking-wider uppercase text-on-surface">Brilho</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 4: Printing Colors -->
+        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">04</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Cores de Impressão</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <button
+              class="bg-surface-container-high p-4 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <div class="flex gap-1">
+                <div class="w-4 h-4 rounded-full bg-black"></div>
+              </div>
+              <span class="font-headline font-bold">1x0 (Uma Cor)</span>
+            </button>
+            <button
+              class="bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-2 drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all"
+            >
+              <div class="flex gap-1">
+                <div class="w-3 h-3 rounded-full bg-primary-container"></div>
+                <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+                <div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
+                <div class="w-3 h-3 rounded-full bg-black"></div>
+              </div>
+              <span class="font-headline font-bold text-primary">4x0 (CMYK)</span>
+            </button>
+          </div>
+          <div class="mt-2 flex flex-col gap-2">
+            <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
+            <div class="relative">
+              <input
+                class="w-full bg-surface-container-highest text-on-surface border-none p-4 pb-3 rounded-t-md border-b-2 border-b-surface-container-low focus:border-b-primary-container focus:ring-0 transition-colors placeholder:text-on-surface-variant/50 font-body"
+                placeholder="Ex: Pantone 213 C"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5: Handles -->
+        <div class="flex flex-col gap-6">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">05</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Alças</h3>
+          </div>
+          <div class="space-y-6">
+            <div>
+              <h4 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Papel Torcido</h4>
+              <div class="flex gap-3 overflow-x-auto pb-2 snap-x">
+                <button
+                  class="shrink-0 w-24 h-24 bg-surface-container-high rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors snap-start"
+                >
+                  <div class="w-8 h-8 rounded-full border border-outline bg-white"></div>
+                  <span class="font-label text-[10px] uppercase">Branca</span>
+                </button>
+                <button
+                  class="shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all snap-start"
+                >
+                  <div class="w-8 h-8 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
+                  <span class="font-label text-[10px] uppercase text-primary">Preta</span>
+                </button>
+                <button
+                  class="shrink-0 w-24 h-24 bg-surface-container-high rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors snap-start"
+                >
+                  <div class="w-8 h-8 rounded-full bg-[#d2b48c] shadow-inner"></div>
+                  <span class="font-label text-[10px] uppercase">Kraft</span>
+                </button>
+              </div>
+            </div>
+            <div>
+              <h4 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Gorgurão (Tecido)</h4>
+              <div class="flex gap-3">
+                <button
+                  class="w-24 h-24 bg-surface-container-high rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+                >
+                  <div class="w-8 h-2 bg-white rounded-sm shadow-inner"></div>
+                  <span class="font-label text-[10px] uppercase">Branca</span>
+                </button>
+                <button
+                  class="w-24 h-24 bg-surface-container-high rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+                >
+                  <div class="w-8 h-2 bg-black rounded-sm shadow-inner"></div>
+                  <span class="font-label text-[10px] uppercase">Preta</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6: Eyelets -->
+        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0 mb-10">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">06</span>
+            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Ilhós</h3>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <button
+              class="bg-surface-container-highest py-4 rounded-lg flex flex-col items-center justify-center gap-2 drop-shadow-[0_0_8px_theme(colors.primary-container)] scale-[0.98] transition-all"
+            >
+              <span class="material-symbols-outlined text-primary-container text-2xl">block</span>
+              <span class="font-label text-xs uppercase text-primary">Nenhum</span>
+            </button>
+            <button
+              class="bg-surface-container-high py-4 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <div class="w-4 h-4 rounded-full border-4 border-white bg-transparent"></div>
+              <span class="font-label text-xs uppercase text-on-surface">Branco</span>
+            </button>
+            <button
+              class="bg-surface-container-high py-4 rounded-lg flex flex-col items-center justify-center gap-2 hover:bg-surface-container-highest transition-colors"
+            >
+              <div class="w-4 h-4 rounded-full border-4 border-black bg-transparent"></div>
+              <span class="font-label text-xs uppercase text-on-surface">Preto</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Sticky Bottom Bar (Mobile) -->
+    <div
+      class="fixed bottom-0 w-full bg-surface-variant/70 backdrop-blur-3xl px-4 py-4 md:py-6 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col md:flex-row items-center justify-between gap-4 border-t border-outline-variant/15"
+    >
+      <div class="flex flex-col w-full md:w-auto">
+        <span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">Resumo Atual</span>
+        <span class="font-headline font-bold text-sm text-primary line-clamp-1"> Tamanho P • Duplex 190g • Fosca • 4x0 • Alça Preta </span>
+      </div>
+      <div class="flex items-center gap-4 w-full md:w-auto">
+        <div class="flex flex-col">
+          <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1" for="qty">Quantidade</label>
+          <input
+            class="w-24 bg-surface-container-lowest text-primary border-none p-3 rounded-lg text-center font-headline font-bold focus:ring-1 focus:ring-tertiary-container outline-none"
+            id="qty"
+            min="100"
+            step="100"
+            type="number"
+            value="500"
+          />
+        </div>
+        <button
+          class="flex-1 md:flex-none bg-tertiary-container text-on-tertiary-container px-6 py-4 rounded-xl font-black uppercase tracking-wider drop-shadow-[0_0_12px_theme(colors.tertiary-container)] hover:scale-105 active:scale-95 transition-all text-sm md:text-base h-full flex items-center justify-center"
+        >
+          Solicitar Orçamento
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

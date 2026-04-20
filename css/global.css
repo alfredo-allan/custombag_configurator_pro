@@ -1,0 +1,294 @@
+/* css/global.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Material Symbols Global */
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
+
+/* ============================================
+   CUSTOM UTILITY CLASSES
+   ============================================ */
+
+/* Neon Glow Effects */
+.neon-glow-cyan {
+  filter: drop-shadow(0 0 8px #00dddd);
+}
+
+.neon-glow-magenta {
+  filter: drop-shadow(0 0 8px #fe00fe);
+}
+
+/* Backdrop Blur Utilities */
+.backdrop-blur-glass {
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Selection Styles */
+::selection {
+  background-color: #00fbfb;
+  color: #007070;
+}
+
+::-moz-selection {
+  background-color: #00fbfb;
+  color: #007070;
+}
+
+/* Scrollbar Customization (Desktop) */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1c1b1b;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #00dddd;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00fbfb;
+  }
+}
+
+/* ============================================
+   MOBILE-FIRST RESPONSIVE RULES
+   ============================================ */
+
+/* Mobile base (padrão) - aplicado para telas < 768px */
+@media (max-width: 767px) {
+  /* Ajustes específicos para mobile */
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Melhorias de touch */
+  button,
+  [role='button'],
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Previne zoom em inputs no iOS */
+  input[type='text'],
+  input[type='number'],
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Desktop rules (tela >= 768px) */
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none !important;
+  }
+
+  /* Hover effects apenas em desktop */
+  .hover-lift {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ============================================
+   COMPONENT-SPECIFIC STYLES
+   ============================================ */
+
+/* Cards com efeito de borda ativa */
+.card-active {
+  box-shadow:
+    0 0 0 2px #00fbfb,
+    0 0 0 4px rgba(0, 251, 251, 0.2);
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
+
+/* Input focus styles unificados */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #00fbfb;
+  box-shadow: 0 0 0 2px rgba(0, 251, 251, 0.3);
+}
+
+/* Animações suaves */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 221, 221, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(0, 221, 221, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+/* ============================================
+   MOBILE SPECIFIC OVERRIDES (para index.html)
+   ============================================ */
+
+/* Ajuste do sticky bottom bar no mobile */
+@media (max-width: 767px) {
+  .sticky-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(24px);
+    border-radius: 1rem 1rem 0 0;
+  }
+
+  /* Ajuste do hero section para mobile */
+  .hero-mobile {
+    min-height: 80dvh;
+  }
+}
+
+/* ============================================
+   DESKTOP SPECIFIC OVERRIDES (para desktop.html)
+   ============================================ */
+
+@media (min-width: 768px) {
+  /* Sidebar sticky behavior */
+  .desktop-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+
+  /* Grid refinements */
+  .desktop-grid-2cols {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 3rem;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  header,
+  footer,
+  .sticky-bottom-bar,
+  button:not(.print-ignore) {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  .bg-surface,
+  .bg-surface-container-low {
+    background: white !important;
+  }
+}
+
+/* ============================================
+   PAGE-SPECIFIC RENDER RULES
+   ============================================ */
+
+/* Garantia que mobile renderiza corretamente */
+@media (max-width: 767px) {
+  /* Força mobile layout para index.html */
+  .mobile-layout {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* Ajusta sidebar do desktop caso seja acessado no mobile */
+  .desktop-sidebar {
+    position: relative !important;
+    top: 0 !important;
+    margin-top: 2rem;
+  }
+
+  /* Força grid do desktop para empilhar no mobile */
+  .desktop-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+  }
+}
+
+/* Desktop rules */
+@media (min-width: 1024px) {
+  /* Força desktop layout */
+  .desktop-layout {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* Sidebar sticky funciona apenas em desktop */
+  .desktop-sidebar-sticky {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+  }
+}

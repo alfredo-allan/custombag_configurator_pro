@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport" />
     <meta name="theme-color" content="#131313" />
-    <title>Industrial Alchemist | Configuração de Sacolas</title>
+    <title>Industria Gráfica Alquimista | Configuração de Sacolas</title>
 
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -133,32 +134,70 @@
         animation: fadeInUp 0.4s ease-out forwards;
       }
     </style>
-    <link rel="stylesheet" href="../css/global.css" />
   </head>
 
   <body
     class="bg-surface text-on-surface font-body antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"
   >
-    <!-- TopAppBar -->
-    <header
-      class="fixed top-0 w-full flex justify-between items-center px-6 py-4 bg-[#131313]/60 backdrop-blur-3xl shadow-2xl shadow-black/40 z-50"
-    >
-      <button class="text-white transition-colors scale-95 active:scale-90 flex items-center justify-center p-2" aria-label="Menu">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">menu</span>
-      </button>
-      <h1 class="font-['Inter'] font-black uppercase tracking-tighter text-base md:text-lg tracking-widest text-white">
-        INDUSTRIAL ALCHEMIST
-      </h1>
-      <button class="text-white transition-colors scale-95 active:scale-90 flex items-center justify-center p-2" aria-label="Sacola">
-        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">shopping_bag</span>
-      </button>
+    <!-- TopAppBar - Mobile com links -->
+    <header class="fixed top-0 w-full bg-[#131313]/90 backdrop-blur-3xl shadow-2xl shadow-black/40 z-50 border-b border-outline-variant/20">
+      <div class="flex justify-between items-center px-4 py-3">
+        <button class="text-white transition-colors scale-95 active:scale-90 flex items-center justify-center p-2" aria-label="Menu">
+          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">menu</span>
+        </button>
+
+        <div class="text-center">
+          <h1 class="font-['Inter'] font-black uppercase tracking-tighter text-sm tracking-widest text-white">
+            Industria Gráfica Alquimista
+          </h1>
+        </div>
+
+        <button
+          id="whatsapp-btn-mobile"
+          class="flex items-center justify-center w-9 h-9 rounded-full bg-surface-container-high hover:bg-primary-container/10 border border-outline-variant/30 transition-all duration-300"
+        >
+          <i class="fab fa-whatsapp text-primary-container text-base"></i>
+        </button>
+      </div>
+
+      <!-- Navegação Mobile -->
+      <div class="flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 bg-surface/80">
+        <a
+          href="desktop.html"
+          class="flex flex-col items-center gap-0.5 text-[10px] uppercase tracking-wider text-zinc-400 hover:text-cyan-400 transition-colors"
+        >
+          <span class="material-symbols-outlined text-base">shopping_bag</span>
+          <span>Configurar</span>
+        </a>
+        <a
+          href="sobre.html"
+          class="flex flex-col items-center gap-0.5 text-[10px] uppercase tracking-wider text-zinc-400 hover:text-cyan-400 transition-colors"
+        >
+          <span class="material-symbols-outlined text-base">info</span>
+          <span>Sobre</span>
+        </a>
+        <a
+          href="galeria.html"
+          class="flex flex-col items-center gap-0.5 text-[10px] uppercase tracking-wider text-cyan-400 border-b border-cyan-400 pb-0.5"
+        >
+          <span class="material-symbols-outlined text-base">collections</span>
+          <span>Galeria</span>
+        </a>
+        <a
+          href="#"
+          class="flex flex-col items-center gap-0.5 text-[10px] uppercase tracking-wider text-zinc-400 hover:text-cyan-400 transition-colors"
+        >
+          <span class="material-symbols-outlined text-base">inventory_2</span>
+          <span>Processo</span>
+        </a>
+      </div>
     </header>
 
     <!-- Main Content -->
-    <main class="w-full">
+    <main class="w-full pt-28">
       <!-- Hero Section -->
       <section
-        class="relative w-full h-[600px] flex flex-col justify-end p-6 bg-surface-container-low overflow-hidden pt-24"
+        class="relative w-full h-[500px] flex flex-col justify-end p-6 bg-surface-container-low overflow-hidden"
         style="
           background-image:
             linear-gradient(to bottom, rgba(19, 19, 19, 0.2) 0%, rgba(19, 19, 19, 1) 100%),
@@ -172,220 +211,220 @@
             class="font-label text-primary-container uppercase tracking-[0.1em] text-xs font-bold bg-surface-container-high/50 px-3 py-1 rounded backdrop-blur-sm"
             >Produção Industrial</span
           >
-          <h2 class="font-headline text-4xl font-black text-primary uppercase tracking-tighter leading-none w-full">
+          <h2 class="font-headline text-3xl font-black text-primary uppercase tracking-tighter leading-none w-full">
             Suas Sacolas Personalizadas com Qualidade Premium
           </h2>
-          <p class="font-body text-on-surface-variant text-base max-w-lg mt-2 leading-relaxed">
+          <p class="font-body text-on-surface-variant text-sm max-w-lg mt-2 leading-relaxed">
             Do corte à laminação, dominamos toda a produção. Sacolas de alta resistência (suportam aprox. 4kg).
           </p>
           <a
-            class="mt-6 w-full md:w-auto bg-primary text-on-primary rounded-xl px-8 py-5 font-bold text-center uppercase tracking-wider text-sm transition-transform active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
+            class="mt-4 w-full bg-primary text-on-primary rounded-xl px-6 py-4 font-bold text-center uppercase tracking-wider text-sm transition-transform active:scale-95 shadow-[0_10px_30px_rgba(255,255,255,0.15)] flex items-center justify-center gap-2"
             href="#configurator"
           >
             Configurar meu orçamento
-            <span class="material-symbols-outlined text-lg">arrow_downward</span>
+            <span class="material-symbols-outlined text-base">arrow_downward</span>
           </a>
         </div>
       </section>
 
       <!-- Configurator Section -->
-      <section class="w-full max-w-3xl mx-auto px-4 py-12 flex flex-col gap-12" id="configurator">
+      <section class="w-full max-w-3xl mx-auto px-4 py-10 flex flex-col gap-10" id="configurator">
         <!-- Step 1: Size -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">01</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Tamanho da Sacola</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Tamanho da Sacola</h3>
           </div>
-          <div class="grid grid-cols-2 gap-4" id="size-options">
+          <div class="grid grid-cols-2 gap-3" id="size-options">
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-left"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left"
               data-size="p"
             >
-              <span class="font-headline text-3xl font-black text-primary">P</span>
-              <span class="font-label text-on-surface-variant text-xs tracking-wider">18x23,5x8cm</span>
+              <span class="font-headline text-2xl font-black text-primary">P</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">18x23,5x8cm</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-left active"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left active"
               data-size="m"
             >
-              <span class="font-headline text-3xl font-black text-primary">M</span>
-              <span class="font-label text-on-surface-variant text-xs tracking-wider">23x32x8cm</span>
+              <span class="font-headline text-2xl font-black text-primary">M</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">23x32x8cm</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-left"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left"
               data-size="g"
             >
-              <span class="font-headline text-3xl font-black text-primary">G</span>
-              <span class="font-label text-on-surface-variant text-xs tracking-wider">35x24x14cm</span>
+              <span class="font-headline text-2xl font-black text-primary">G</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">35x24x14cm</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-left"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left"
               data-size="gg"
             >
-              <span class="font-headline text-3xl font-black text-primary">GG</span>
-              <span class="font-label text-on-surface-variant text-xs tracking-wider">45,5x35x12cm</span>
+              <span class="font-headline text-2xl font-black text-primary">GG</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">45,5x35x12cm</span>
             </div>
           </div>
         </div>
 
         <!-- Step 2: Paper Type -->
-        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0">
+        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">02</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Papel &amp; Gramatura</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Papel &amp; Gramatura</h3>
           </div>
-          <div class="flex flex-col gap-4" id="paper-options">
+          <div class="flex flex-col gap-3" id="paper-options">
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex justify-between items-center transition-all text-left w-full"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex justify-between items-center transition-all text-left w-full"
               data-paper="offset"
             >
               <div class="flex flex-col">
-                <span class="font-headline text-lg font-bold text-primary">Offset 180g</span>
-                <span class="font-body text-sm text-on-surface-variant">Fosco, alta absorção de tinta.</span>
+                <span class="font-headline font-bold text-primary">Offset 180g</span>
+                <span class="font-body text-xs text-on-surface-variant">Fosco, alta absorção de tinta.</span>
               </div>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex justify-between items-center transition-all text-left w-full active"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex justify-between items-center transition-all text-left w-full active"
               data-paper="duplex"
             >
               <div class="flex flex-col gap-1">
-                <span class="font-headline text-lg font-bold text-primary">Duplex 190g</span>
-                <span class="font-body text-sm text-on-surface-variant">Brilho em um lado, fosco no outro.</span>
-                <span class="font-label text-[10px] text-secondary-container uppercase tracking-widest mt-2 flex items-center gap-1">
-                  <span class="material-symbols-outlined text-[14px]">warning</span> Exige Laminação
+                <span class="font-headline font-bold text-primary">Duplex 190g</span>
+                <span class="font-body text-xs text-on-surface-variant">Brilho em um lado, fosco no outro.</span>
+                <span class="font-label text-[10px] text-secondary-container uppercase tracking-widest mt-1 flex items-center gap-1">
+                  <span class="material-symbols-outlined text-[12px]">warning</span> Exige Laminação
                 </span>
               </div>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-5 rounded-lg flex justify-between items-center transition-all text-left w-full"
+              class="option-card bg-surface-container-highest p-4 rounded-lg flex justify-between items-center transition-all text-left w-full"
               data-paper="kraft"
             >
               <div class="flex flex-col">
-                <span class="font-headline text-lg font-bold text-primary">Reciclato Kraft 180g</span>
-                <span class="font-body text-sm text-on-surface-variant">Aspecto rústico e sustentável.</span>
+                <span class="font-headline font-bold text-primary">Reciclato Kraft 180g</span>
+                <span class="font-body text-xs text-on-surface-variant">Aspecto rústico e sustentável.</span>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Step 3: Finish -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">03</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Acabamento</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Acabamento</h3>
           </div>
-          <div class="grid grid-cols-3 gap-3" id="finish-options">
+          <div class="grid grid-cols-3 gap-2" id="finish-options">
             <div
-              class="option-card bg-surface-container-highest py-6 rounded-lg flex flex-col items-center gap-2 transition-all text-center"
+              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center gap-1 transition-all text-center"
               data-finish="none"
             >
-              <span class="material-symbols-outlined text-on-surface-variant text-3xl">block</span>
-              <span class="font-label text-xs tracking-wider uppercase text-primary">Nenhum</span>
+              <span class="material-symbols-outlined text-on-surface-variant text-2xl">block</span>
+              <span class="font-label text-[10px] tracking-wider uppercase text-primary">Nenhum</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest py-6 rounded-lg flex flex-col items-center gap-2 transition-all text-center active"
+              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center gap-1 transition-all text-center active"
               data-finish="matte"
             >
-              <span class="material-symbols-outlined text-primary-container text-3xl">texture</span>
-              <span class="font-label text-xs tracking-wider uppercase text-primary">Fosca</span>
+              <span class="material-symbols-outlined text-primary-container text-2xl">texture</span>
+              <span class="font-label text-[10px] tracking-wider uppercase text-primary">Fosca</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest py-6 rounded-lg flex flex-col items-center gap-2 transition-all text-center"
+              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center gap-1 transition-all text-center"
               data-finish="gloss"
             >
-              <span class="material-symbols-outlined text-on-surface-variant text-3xl">flare</span>
-              <span class="font-label text-xs tracking-wider uppercase text-primary">Brilho</span>
+              <span class="material-symbols-outlined text-on-surface-variant text-2xl">flare</span>
+              <span class="font-label text-[10px] tracking-wider uppercase text-primary">Brilho</span>
             </div>
           </div>
         </div>
 
         <!-- Step 4: Printing Colors -->
-        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0">
+        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">04</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Cores de Impressão</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Cores de Impressão</h3>
           </div>
-          <div class="grid grid-cols-2 gap-4" id="printing-options">
+          <div class="grid grid-cols-2 gap-3" id="printing-options">
             <div
-              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-center"
+              class="option-card bg-surface-container-highest p-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center"
               data-printing="onecolor"
             >
-              <div class="flex gap-1"><div class="w-4 h-4 rounded-full bg-black"></div></div>
-              <span class="font-headline font-bold">1x0 (Uma Cor)</span>
+              <div class="flex gap-1"><div class="w-3 h-3 rounded-full bg-black"></div></div>
+              <span class="font-headline font-bold text-sm">1x0</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-center active"
+              class="option-card bg-surface-container-highest p-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center active"
               data-printing="cmyk"
             >
               <div class="flex gap-1">
-                <div class="w-3 h-3 rounded-full bg-primary-container"></div>
-                <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
-                <div class="w-3 h-3 rounded-full bg-tertiary-container"></div>
-                <div class="w-3 h-3 rounded-full bg-black"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-secondary-container"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-black"></div>
               </div>
-              <span class="font-headline font-bold text-primary">4x0 (CMYK)</span>
+              <span class="font-headline font-bold text-primary text-sm">4x0</span>
             </div>
           </div>
           <div class="mt-2 flex flex-col gap-2">
             <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
-            <input type="text" id="pantone-input" class="input-custom w-full rounded-xl p-4" placeholder="Ex: Pantone 213 C" />
+            <input type="text" id="pantone-input" class="input-custom w-full rounded-xl p-3 text-sm" placeholder="Ex: Pantone 213 C" />
           </div>
         </div>
 
         <!-- Step 5: Handles -->
-        <div class="flex flex-col gap-6">
+        <div class="flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">05</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Alças</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Alças</h3>
           </div>
-          <div class="space-y-6">
+          <div class="space-y-5">
             <div>
-              <h4 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Papel Torcido</h4>
-              <div class="flex gap-3 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
+              <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Papel Torcido</h4>
+              <div class="flex gap-2 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
                 <div
-                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 transition-all snap-start"
+                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
                   data-handle-type="paper"
                   data-handle-color="branca"
                 >
-                  <div class="w-8 h-8 rounded-full border border-outline bg-white"></div>
-                  <span class="font-label text-[10px] uppercase">Branca</span>
+                  <div class="w-6 h-6 rounded-full border border-outline bg-white"></div>
+                  <span class="font-label text-[9px] uppercase">Branca</span>
                 </div>
                 <div
-                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 transition-all snap-start active"
+                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start active"
                   data-handle-type="paper"
                   data-handle-color="preta"
                 >
-                  <div class="w-8 h-8 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
-                  <span class="font-label text-[10px] uppercase text-primary">Preta</span>
+                  <div class="w-6 h-6 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
+                  <span class="font-label text-[9px] uppercase text-primary">Preta</span>
                 </div>
                 <div
-                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 transition-all snap-start"
+                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
                   data-handle-type="paper"
                   data-handle-color="kraft"
                 >
-                  <div class="w-8 h-8 rounded-full bg-[#d2b48c] shadow-inner"></div>
-                  <span class="font-label text-[10px] uppercase">Kraft</span>
+                  <div class="w-6 h-6 rounded-full bg-[#d2b48c] shadow-inner"></div>
+                  <span class="font-label text-[9px] uppercase">Kraft</span>
                 </div>
               </div>
             </div>
             <div>
-              <h4 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Gorgurão (Tecido)</h4>
-              <div class="flex gap-3" id="handle-fabric-options">
+              <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Gorgurão (Tecido)</h4>
+              <div class="flex gap-2" id="handle-fabric-options">
                 <div
-                  class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 transition-all"
+                  class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
                   data-handle-type="fabric"
                   data-handle-color="branca"
                 >
-                  <div class="w-8 h-2 bg-white rounded-sm shadow-inner"></div>
-                  <span class="font-label text-[10px] uppercase">Branca</span>
+                  <div class="w-6 h-1.5 bg-white rounded-sm shadow-inner"></div>
+                  <span class="font-label text-[9px] uppercase">Branca</span>
                 </div>
                 <div
-                  class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-2 transition-all"
+                  class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
                   data-handle-type="fabric"
                   data-handle-color="preta"
                 >
-                  <div class="w-8 h-2 bg-black rounded-sm shadow-inner"></div>
-                  <span class="font-label text-[10px] uppercase">Preta</span>
+                  <div class="w-6 h-1.5 bg-black rounded-sm shadow-inner"></div>
+                  <span class="font-label text-[9px] uppercase">Preta</span>
                 </div>
               </div>
             </div>
@@ -393,54 +432,54 @@
         </div>
 
         <!-- Step 6: Eyelets -->
-        <div class="flex flex-col gap-6 bg-surface-container-low p-6 rounded-2xl -mx-4 md:mx-0 mb-10">
+        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0 mb-6">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">06</span>
-            <h3 class="font-headline text-xl font-bold uppercase tracking-wide">Ilhós</h3>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Ilhós</h3>
           </div>
-          <div class="grid grid-cols-3 gap-3" id="eyelet-options">
+          <div class="grid grid-cols-3 gap-2" id="eyelet-options">
             <div
-              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-center active"
+              class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center active"
               data-eyelet="none"
             >
-              <span class="material-symbols-outlined text-primary-container text-2xl">block</span>
-              <span class="font-label text-xs uppercase text-primary">Nenhum</span>
+              <span class="material-symbols-outlined text-primary-container text-xl">block</span>
+              <span class="font-label text-[10px] uppercase text-primary">Nenhum</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-center"
+              class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center"
               data-eyelet="white"
             >
-              <div class="w-4 h-4 rounded-full border-4 border-white bg-transparent"></div>
-              <span class="font-label text-xs uppercase text-primary">Branco</span>
+              <div class="w-3 h-3 rounded-full border-2 border-white bg-transparent"></div>
+              <span class="font-label text-[10px] uppercase text-primary">Branco</span>
             </div>
             <div
-              class="option-card bg-surface-container-highest py-4 rounded-lg flex flex-col items-center justify-center gap-2 transition-all text-center"
+              class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center"
               data-eyelet="black"
             >
-              <div class="w-4 h-4 rounded-full border-4 border-black bg-transparent"></div>
-              <span class="font-label text-xs uppercase text-primary">Preto</span>
+              <div class="w-3 h-3 rounded-full border-2 border-black bg-transparent"></div>
+              <span class="font-label text-[10px] uppercase text-primary">Preto</span>
             </div>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- Sticky Bottom Bar (Mobile) - COM REDIRECIONAMENTO PARA REVIEW -->
+    <!-- Sticky Bottom Bar (Mobile) -->
     <div
-      class="fixed bottom-0 w-full bg-surface-variant/90 backdrop-blur-3xl px-4 py-4 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col gap-3 border-t border-outline-variant/15"
+      class="fixed bottom-0 w-full bg-surface-variant/90 backdrop-blur-3xl px-4 py-3 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col gap-2 border-t border-outline-variant/15"
     >
       <div class="flex flex-col w-full">
-        <span class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1">RESUMO ATUAL</span>
-        <span class="font-headline font-bold text-sm text-primary line-clamp-1" id="summary-text"
+        <span class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-0.5">RESUMO ATUAL</span>
+        <span class="font-headline font-bold text-xs text-primary line-clamp-1" id="summary-text"
           >Tamanho M • Duplex 190g • Fosca • 4x0 • Alça Preta</span
         >
       </div>
-      <div class="flex items-center gap-3 w-full">
+      <div class="flex items-center gap-2 w-full">
         <div class="flex flex-col flex-shrink-0">
-          <label class="font-label text-[10px] text-on-surface-variant uppercase tracking-widest mb-1" for="qty">QTD</label>
+          <label class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-0.5" for="qty">QTD</label>
           <input
             id="quantity-input"
-            class="input-custom w-20 rounded-lg p-3 text-center font-headline font-bold"
+            class="input-custom w-16 rounded-lg p-2 text-center font-headline font-bold text-sm"
             type="number"
             min="500"
             step="500"
@@ -449,9 +488,9 @@
         </div>
         <button
           id="submit-config"
-          class="flex-1 btn-orcamento rounded-xl py-4 font-black uppercase tracking-wider text-sm flex items-center justify-center gap-2 shadow-lg"
+          class="flex-1 btn-orcamento rounded-xl py-3 font-black uppercase tracking-wider text-xs flex items-center justify-center gap-1 shadow-lg"
         >
-          <span class="material-symbols-outlined text-lg">receipt_long</span>
+          <span class="material-symbols-outlined text-base">receipt_long</span>
           REVISAR PEDIDO
         </button>
       </div>
@@ -507,8 +546,6 @@
         const handleText = `${ConfiguratorState.handle.type === 'paper' ? 'Papel Torcido' : 'Gorgurão'} ${ConfiguratorState.handle.colorName}`
         const summaryText = `${ConfiguratorState.size.name} • ${ConfiguratorState.paper.name} • ${ConfiguratorState.finish.name} • ${ConfiguratorState.printing.name} • ${handleText}`
         document.getElementById('summary-text').textContent = summaryText
-
-        // Salva no localStorage
         localStorage.setItem('industrialAlchemistConfig', JSON.stringify(ConfiguratorState))
       }
 
@@ -540,7 +577,6 @@
           if (el.dataset.eyelet === ConfiguratorState.eyelet.id) el.classList.add('active')
           else el.classList.remove('active')
         })
-
         document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
         document.getElementById('quantity-input').value = ConfiguratorState.quantity
       }
@@ -564,14 +600,10 @@
         updateSummary()
       }
 
-      // ============================================
       // EVENT LISTENERS
-      // ============================================
-
       document.querySelectorAll('[data-size]').forEach((el) => {
         el.addEventListener('click', () => {
-          const sizeId = el.dataset.size
-          ConfiguratorState.size = { id: sizeId, ...sizeMap[sizeId] }
+          ConfiguratorState.size = { id: el.dataset.size, ...sizeMap[el.dataset.size] }
           updateActiveStates()
           updateSummary()
         })
@@ -579,8 +611,7 @@
 
       document.querySelectorAll('[data-paper]').forEach((el) => {
         el.addEventListener('click', () => {
-          const paperId = el.dataset.paper
-          ConfiguratorState.paper = { id: paperId, ...paperMap[paperId] }
+          ConfiguratorState.paper = { id: el.dataset.paper, ...paperMap[el.dataset.paper] }
           updateActiveStates()
           updateSummary()
         })
@@ -588,8 +619,7 @@
 
       document.querySelectorAll('[data-finish]').forEach((el) => {
         el.addEventListener('click', () => {
-          const finishId = el.dataset.finish
-          ConfiguratorState.finish = { id: finishId, ...finishMap[finishId] }
+          ConfiguratorState.finish = { id: el.dataset.finish, ...finishMap[el.dataset.finish] }
           updateActiveStates()
           updateSummary()
         })
@@ -597,8 +627,7 @@
 
       document.querySelectorAll('[data-printing]').forEach((el) => {
         el.addEventListener('click', () => {
-          const printingId = el.dataset.printing
-          ConfiguratorState.printing = { id: printingId, ...printingMap[printingId] }
+          ConfiguratorState.printing = { id: el.dataset.printing, ...printingMap[el.dataset.printing] }
           updateActiveStates()
           updateSummary()
         })
@@ -606,10 +635,9 @@
 
       document.querySelectorAll('[data-handle-type]').forEach((el) => {
         el.addEventListener('click', () => {
-          const handleType = el.dataset.handleType
           const handleColor = el.dataset.handleColor
           const colorName = handleColor === 'branca' ? 'Branca' : handleColor === 'preta' ? 'Preta' : 'Kraft'
-          ConfiguratorState.handle = { type: handleType, color: handleColor, colorName: colorName }
+          ConfiguratorState.handle = { type: el.dataset.handleType, color: handleColor, colorName: colorName }
           updateActiveStates()
           updateSummary()
         })
@@ -617,8 +645,7 @@
 
       document.querySelectorAll('[data-eyelet]').forEach((el) => {
         el.addEventListener('click', () => {
-          const eyeletId = el.dataset.eyelet
-          ConfiguratorState.eyelet = { id: eyeletId, ...eyeletMap[eyeletId] }
+          ConfiguratorState.eyelet = { id: el.dataset.eyelet, ...eyeletMap[el.dataset.eyelet] }
           updateActiveStates()
           updateSummary()
         })
@@ -638,20 +665,18 @@
         updateSummary()
       })
 
-      // ============================================
-      // SUBMIT - REDIRECIONA PARA REVIEW
-      // ============================================
-
       document.getElementById('submit-config').addEventListener('click', () => {
         updateSummary()
-        // Salva e redireciona para a página de review
         localStorage.setItem('industrialAlchemistConfig', JSON.stringify(ConfiguratorState))
         window.location.href = 'review.html'
       })
 
-      // ============================================
-      // INITIALIZATION
-      // ============================================
+      // Botão WhatsApp
+      document.getElementById('whatsapp-btn-mobile')?.addEventListener('click', function () {
+        const phoneNumber = '5511994102660'
+        const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
+      })
 
       loadFromStorage()
     </script>

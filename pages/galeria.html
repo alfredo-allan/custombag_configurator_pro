@@ -1,0 +1,415 @@
+<!doctype html>
+<html class="dark" lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#131313" />
+    <meta
+      name="description"
+      content="Galeria de sacolas personalizadas da Industria Gráfica Alquimista. Conheça nossos modelos, materiais e prazos de entrega."
+    />
+    <title>Industria Gráfica Alquimista | Galeria</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: '#ffffff',
+              'on-primary': '#003737',
+              'primary-container': '#00fbfb',
+              'on-primary-container': '#007070',
+              'primary-fixed-dim': '#00dddd',
+              secondary: '#ffabf3',
+              'secondary-container': '#fe00fe',
+              tertiary: '#ffffff',
+              'tertiary-container': '#eaea00',
+              surface: '#131313',
+              'on-surface': '#e5e2e1',
+              'surface-variant': '#353534',
+              'on-surface-variant': '#b9cac9',
+              'surface-container-lowest': '#0e0e0e',
+              'surface-container-low': '#1c1b1b',
+              'surface-container': '#201f1f',
+              'surface-container-high': '#2a2a2a',
+              'surface-container-highest': '#353534',
+              outline: '#839493',
+              'outline-variant': '#3a4a49',
+              'surface-tint': '#00dddd'
+            },
+            fontFamily: { headline: ['Inter'], body: ['Inter'], label: ['Inter'] }
+          }
+        }
+      }
+    </script>
+
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-fade {
+        animation: fadeInUp 0.6s ease-out forwards;
+      }
+      .animate-fade-delay-1 {
+        animation: fadeInUp 0.6s ease-out 0.1s forwards;
+        opacity: 0;
+      }
+      .animate-fade-delay-2 {
+        animation: fadeInUp 0.6s ease-out 0.2s forwards;
+        opacity: 0;
+      }
+      .animate-fade-delay-3 {
+        animation: fadeInUp 0.6s ease-out 0.3s forwards;
+        opacity: 0;
+      }
+
+      .gallery-card {
+        background: linear-gradient(135deg, #201f1f 0%, #1c1b1b 100%);
+        border: 1px solid rgba(0, 221, 221, 0.15);
+        transition: all 0.3s ease;
+      }
+      .gallery-card:hover {
+        border-color: rgba(0, 221, 221, 0.4);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -15px rgba(0, 221, 221, 0.15);
+      }
+
+      .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+        border-radius: 1rem;
+      }
+      .video-container video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .material-badge {
+        background: rgba(0, 221, 221, 0.1);
+        border: 1px solid rgba(0, 221, 221, 0.2);
+        border-radius: 50px;
+        padding: 0.25rem 0.75rem;
+        font-size: 0.7rem;
+        color: #b9cac9;
+      }
+
+      .deadline-card {
+        background: linear-gradient(135deg, rgba(0, 221, 221, 0.05) 0%, rgba(0, 251, 251, 0.02) 100%);
+        border: 1px solid rgba(0, 221, 221, 0.2);
+      }
+    </style>
+  </head>
+
+  <body class="bg-surface text-on-surface font-body antialiased min-h-screen">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-2xl shadow-2xl">
+      <div class="flex justify-between items-center px-6 md:px-10 h-20 w-full">
+        <div class="text-xl md:text-2xl font-black tracking-tighter text-white italic">Industria Gráfica Alquimista</div>
+        <div class="hidden md:flex gap-6 lg:gap-8 items-center">
+          <a
+            class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-colors"
+            href="desktop.html"
+            >Configurador</a
+          >
+          <a
+            class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-colors"
+            href="sobre.html"
+            >Sobre Nós</a
+          >
+          <a
+            class="font-inter tracking-tight uppercase font-bold text-[13px] text-cyan-400 border-b-2 border-cyan-400 pb-1"
+            href="galeria.html"
+            >Galeria</a
+          >
+          <a class="font-inter tracking-tight uppercase font-bold text-[13px] text-zinc-400 hover:text-cyan-400 transition-colors" href="#"
+            >Processo</a
+          >
+        </div>
+        <button
+          id="whatsapp-btn"
+          class="flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 rounded-full bg-surface-container-high hover:bg-primary-container/10 border border-outline-variant/30 hover:border-primary-container transition-all duration-300 group cursor-pointer"
+        >
+          <i class="fab fa-whatsapp text-primary-container text-base md:text-lg group-hover:scale-110 transition-transform"></i>
+          <span class="text-xs md:text-sm font-medium text-on-surface-variant group-hover:text-primary-container transition-colors"
+            >Contato</span
+          >
+        </button>
+      </div>
+    </nav>
+
+    <main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+      <!-- Header -->
+      <div class="text-center mb-12 animate-fade">
+        <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-container/10 mb-4">
+          <span class="material-symbols-outlined text-5xl text-primary-container">collections</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-black bg-gradient-to-r from-white to-primary-container bg-clip-text text-transparent">
+          Nossa Galeria
+        </h1>
+        <p class="text-on-surface-variant mt-3 max-w-2xl mx-auto">Conheça os modelos disponíveis e os materiais que utilizamos</p>
+      </div>
+
+      <!-- Vídeo Principal -->
+      <div class="mb-16 animate-fade-delay-1">
+        <div class="gallery-card rounded-2xl overflow-hidden">
+          <div class="video-container">
+            <video autoplay muted loop playsinline>
+              <source src="../assets/video/Custom_Paper_Bag_Commercial_Video.mp4" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </video>
+          </div>
+          <div class="p-4 md:p-6 text-center">
+            <p class="text-on-surface-variant text-sm flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-primary-container text-base">play_circle</span>
+              Produção industrial • Qualidade garantida
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Títulos das Sacolas -->
+      <div class="mb-10">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-2 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-container">shopping_bag</span>
+          Modelos de Sacolas
+        </h2>
+        <p class="text-on-surface-variant text-sm">Medidas exatas para cada necessidade</p>
+      </div>
+
+      <!-- Grid de Sacolas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <!-- Sacola P -->
+        <div class="gallery-card rounded-xl p-5 text-center animate-fade-delay-1">
+          <div class="bg-surface-container-high rounded-lg p-4 mb-4">
+            <img src="../assets/images/bag-blueprint-p.png" alt="Sacola Tamanho P" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <h3 class="text-xl font-bold text-primary">Tamanho P</h3>
+          <p class="text-primary-container text-sm font-mono mb-3">18cm x 23,5cm x 8cm</p>
+          <div class="flex flex-wrap gap-2 justify-center mt-3">
+            <span class="material-badge">Ideal para joias</span>
+            <span class="material-badge">Até 2kg</span>
+          </div>
+        </div>
+
+        <!-- Sacola M -->
+        <div class="gallery-card rounded-xl p-5 text-center animate-fade-delay-2">
+          <div class="bg-surface-container-high rounded-lg p-4 mb-4">
+            <img src="../assets/images/bag-blueprint-m.png" alt="Sacola Tamanho M" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <h3 class="text-xl font-bold text-primary">Tamanho M</h3>
+          <p class="text-primary-container text-sm font-mono mb-3">23cm x 32cm x 8cm</p>
+          <div class="flex flex-wrap gap-2 justify-center mt-3">
+            <span class="material-badge">Padrão vestuário</span>
+            <span class="material-badge">Até 4kg</span>
+          </div>
+        </div>
+
+        <!-- Sacola G -->
+        <div class="gallery-card rounded-xl p-5 text-center animate-fade-delay-3">
+          <div class="bg-surface-container-high rounded-lg p-4 mb-4">
+            <img src="../assets/images/bag-blueprint-g.png" alt="Sacola Tamanho G" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <h3 class="text-xl font-bold text-primary">Tamanho G</h3>
+          <p class="text-primary-container text-sm font-mono mb-3">35cm x 24cm x 14cm</p>
+          <div class="flex flex-wrap gap-2 justify-center mt-3">
+            <span class="material-badge">Caixas de sapato</span>
+            <span class="material-badge">Até 5kg</span>
+          </div>
+        </div>
+
+        <!-- Sacola GG -->
+        <div class="gallery-card rounded-xl p-5 text-center animate-fade-delay-3">
+          <div class="bg-surface-container-high rounded-lg p-4 mb-4">
+            <img src="../assets/images/bag-blueprint-gg.png" alt="Sacola Tamanho GG" class="w-full h-auto max-h-48 object-contain" />
+          </div>
+          <h3 class="text-xl font-bold text-primary">Tamanho GG</h3>
+          <p class="text-primary-container text-sm font-mono mb-3">45,5cm x 35cm x 12cm</p>
+          <div class="flex flex-wrap gap-2 justify-center mt-3">
+            <span class="material-badge">Grandes volumes</span>
+            <span class="material-badge">Até 7kg</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Materiais e Especificações -->
+      <div class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-primary mb-6 flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary-container">science</span>
+          Materiais e Acabamentos
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Papéis -->
+          <div class="gallery-card rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="material-symbols-outlined text-2xl text-primary-container">description</span>
+              <h3 class="text-lg font-bold text-primary">Papéis</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex justify-between"><span>Offset 180g</span><span class="text-primary-container">Fosco, alta absorção</span></li>
+              <li class="flex justify-between">
+                <span>Duplex 190g</span><span class="text-primary-container">Brilho/fosco • Alta rigidez</span>
+              </li>
+              <li class="flex justify-between">
+                <span>Reciclato Kraft 180g</span><span class="text-primary-container">Rústico • Sustentável</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Acabamentos -->
+          <div class="gallery-card rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="material-symbols-outlined text-2xl text-primary-container">texture</span>
+              <h3 class="text-lg font-bold text-primary">Acabamentos</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex justify-between"><span>Laminação Fosca</span><span class="text-primary-container">Toque aveludado</span></li>
+              <li class="flex justify-between"><span>Laminação Brilho</span><span class="text-primary-container">Alto brilho</span></li>
+              <li class="flex justify-between"><span>Sem Laminação</span><span class="text-primary-container">Acabamento natural</span></li>
+            </ul>
+          </div>
+
+          <!-- Impressão -->
+          <div class="gallery-card rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="material-symbols-outlined text-2xl text-primary-container">palette</span>
+              <h3 class="text-lg font-bold text-primary">Impressão</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-on-surface-variant">
+              <li class="flex justify-between"><span>1x0 (Uma Cor)</span><span class="text-primary-container">Econômico</span></li>
+              <li class="flex justify-between"><span>4x0 (CMYK)</span><span class="text-primary-container">Cores vibrantes</span></li>
+              <li class="flex justify-between"><span>Pantone</span><span class="text-primary-container">Cor especial</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alças e Ilhós -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+        <div class="gallery-card rounded-xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-2xl text-primary-container">handshake</span>
+            <h3 class="text-lg font-bold text-primary">Alças</h3>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <div><span class="material-badge">Papel Torcido Branco</span></div>
+            <div><span class="material-badge">Papel Torcido Preto</span></div>
+            <div><span class="material-badge">Papel Torcido Kraft</span></div>
+            <div><span class="material-badge">Gorgurão Branco</span></div>
+            <div><span class="material-badge">Gorgurão Preto</span></div>
+          </div>
+        </div>
+
+        <div class="gallery-card rounded-xl p-6">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-2xl text-primary-container">circle</span>
+            <h3 class="text-lg font-bold text-primary">Ilhós</h3>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <div><span class="material-badge">Sem Ilhós</span></div>
+            <div><span class="material-badge">Ilhós Branco</span></div>
+            <div><span class="material-badge">Ilhós Preto</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Prazo de Entrega -->
+      <div class="deadline-card rounded-2xl p-6 md:p-8 mb-12 animate-fade-delay-3">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-primary-container/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-3xl text-primary-container">schedule</span>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-primary">Prazo de Entrega</h3>
+              <p class="text-on-surface-variant text-sm">Produção ágil e compromisso com o prazo</p>
+            </div>
+          </div>
+          <div class="text-center md:text-right">
+            <p class="text-2xl md:text-3xl font-black text-primary-container">5 a 15 dias úteis</p>
+            <p class="text-xs text-on-surface-variant">*Após aprovação da arte e pagamento</p>
+          </div>
+        </div>
+        <div class="mt-6 pt-6 border-t border-outline-variant/20 flex flex-wrap justify-center gap-4 text-sm text-on-surface-variant">
+          <span class="flex items-center gap-1"
+            ><span class="material-symbols-outlined text-primary-container text-base">check_circle</span> Orçamento em 24h</span
+          >
+          <span class="flex items-center gap-1"
+            ><span class="material-symbols-outlined text-primary-container text-base">check_circle</span> Arte digital para aprovação</span
+          >
+          <span class="flex items-center gap-1"
+            ><span class="material-symbols-outlined text-primary-container text-base">check_circle</span> Produção própria</span
+          >
+          <span class="flex items-center gap-1"
+            ><span class="material-symbols-outlined text-primary-container text-base">check_circle</span> Entrega em todo Brasil</span
+          >
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center">
+        <a
+          href="desktop.html"
+          class="inline-flex items-center gap-2 bg-gradient-to-r from-surface-tint to-primary text-on-primary rounded-2xl px-8 py-4 font-black uppercase tracking-wider text-sm hover:opacity-90 transition-all shadow-lg hover:scale-105"
+        >
+          <span class="material-symbols-outlined">shopping_bag</span>
+          Configurar minha sacola
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full py-8 px-6 bg-surface-container-lowest border-t border-outline-variant/20 mt-12">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-zinc-400 font-bold text-sm tracking-tighter">
+          © <span id="footer-year">2024</span> INDUSTRIA GRÁFICA ALQUIMISTA
+        </div>
+        <div class="flex gap-6">
+          <a href="sobre.html" class="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-primary-container transition-colors"
+            >Sobre Nós</a
+          >
+          <a href="galeria.html" class="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-primary-container transition-colors"
+            >Galeria</a
+          >
+          <a href="#" class="text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-primary-container transition-colors"
+            >Política de Privacidade</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Ano atual no footer
+      document.getElementById('footer-year').textContent = new Date().getFullYear()
+
+      // Botão WhatsApp
+      document.getElementById('whatsapp-btn')?.addEventListener('click', function () {
+        const phoneNumber = '5511994102660'
+        const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
+      })
+    </script>
+  </body>
+</html>

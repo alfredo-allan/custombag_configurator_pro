@@ -4,33 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#131313" />
-    <meta name="description" content="Industria Gráfica Alquimista - Configuração de Sacolas Personalizadas com Qualidade Premium" />
-    <title>Industria Gráfica Alquimista | Carregando...</title>
+
+    <!-- SEO TAGS (IMPORTANTE PARA O GOOGLE ADS) -->
+    <meta
+      name="description"
+      content="Sacolas personalizadas com qualidade premium. Orçamento grátis e produção própria. Configure sua sacola ideal do corte à laminação."
+    />
+    <meta name="keywords" content="sacolas personalizadas, sacolas de papel, embalagens personalizadas, gráfica, sacolas sob medida" />
+    <meta name="author" content="Industria Gráfica Alquimista" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- OPEN GRAPH (para compartilhamento em redes sociais) -->
+    <meta property="og:title" content="Industria Gráfica Alquimista - Sacolas Personalizadas" />
+    <meta property="og:description" content="Configure sua sacola ideal. Orçamento grátis e qualidade premium." />
+    <meta property="og:image" content="https://seudominio.com/assets/images/ads-square-1080x1080.png" />
+    <meta property="og:url" content="https://seudominio.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- TWITTER CARD -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Industria Gráfica Alquimista - Sacolas Personalizadas" />
+    <meta name="twitter:description" content="Configure sua sacola ideal. Orçamento grátis!" />
+    <meta name="twitter:image" content="https://seudominio.com/assets/images/ads-square-1080x1080.png" />
+
+    <!-- GOOGLE ANALYTICS (adicione seu ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'G-XXXXXXXXXX')
+    </script>
+
+    <!-- GOOGLE ADS CONVERSION TRACKING (adicione seu ID) -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url != 'undefined') {
+            window.location = url
+          }
+        }
+        gtag('event', 'conversion', {
+          send_to: 'AW-XXXXXXXXXX/XXXXXXXXXX',
+          event_callback: callback
+        })
+        return false
+      }
+    </script>
+
+    <title>Industria Gráfica Alquimista | Sacolas Personalizadas</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
     <style>
+      /* Seu CSS existente continua igual */
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         min-height: 100dvh;
         background: #131313;
-        font-family:
-          'Inter',
-          system-ui,
-          -apple-system,
-          sans-serif;
+        font-family: 'Inter', system-ui, sans-serif;
         position: relative;
         overflow: hidden;
       }
-
-      /* Background Industrial com overlay e blur */
       .loading-bg {
         position: fixed;
         top: 0;
@@ -39,7 +82,6 @@
         height: 100%;
         z-index: 0;
       }
-
       .loading-bg::before {
         content: '';
         position: absolute;
@@ -50,15 +92,12 @@
         filter: blur(8px) brightness(0.4);
         transform: scale(1.05);
       }
-
       .loading-bg::after {
         content: '';
         position: absolute;
         inset: 0;
         background: linear-gradient(135deg, rgba(19, 19, 19, 0.85) 0%, rgba(19, 19, 19, 0.7) 50%, rgba(0, 221, 221, 0.1) 100%);
       }
-
-      /* Container do Loading */
       .loading-container {
         position: relative;
         z-index: 10;
@@ -71,20 +110,16 @@
         padding: 2rem;
         backdrop-filter: blur(4px);
       }
-
-      /* Logo / Marca */
       .brand {
         text-align: center;
         margin-bottom: 1rem;
       }
-
       .brand-icon {
         font-size: 4rem;
         color: #00fbfb;
         filter: drop-shadow(0 0 20px #00dddd);
         margin-bottom: 1rem;
       }
-
       .brand h1 {
         font-size: 1.75rem;
         font-weight: 900;
@@ -96,7 +131,6 @@
         color: transparent;
         margin-bottom: 0.5rem;
       }
-
       .brand p {
         font-size: 0.7rem;
         letter-spacing: 0.2em;
@@ -104,14 +138,11 @@
         color: #b9cac9;
         font-weight: 500;
       }
-
-      /* Spinner Moderno */
       .spinner-wrapper {
         position: relative;
         width: 80px;
         height: 80px;
       }
-
       .spinner-ring {
         position: absolute;
         width: 100%;
@@ -122,7 +153,6 @@
         border-radius: 50%;
         animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
       }
-
       .spinner-ring:nth-child(2) {
         width: 60px;
         height: 60px;
@@ -132,7 +162,6 @@
         border-left-color: #ffabf3;
         animation: spin 1.5s reverse infinite;
       }
-
       .spinner-ring:nth-child(3) {
         width: 40px;
         height: 40px;
@@ -142,14 +171,11 @@
         border-right-color: #ffff00;
         animation: spin 0.8s infinite;
       }
-
       @keyframes spin {
         to {
           transform: rotate(360deg);
         }
       }
-
-      /* Pulse Glow no centro */
       .spinner-core {
         position: absolute;
         width: 20px;
@@ -161,7 +187,6 @@
         animation: pulse 1.5s ease-in-out infinite;
         box-shadow: 0 0 20px #00fbfb;
       }
-
       @keyframes pulse {
         0%,
         100% {
@@ -176,13 +201,10 @@
             0 0 10px #fe00fe;
         }
       }
-
-      /* Texto de Loading */
       .loading-text {
         text-align: center;
         margin-top: 1rem;
       }
-
       .loading-text .main {
         font-size: 0.875rem;
         font-weight: 600;
@@ -191,33 +213,27 @@
         color: #e5e2e1;
         margin-bottom: 0.75rem;
       }
-
       .loading-text .sub {
         font-size: 0.7rem;
         letter-spacing: 0.1em;
         color: #b9cac9;
         font-weight: 400;
       }
-
       .loading-text .dots {
         display: inline-flex;
         gap: 4px;
         margin-left: 4px;
       }
-
       .loading-text .dots span {
         animation: blink 1.4s infinite;
         font-weight: 900;
       }
-
       .loading-text .dots span:nth-child(2) {
         animation-delay: 0.2s;
       }
-
       .loading-text .dots span:nth-child(3) {
         animation-delay: 0.4s;
       }
-
       @keyframes blink {
         0%,
         100% {
@@ -227,8 +243,6 @@
           opacity: 1;
         }
       }
-
-      /* Progress Bar */
       .progress-bar {
         width: 280px;
         max-width: 80%;
@@ -238,7 +252,6 @@
         overflow: hidden;
         margin-top: 1.5rem;
       }
-
       .progress-fill {
         width: 0%;
         height: 100%;
@@ -246,7 +259,6 @@
         border-radius: 4px;
         animation: progress 2s ease-out forwards;
       }
-
       @keyframes progress {
         0% {
           width: 0%;
@@ -261,8 +273,6 @@
           width: 100%;
         }
       }
-
-      /* Badge */
       .badge {
         position: fixed;
         bottom: 2rem;
@@ -275,37 +285,30 @@
         color: #839493;
         text-transform: uppercase;
       }
-
-      /* Responsive */
       @media (max-width: 768px) {
         .brand h1 {
           font-size: 1.25rem;
           letter-spacing: 0.1em;
         }
-
         .brand-icon {
           font-size: 3rem;
         }
-
         .spinner-wrapper {
           width: 60px;
           height: 60px;
         }
-
         .spinner-ring:nth-child(2) {
           width: 45px;
           height: 45px;
           top: 7.5px;
           left: 7.5px;
         }
-
         .spinner-ring:nth-child(3) {
           width: 30px;
           height: 30px;
           top: 15px;
           left: 15px;
         }
-
         .spinner-core {
           width: 14px;
           height: 14px;
@@ -317,7 +320,6 @@
   </head>
   <body>
     <div class="loading-bg"></div>
-
     <div class="loading-container">
       <div class="brand">
         <div class="brand-icon">
@@ -326,83 +328,52 @@
         <h1>Industria Gráfica Alquimista</h1>
         <p>Premium Custom Bags</p>
       </div>
-
       <div class="spinner-wrapper">
         <div class="spinner-ring"></div>
         <div class="spinner-ring"></div>
         <div class="spinner-ring"></div>
         <div class="spinner-core"></div>
       </div>
-
       <div class="loading-text">
         <div class="main">
-          OTIMIZANDO EXPERIÊNCIA
-          <span class="dots"> <span>.</span><span>.</span><span>.</span> </span>
+          OTIMIZANDO EXPERIÊNCIA<span class="dots"><span>.</span><span>.</span><span>.</span></span>
         </div>
         <div class="sub">DETECTANDO DISPOSITIVO • CARREGANDO CONFIGURADOR</div>
       </div>
-
-      <div class="progress-bar">
-        <div class="progress-fill"></div>
-      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
     </div>
-
-    <div class="badge">INDUSTRIAL PRINTING TECHNOLOGY • SINCE 2024</div>
-
+    <div class="badge" id="brand-badge">INDUSTRIAL PRINTING TECHNOLOGY • SINCE 2025</div>
     <script>
       ;(function () {
-        // Função para detectar dispositivo mobile
-        const isMobileDevice = () => {
-          // Detecta por largura da tela
-          const isMobileWidth = window.innerWidth <= 768
-
-          // Detecta por User Agent
-          const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone|Mobile/i
-          const isMobileUA = mobileRegex.test(navigator.userAgent)
-
-          // Detecta por touch screen (opcional)
-          const isTouchScreen = 'ontouchstart' in window || navigator.maxTouchPoints > 0
-
-          // Mobile se: largura mobile OU (UA mobile E não for tablet grande)
-          return isMobileWidth || (isMobileUA && window.innerWidth <= 1024)
-        }
-
-        // Define qual página carregar
+        const isMobileDevice = () =>
+          window.innerWidth <= 768 ||
+          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Windows Phone|Mobile/i.test(navigator.userAgent)
         const targetPage = isMobileDevice() ? 'pages/mobile.html' : 'pages/desktop.html'
-
-        // Delay mínimo para mostrar o spinner (experiência mais suave)
-        const minDelay = 1200 // 800ms mínimo de loading
+        const minDelay = 1200
         const startTime = Date.now()
 
-        // Função para redirecionar
         const redirect = () => {
           const elapsed = Date.now() - startTime
           const remaining = minDelay - elapsed
-
-          if (remaining > 0) {
-            setTimeout(() => {
-              window.location.replace(targetPage)
-            }, remaining)
-          } else {
-            window.location.replace(targetPage)
-          }
+          if (remaining > 0) setTimeout(() => window.location.replace(targetPage), remaining)
+          else window.location.replace(targetPage)
         }
 
-        // Garante que o DOM está carregado antes de redirecionar
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', redirect)
-        } else {
-          redirect()
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', redirect)
+        else redirect()
+
+        setTimeout(() => window.location.replace(targetPage), 3000)
+        console.log(`[Industria Gráfica Alquimista] ${isMobileDevice() ? 'MOBILE' : 'DESKTOP'} → ${targetPage}`)
+      })()
+    </script>
+    <script>
+      // Atualiza o ano automaticamente no badge
+      ;(function updateBadgeYear() {
+        const currentYear = new Date().getFullYear()
+        const badgeElement = document.getElementById('brand-badge')
+        if (badgeElement) {
+          badgeElement.innerHTML = `INDUSTRIA GRÁFICA ALQUIMISTAS • SINCE ${currentYear}`
         }
-
-        // Fallback: redireciona em no máximo 3 segundos (segurança)
-        setTimeout(() => {
-          window.location.replace(targetPage)
-        }, 3000)
-
-        // Log para debug (opcional - remove em produção)
-        console.log(`[Industria Gráfica Alquimista] Dispositivo detectado: ${isMobileDevice() ? 'MOBILE' : 'DESKTOP'}`)
-        console.log(`[Industria Gráfica Alquimista] Redirecionando para: ${targetPage}`)
       })()
     </script>
   </body>

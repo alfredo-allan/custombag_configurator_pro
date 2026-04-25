@@ -193,6 +193,17 @@
         opacity: 0;
         transform: translateX(-50%) translateY(20px);
       }
+
+      /* Badge de cor */
+      .color-badge {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      }
     </style>
   </head>
 
@@ -205,7 +216,7 @@
           <h1
             class="font-black text-lg md:text-xl tracking-tighter bg-gradient-to-r from-white to-primary-container bg-clip-text text-transparent"
           >
-            INDUSTRIAL ALCHEMIST
+            INDUSTRIA GRÁFICA ALQUIMISTA
           </h1>
         </div>
         <div class="flex items-center gap-4">
@@ -262,55 +273,98 @@
               <h2 class="font-bold text-xl text-primary">Detalhes do Pedido</h2>
             </div>
 
-            <div class="space-y-4">
+            <div class="space-y-3">
+              <!-- Tamanho -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">straighten</span> Tamanho</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">straighten</span> Tamanho
+                </span>
                 <span class="font-bold text-primary" id="review-size">-</span>
               </div>
 
+              <!-- Papel -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">description</span> Papel</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">description</span> Papel
+                </span>
                 <span class="font-bold text-primary" id="review-paper">-</span>
               </div>
 
+              <!-- Acabamento -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">texture</span> Acabamento</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">texture</span> Acabamento
+                </span>
                 <span class="font-bold text-primary" id="review-finish">-</span>
               </div>
 
+              <!-- Impressão -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">palette</span> Impressão</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">palette</span> Impressão
+                </span>
                 <span class="font-bold text-primary" id="review-printing">-</span>
               </div>
 
+              <!-- Cor Especial Pantone -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">colorize</span> Cor Especial</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">colorize</span> Cor Especial
+                </span>
                 <span class="font-bold text-primary" id="review-pantone">-</span>
               </div>
 
+              <!-- Alça -->
               <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg">inventory_2</span> Quantidade</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">shopping_cart</span> Alça
+                </span>
+                <span class="font-bold text-primary" id="review-handle">-</span>
+              </div>
+
+              <!-- Cor da Sacola -->
+              <div
+                class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30"
+                id="color-row"
+                style="display: none"
+              >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">format_paint</span> Cor da Sacola
+                </span>
+                <span class="font-bold text-primary" id="review-color">-</span>
+              </div>
+
+              <!-- Ilhós -->
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">circle</span> Ilhós
+                </span>
+                <span class="font-bold text-primary" id="review-eyelet">-</span>
+              </div>
+
+              <!-- Quantidade -->
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-3 rounded-lg bg-surface-container-high/30">
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">inventory_2</span> Quantidade
+                </span>
                 <span class="font-bold text-primary" id="review-quantity">-</span>
               </div>
 
+              <!-- Observações de Impressão -->
+              <div class="flex flex-col gap-2 p-3 rounded-lg bg-surface-container-high/30" id="print-obs-row" style="display: none">
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg">notes</span> Observações da Impressão
+                </span>
+                <span class="font-bold text-primary text-sm" id="review-print-obs">-</span>
+              </div>
+
+              <!-- Valor Estimado -->
               <div
                 class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 p-4 rounded-xl bg-gradient-to-r from-primary-container/10 to-transparent border border-primary-container/20 mt-4 hidden"
               >
-                <span class="text-on-surface-variant text-sm flex items-center gap-2"
-                  ><span class="material-symbols-outlined text-lg text-primary-container">payments</span> Valor Estimado</span
-                >
+                <span class="text-on-surface-variant text-sm flex items-center gap-2">
+                  <span class="material-symbols-outlined text-lg text-primary-container">payments</span> Valor Estimado
+                </span>
                 <span class="font-bold text-2xl text-primary-container" id="review-total">-</span>
               </div>
             </div>
@@ -376,12 +430,14 @@
             </div>
 
             <div>
-              <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold">Observações</label>
+              <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold"
+                >Observações Adicionais</label
+              >
               <textarea
                 id="client-notes"
-                rows="3"
+                rows="4"
                 class="input-modern w-full rounded-xl p-3 text-primary placeholder:text-on-surface-variant/50 resize-none"
-                placeholder="Informações adicionais sobre sua arte, prazo de entrega..."
+                placeholder="Informações adicionais sobre sua arte, prazo de entrega, etc..."
               ></textarea>
             </div>
 
@@ -427,12 +483,50 @@
         gg: '../assets/images/bag-blueprint-gg.png'
       }
 
-      // Fallback images caso não tenha as imagens ainda
+      // Fallback images
       const bagImagesFallback = {
         p: 'https://placehold.co/400x500/1a1a1a/00fbfb?text=Sacola+P+18x23x8cm',
         m: 'https://placehold.co/400x500/1a1a1a/00fbfb?text=Sacola+M+23x32x8cm',
         g: 'https://placehold.co/400x500/1a1a1a/00fbfb?text=Sacola+G+35x24x14cm',
         gg: 'https://placehold.co/400x500/1a1a1a/00fbfb?text=Sacola+GG+45x35x12cm'
+      }
+
+      // Mapeamento de cores para exibição
+      const colorDisplayMap = {
+        preto: { name: 'Preto', color: '#000000' },
+        cyan: { name: 'Cyan', color: '#00FFFF' },
+        'azul-bic': { name: 'Azul Bic', color: '#0047AB' },
+        magenta: { name: 'Magenta', color: '#FF00FF' },
+        'verde-bandeira': { name: 'Verde Bandeira', color: '#009C3B' },
+        'amarelo-mcd': { name: "Amarelo McDonald's", color: '#FFC72C' },
+        'vermelho-mcd': { name: "Vermelho McDonald's", color: '#DA291C' }
+      }
+
+      // Mapeamento de alças
+      function getHandleDisplay(handle) {
+        if (!handle) return 'Não selecionado'
+
+        const colorName = handle.colorName || (handle.color === 'branca' ? 'Branca' : handle.color === 'preta' ? 'Preta' : 'Kraft')
+
+        if (handle.type === 'paper') {
+          return `Papel Torcido ${colorName}`
+        } else if (handle.type === 'fabric') {
+          return `Gorgurão ${colorName}`
+        } else if (handle.type === 'nylon') {
+          return `Nylon ${colorName} (${handle.nylonLength || 50}cm)`
+        }
+        return 'Não selecionado'
+      }
+
+      // Mapeamento de ilhós
+      function getEyeletDisplay(eyelet) {
+        if (!eyelet) return 'Não selecionado'
+        const eyeletMap = {
+          none: 'Nenhum',
+          white: 'Branco',
+          black: 'Preto'
+        }
+        return eyeletMap[eyelet.id] || eyelet.name || 'Não selecionado'
       }
 
       // ============================================
@@ -443,10 +537,15 @@
         const saved = localStorage.getItem('industrialAlchemistConfig')
         let state = {
           size: { id: 'm', name: 'Tamanho M', dimensions: '23x32x8cm' },
-          paper: { name: 'Duplex 190g' },
-          finish: { name: 'Fosca' },
-          printing: { name: '4x0 (CMYK)' },
+          paper: { id: 'duplex', name: 'Duplex 190g' },
+          finish: { id: 'matte', name: 'Fosca' },
+          printing: { id: 'cmyk', name: '4x0 (CMYK)' },
+          handle: { type: 'paper', color: 'preta', colorName: 'Preta', nylonLength: 50 },
+          eyelet: { id: 'none', name: 'Nenhum' },
           pantone: '',
+          selectedColor: null,
+          impressaoTipo: '4x0',
+          impressaoObservacoes: '',
           quantity: 1000
         }
 
@@ -463,19 +562,52 @@
           : 'Não selecionado'
         document.getElementById('review-paper').textContent = state.paper?.name || 'Não selecionado'
         document.getElementById('review-finish').textContent = state.finish?.name || 'Não selecionado'
-        document.getElementById('review-printing').textContent = state.printing?.name || 'Não selecionado'
+
+        // Impressão com tipo (4x0 ou 4x4)
+        let printingText = state.printing?.name || 'Não selecionado'
+        if (state.impressaoTipo === '4x4') {
+          printingText += ' (ambos lados)'
+        }
+        document.getElementById('review-printing').textContent = printingText
+
         document.getElementById('review-pantone').textContent = state.pantone || 'Nenhuma'
+        document.getElementById('review-handle').textContent = getHandleDisplay(state.handle)
+        document.getElementById('review-eyelet').textContent = getEyeletDisplay(state.eyelet)
         document.getElementById('review-quantity').textContent = state.quantity
           ? `${state.quantity.toLocaleString('pt-BR')} unidades`
-          : '500 unidades'
+          : '1.000 unidades'
 
-        // Calcula total
+        // Cor selecionada
+        const colorRow = document.getElementById('color-row')
+        const reviewColor = document.getElementById('review-color')
+        if (state.selectedColor && colorDisplayMap[state.selectedColor.id]) {
+          const colorInfo = colorDisplayMap[state.selectedColor.id]
+          reviewColor.innerHTML = `<span class="color-badge" style="background-color: ${colorInfo.color}; border: 1px solid rgba(255,255,255,0.2);"></span>${colorInfo.name}`
+          colorRow.style.display = 'flex'
+        } else {
+          reviewColor.textContent = 'Nenhuma'
+          colorRow.style.display = 'none'
+        }
+
+        // Observações de impressão
+        const printObsRow = document.getElementById('print-obs-row')
+        const reviewPrintObs = document.getElementById('review-print-obs')
+        if (state.impressaoObservacoes && state.impressaoObservacoes.trim() !== '') {
+          reviewPrintObs.textContent = state.impressaoObservacoes
+          printObsRow.style.display = 'flex'
+        } else {
+          printObsRow.style.display = 'none'
+        }
+
+        // Calcula total estimado
         if (state.size?.id && state.paper?.id && state.finish?.id && state.printing?.id && state.quantity) {
           const basePrices = { p: 1.2, m: 1.8, g: 2.5, gg: 3.5 }
           const basePrice = basePrices[state.size.id] || 1.8
           const paperMultiplier = state.paper.id === 'duplex' ? 1.3 : 1
           const finishMultiplier = state.finish.id !== 'none' ? 1.15 : 1
-          const printingMultiplier = state.printing.id === 'cmyk' ? 1.4 : 1
+          let printingMultiplier = state.printing.id === 'cmyk' ? 1.4 : 1
+          if (state.impressaoTipo === '4x4') printingMultiplier *= 1.3
+
           const unitPrice = basePrice * paperMultiplier * finishMultiplier * printingMultiplier
           const total = unitPrice * state.quantity
           document.getElementById('review-total').textContent = `R$ ${total.toFixed(2).replace('.', ',')}`
@@ -486,12 +618,10 @@
         const bagImage = document.getElementById('bag-image')
         const viewLink = document.getElementById('view-image-link')
 
-        // Tenta carregar a imagem real, se não existir usa fallback
         const imgSrc = bagImages[sizeId] || bagImagesFallback[sizeId]
         bagImage.src = imgSrc
         bagImage.alt = `Sacola tamanho ${sizeId.toUpperCase()} - ${state.size?.dimensions || ''}`
 
-        // Atualiza o link "Ver imagem"
         viewLink.href = imgSrc
 
         return state
@@ -647,24 +777,17 @@
         const observacoes = document.getElementById('client-notes').value.trim()
 
         const saved = localStorage.getItem('industrialAlchemistConfig')
-        let state = {
-          size: { name: 'Tamanho M', dimensions: '23x32x8cm' },
-          paper: { name: 'Duplex 190g' },
-          finish: { name: 'Fosca' },
-          printing: { name: '4x0 (CMYK)' },
-          pantone: '',
-          quantity: 1000
-        }
+        let state = {}
         if (saved) {
           try {
-            state = { ...state, ...JSON.parse(saved) }
+            state = JSON.parse(saved)
           } catch (e) {}
         }
 
-        const subject = `[ORÇAMENTO] Industrial Alchemist - ${nome}`
+        const subject = `[ORÇAMENTO] Gráfica alquimista - ${nome}`
         const body = `
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         🏭 INDUSTRIAL ALCHEMIST
+         🏭 INDUSTRIA GRÁFICA ALQUIMISTA
               NOVO ORÇAMENTO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -680,12 +803,24 @@ WhatsApp: ${telefone}
 Tamanho: ${state.size?.name || '-'} (${state.size?.dimensions || '-'})
 Papel: ${state.paper?.name || '-'}
 Acabamento: ${state.finish?.name || '-'}
-Impressão: ${state.printing?.name || '-'}
+Impressão: ${state.printing?.name || '-'}${state.impressaoTipo === '4x4' ? ' (ambos lados)' : ''}
 Cor Especial: ${state.pantone || 'Nenhuma'}
-Quantidade: ${state.quantity?.toLocaleString('pt-BR') || '500'} unidades
+Alça: ${getHandleDisplay(state.handle)}
+Cor da Sacola: ${state.selectedColor ? colorDisplayMap[state.selectedColor.id]?.name || 'Nenhuma' : 'Nenhuma'}
+Ilhós: ${getEyeletDisplay(state.eyelet)}
+Quantidade: ${state.quantity?.toLocaleString('pt-BR') || '1.000'} unidades
 
+${
+  state.impressaoObservacoes
+    ? `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📝 OBSERVAÇÕES DA IMPRESSÃO
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬 OBSERVAÇÕES
+${state.impressaoObservacoes}
+`
+    : ''
+}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 OBSERVAÇÕES ADICIONAIS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ${observacoes || 'Nenhuma observação adicional'}
 
@@ -721,19 +856,16 @@ ${observacoes || 'Nenhuma observação adicional'}
         setupFormMasks()
         document.getElementById('contact-form').addEventListener('submit', submitForm)
       })
-    </script>
-    <script>
-      // Atualiza o ano do footer automaticamente
+
+      // Atualiza o ano do footer
       function updateFooterYear() {
         const currentYear = new Date().getFullYear()
         const footerYearElements = document.querySelectorAll('.footer-year')
-
         footerYearElements.forEach((element) => {
           element.textContent = currentYear
         })
       }
 
-      // Executa quando o DOM estiver carregado
       document.addEventListener('DOMContentLoaded', updateFooterYear)
     </script>
   </body>

@@ -47,7 +47,10 @@
               'surface-container-highest': '#353534',
               outline: '#839493',
               'outline-variant': '#3a4a49',
-              'surface-tint': '#00dddd'
+              'surface-tint': '#00dddd',
+              error: '#ffb4ab',
+              'on-error': '#690005',
+              'error-container': '#93000a'
             },
             borderRadius: { DEFAULT: '0.25rem', lg: '0.5rem', xl: '0.75rem', full: '9999px' },
             fontFamily: { headline: ['Inter'], body: ['Inter'], label: ['Inter'] }
@@ -58,11 +61,11 @@
 
     <!-- CSS Global -->
     <link href="../css/global.css" rel="stylesheet" />
-    <script src="../js/configurator.js"></script>
 
     <style>
       .option-card {
         transition: all 0.2s ease;
+        cursor: pointer;
       }
       .option-card.active {
         box-shadow:
@@ -76,6 +79,59 @@
           top: 100px;
           height: fit-content;
         }
+      }
+
+      /* Botões de quantidade estilo segmented control */
+      .qty-btn {
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+      .qty-btn:active {
+        transform: scale(0.96);
+      }
+      .qty-btn.active {
+        border: 1px solid rgba(0, 251, 251, 0.5);
+        position: relative;
+      }
+      .qty-btn.active::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 0.5rem;
+        padding: 1px;
+        background: linear-gradient(135deg, #00fbfb, #00dddd);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      /* Aviso para opções indisponíveis */
+      .handle-warning-message {
+        font-size: 11px;
+        color: #ffb4ab;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255, 180, 171, 0.1);
+        margin-top: 8px;
+      }
+
+      /* Badge de cor */
+      .color-badge-preview {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-right: 8px;
+        vertical-align: middle;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       }
     </style>
   </head>
@@ -155,7 +211,7 @@
       </section>
 
       <!-- Configurator Section -->
-      <section class="container mx-auto px-6 md:px-10 py-12 md:py-20">
+      <section class="container mx-auto px-6 md:px-10 py-12 md:py-20" id="configurator">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <!-- Left Column: Steps -->
           <div class="lg:col-span-8 flex flex-col gap-8 lg:gap-12">
@@ -280,7 +336,7 @@
               </div>
             </div>
 
-            <!-- Step 4: Cores -->
+            <!-- Step 4: Cores de Impressão -->
             <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
@@ -309,13 +365,250 @@
                 </div>
               </div>
               <div class="mt-4">
-                <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone)</label>
+                <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
                 <input
                   type="text"
                   id="pantone-input"
                   class="w-full bg-surface-container-highest text-on-surface border-none p-3 rounded-lg mt-1 focus:border-b-primary-container focus:ring-0"
                   placeholder="Ex: Pantone 213 C"
                 />
+              </div>
+            </div>
+
+            <!-- Step 5: Alças -->
+            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+              <h2
+                class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
+              >
+                <span class="material-symbols-outlined text-surface-tint">shopping_cart</span>5. Alças (Handles)
+              </h2>
+              <div class="space-y-6">
+                <!-- Papel Torcido -->
+                <div id="paper-handle-section">
+                  <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Papel Torcido</h3>
+                  <div class="flex gap-3" id="handle-paper-options">
+                    <div
+                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                      data-handle-type="paper"
+                      data-handle-color="branca"
+                    >
+                      <div class="w-8 h-8 rounded-full border border-outline bg-white"></div>
+                      <span class="font-label text-[10px] uppercase">Branca</span>
+                    </div>
+                    <div
+                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all active"
+                      data-handle-type="paper"
+                      data-handle-color="preta"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
+                      <span class="font-label text-[10px] uppercase text-primary">Preta</span>
+                    </div>
+                    <div
+                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                      data-handle-type="paper"
+                      data-handle-color="kraft"
+                    >
+                      <div class="w-8 h-8 rounded-full bg-[#d2b48c] shadow-inner"></div>
+                      <span class="font-label text-[10px] uppercase">Kraft</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Gorgurão -->
+                <div>
+                  <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Gorgurão (Tecido)</h3>
+                  <div class="flex gap-3" id="handle-fabric-options">
+                    <div
+                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                      data-handle-type="fabric"
+                      data-handle-color="branca"
+                    >
+                      <div class="w-8 h-2 bg-white rounded-sm shadow-inner"></div>
+                      <span class="font-label text-[10px] uppercase">Branca</span>
+                    </div>
+                    <div
+                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                      data-handle-type="fabric"
+                      data-handle-color="preta"
+                    >
+                      <div class="w-8 h-2 bg-black rounded-sm shadow-inner"></div>
+                      <span class="font-label text-[10px] uppercase">Preta</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Nylon com ponteira (35cm fixo) -->
+                <div>
+                  <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Nylon com Ponteira</h3>
+                  <div class="flex flex-col gap-3">
+                    <div class="flex gap-3" id="handle-nylon-options">
+                      <div
+                        class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                        data-handle-type="nylon"
+                        data-handle-color="branca"
+                      >
+                        <div class="w-8 h-2 bg-white rounded-sm border border-outline"></div>
+                        <span class="font-label text-[10px] uppercase">Branca</span>
+                      </div>
+                      <div
+                        class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                        data-handle-type="nylon"
+                        data-handle-color="preta"
+                      >
+                        <div class="w-8 h-2 bg-black rounded-sm"></div>
+                        <span class="font-label text-[10px] uppercase">Preta</span>
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-3 bg-surface-container-highest/30 p-3 rounded-lg">
+                      <span class="material-symbols-outlined text-primary-container text-lg">straighten</span>
+                      <span class="font-label text-sm text-on-surface-variant uppercase tracking-wider">Tamanho padrão</span>
+                      <span class="font-headline font-bold text-primary-container text-xl">35cm</span>
+                      <span class="text-[10px] text-on-surface-variant/70 ml-auto">(fixo para todos os pedidos)</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Aviso para tamanhos grandes -->
+                <div id="handle-size-warning" class="handle-warning-message hidden">
+                  <span class="material-symbols-outlined text-sm">info</span>
+                  <span
+                    >Para tamanhos <strong>G</strong> e <strong>GG</strong>, alças disponíveis apenas em <strong>Gorgurão</strong> ou
+                    <strong>Nylon</strong> (papel torcido não suporta o peso)</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 6: Cores da Sacola -->
+            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+              <h2
+                class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
+              >
+                <span class="material-symbols-outlined text-surface-tint">format_paint</span>6. Cor da Sacola
+              </h2>
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="color-options">
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="preto"
+                >
+                  <div class="w-12 h-12 rounded-full bg-black shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Preto</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="cyan"
+                >
+                  <div class="w-12 h-12 rounded-full bg-cyan-500 shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Cyan</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="azul-bic"
+                >
+                  <div class="w-12 h-12 rounded-full bg-[#0047AB] shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Azul Bic</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="magenta"
+                >
+                  <div class="w-12 h-12 rounded-full bg-[#FF00FF] shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Magenta</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="verde-bandeira"
+                >
+                  <div class="w-12 h-12 rounded-full bg-[#009C3B] shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Verde Bandeira</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="amarelo-mcd"
+                >
+                  <div class="w-12 h-12 rounded-full bg-[#FFC72C] shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Amarelo Mc</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+                  data-color="vermelho-mcd"
+                >
+                  <div class="w-12 h-12 rounded-full bg-[#DA291C] shadow-md"></div>
+                  <span class="font-label text-xs uppercase">Vermelho Mc</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 7: Impressão CMYK -->
+            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+              <h2
+                class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
+              >
+                <span class="material-symbols-outlined text-surface-tint">local_printshop</span>7. Impressão 4x CMYK
+              </h2>
+              <div class="space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 via-magenta-500 to-yellow-500 rounded-lg shadow-md"></div>
+                    <div>
+                      <span class="font-label text-sm font-bold uppercase">Impressão Colorida</span>
+                      <p class="text-xs text-on-surface-variant">4 cores CMYK (Full Color)</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-3">
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="impressao-tipo" value="4x0" class="w-4 h-4 accent-primary" checked />
+                      <span class="font-label text-xs uppercase">4x0 (1 lado)</span>
+                    </label>
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="radio" name="impressao-tipo" value="4x4" class="w-4 h-4 accent-primary" />
+                      <span class="font-label text-xs uppercase">4x4 (ambos lados)</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="border-t border-outline-variant pt-4">
+                  <label class="font-label text-xs text-on-surface-variant uppercase tracking-wider block mb-2"
+                    >Observações da Impressão</label
+                  >
+                  <textarea
+                    id="print-observations"
+                    rows="2"
+                    placeholder="Digite informações específicas sobre a impressão (área, posição, etc.)"
+                    class="w-full px-3 py-2 bg-surface rounded-md border border-outline focus:outline-none focus:ring-1 focus:ring-primary text-sm resize-none"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 8: Ilhós -->
+            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+              <h2
+                class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
+              >
+                <span class="material-symbols-outlined text-surface-tint">circle</span>8. Ilhós (Eyelets)
+              </h2>
+              <div class="grid grid-cols-3 gap-3" id="eyelet-options">
+                <div
+                  class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center active"
+                  data-eyelet="none"
+                >
+                  <span class="material-symbols-outlined text-primary-container text-xl">block</span>
+                  <span class="font-label text-[10px] uppercase text-primary">Nenhum</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center"
+                  data-eyelet="white"
+                >
+                  <div class="w-4 h-4 rounded-full border-2 border-white bg-transparent"></div>
+                  <span class="font-label text-[10px] uppercase text-primary">Branco</span>
+                </div>
+                <div
+                  class="option-card bg-surface-container-highest py-3 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-center"
+                  data-eyelet="black"
+                >
+                  <div class="w-4 h-4 rounded-full border-2 border-black bg-transparent"></div>
+                  <span class="font-label text-[10px] uppercase text-primary">Preto</span>
+                </div>
               </div>
             </div>
           </div>
@@ -332,47 +625,75 @@
               </h3>
               <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider">Tamanho</span
-                  ><span class="font-bold text-primary" id="summary-size">M (23 x 32 x 8cm)</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Tamanho</span>
+                  <span class="font-bold text-primary" id="summary-size">M (23 x 32 x 8cm)</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider">Papel</span
-                  ><span class="font-bold text-primary" id="summary-paper">Duplex 190g</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Papel</span>
+                  <span class="font-bold text-primary" id="summary-paper">Duplex 190g</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider">Acabamento</span
-                  ><span class="font-bold text-primary" id="summary-finish">Fosca</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Acabamento</span>
+                  <span class="font-bold text-primary" id="summary-finish">Fosca</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider">Impressão</span
-                  ><span class="font-bold text-primary" id="summary-printing">4x0 CMYK</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Impressão</span>
+                  <span class="font-bold text-primary" id="summary-printing">4x0 CMYK</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
-                  <span class="text-on-surface-variant uppercase tracking-wider">Pantone</span
-                  ><span class="font-bold text-primary" id="summary-pantone">Nenhuma</span>
+                  <span class="text-on-surface-variant uppercase tracking-wider">Pantone</span>
+                  <span class="font-bold text-primary" id="summary-pantone">Nenhuma</span>
+                </li>
+                <li class="flex justify-between items-center text-xs md:text-sm">
+                  <span class="text-on-surface-variant uppercase tracking-wider">Alça</span>
+                  <span class="font-bold text-primary" id="summary-handle">Papel Torcido Preta</span>
+                </li>
+                <li class="flex justify-between items-center text-xs md:text-sm" id="color-summary-row" style="display: none">
+                  <span class="text-on-surface-variant uppercase tracking-wider">Cor da Sacola</span>
+                  <span class="font-bold text-primary flex items-center" id="summary-color">-</span>
+                </li>
+                <li class="flex justify-between items-center text-xs md:text-sm">
+                  <span class="text-on-surface-variant uppercase tracking-wider">Ilhós</span>
+                  <span class="font-bold text-primary" id="summary-eyelet">Nenhum</span>
                 </li>
               </ul>
+
+              <!-- Quantidade - Segmented Control -->
               <div class="mb-6">
                 <label class="block font-label text-[10px] md:text-[11px] uppercase tracking-widest text-on-surface-variant mb-2"
-                  >Quantidade (mín. 500)</label
+                  >Quantidade (UN)</label
                 >
-                <input
-                  id="quantity-input"
-                  class="w-full bg-surface-container-highest border-transparent text-primary focus:border-surface-tint focus:ring-0 rounded-md py-2 md:py-3 px-3 md:px-4 shadow-[inset_0_-2px_0_#00dddd]"
-                  type="number"
-                  min="500"
-                  step="500"
-                  value="1000"
-                />
+                <div class="flex gap-2 w-full" id="quantity-selector">
+                  <button
+                    data-qty="250"
+                    class="qty-btn flex-1 py-2 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant/50"
+                  >
+                    250 UN
+                  </button>
+                  <button
+                    data-qty="500"
+                    class="qty-btn flex-1 py-2 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant/50"
+                  >
+                    500 UN
+                  </button>
+                  <button
+                    data-qty="1000"
+                    class="qty-btn flex-1 py-2 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all active bg-primary-container text-on-primary-container shadow-[0_0_8px_rgba(0,251,251,0.3)]"
+                  >
+                    1000 UN
+                  </button>
+                </div>
               </div>
+
               <div
-                class="mb-6 md:mb-8 p-4 md:p-6 border border-dashed border-outline-variant/50 rounded-lg text-center cursor-pointer hover:bg-surface-container-highest transition-colors"
+                class="mb-6 p-4 md:p-6 border border-dashed border-outline-variant/50 rounded-lg text-center cursor-pointer hover:bg-surface-container-highest transition-colors"
                 id="upload-area"
               >
                 <span class="material-symbols-outlined text-outline mb-2 text-2xl md:text-3xl">upload_file</span>
                 <p class="text-[10px] md:text-xs text-on-surface-variant uppercase tracking-wider">Anexar Arte (PDF/AI)</p>
                 <input type="file" id="artwork-input" accept=".pdf,.ai,.eps,.svg" class="hidden" />
               </div>
+
               <button
                 id="submit-config"
                 class="w-full bg-gradient-to-r from-surface-tint to-primary text-on-primary rounded-2xl py-3 md:py-4 font-black uppercase tracking-widest text-xs md:text-sm hover:opacity-90 transition-opacity shadow-lg"
@@ -394,21 +715,18 @@
         <a
           class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
+          >Especificações</a
         >
-          Especificações
-        </a>
         <a
           class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
+          >Segurança do Material</a
         >
-          Segurança do Material
-        </a>
         <a
           class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-600 hover:text-cyan-400 transition-colors duration-300"
           href="#"
+          >Termos de Uso</a
         >
-          Termos de Uso
-        </a>
       </div>
       <div class="font-inter text-[9px] md:text-[10px] tracking-[0.2em] uppercase text-zinc-500 text-center">
         © <span class="current-year">2024</span> INDUSTRIA GRÁFICA ALQUIMISTA
@@ -416,123 +734,363 @@
     </footer>
 
     <script>
-      // Inicialização e Event Handlers
-      document.addEventListener('DOMContentLoaded', function () {
-        loadFromLocalStorage()
+      // ============================================
+      // CONFIGURATOR STATE (idêntico à versão mobile)
+      // ============================================
 
-        // Helper para atualizar UI e estado
-        function updateUI() {
-          // Atualiza active states
-          document.querySelectorAll('[data-size]').forEach((el) => {
-            if (el.dataset.size === ConfiguratorState.size.id) el.classList.add('active', 'neon-glow-cyan')
-            else el.classList.remove('active', 'neon-glow-cyan')
-          })
-          document.querySelectorAll('[data-paper]').forEach((el) => {
-            if (el.dataset.paper === ConfiguratorState.paper.id) el.classList.add('active', 'neon-glow-cyan')
-            else el.classList.remove('active', 'neon-glow-cyan')
-          })
-          document.querySelectorAll('[data-finish]').forEach((el) => {
-            if (el.dataset.finish === ConfiguratorState.finish.id) el.classList.add('active', 'neon-glow-cyan')
-            else el.classList.remove('active', 'neon-glow-cyan')
-          })
-          document.querySelectorAll('[data-printing]').forEach((el) => {
-            if (el.dataset.printing === ConfiguratorState.printing.id) el.classList.add('active', 'neon-glow-cyan')
-            else el.classList.remove('active', 'neon-glow-cyan')
-          })
+      const ConfiguratorState = {
+        size: { id: 'm', name: 'Tamanho M', dimensions: '23x32x8cm' },
+        paper: { id: 'duplex', name: 'Duplex 190g' },
+        finish: { id: 'matte', name: 'Fosca' },
+        printing: { id: 'cmyk', name: '4x0 (CMYK)' },
+        handle: { type: 'paper', color: 'preta', colorName: 'Preta', nylonLength: 35 },
+        eyelet: { id: 'none', name: 'Nenhum' },
+        pantone: '',
+        selectedColor: null,
+        impressaoTipo: '4x0',
+        impressaoObservacoes: '',
+        quantity: 1000,
+        artwork: null
+      }
 
-          document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
-          document.getElementById('quantity-input').value = ConfiguratorState.quantity
-          updateSummary()
-          saveToLocalStorage()
+      const sizeMap = {
+        p: { name: 'Tamanho P', dimensions: '18x23,5x8cm' },
+        m: { name: 'Tamanho M', dimensions: '23x32x8cm' },
+        g: { name: 'Tamanho G', dimensions: '35x24x14cm' },
+        gg: { name: 'Tamanho GG', dimensions: '45,5x35x12cm' }
+      }
+
+      const paperMap = {
+        offset: { name: 'Offset 180g' },
+        duplex: { name: 'Duplex 190g' },
+        kraft: { name: 'Reciclato Kraft 180g' }
+      }
+
+      const finishMap = {
+        none: { name: 'Nenhum' },
+        matte: { name: 'Fosca' },
+        gloss: { name: 'Brilho' }
+      }
+
+      const printingMap = {
+        onecolor: { name: '1x0 (Uma Cor)' },
+        cmyk: { name: '4x0 (CMYK)' }
+      }
+
+      const eyeletMap = {
+        none: { name: 'Nenhum' },
+        white: { name: 'Branco' },
+        black: { name: 'Preto' }
+      }
+
+      const colorMap = {
+        preto: 'Preto',
+        cyan: 'Cyan',
+        'azul-bic': 'Azul Bic',
+        magenta: 'Magenta',
+        'verde-bandeira': 'Verde Bandeira',
+        'amarelo-mcd': "Amarelo McDonald's",
+        'vermelho-mcd': "Vermelho McDonald's"
+      }
+
+      function getHandleDisplay() {
+        const colorName =
+          ConfiguratorState.handle.colorName ||
+          (ConfiguratorState.handle.color === 'branca' ? 'Branca' : ConfiguratorState.handle.color === 'preta' ? 'Preta' : 'Kraft')
+
+        if (ConfiguratorState.handle.type === 'paper') {
+          return `Papel Torcido ${colorName}`
+        } else if (ConfiguratorState.handle.type === 'fabric') {
+          return `Gorgurão ${colorName}`
+        } else if (ConfiguratorState.handle.type === 'nylon') {
+          return `Nylon ${colorName} (35cm)`
+        }
+        return 'Não selecionado'
+      }
+
+      function updateHandleOptionsBySize() {
+        const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
+
+        const warningDiv = document.getElementById('handle-size-warning')
+        if (warningDiv) {
+          if (isLargeSize) {
+            warningDiv.classList.remove('hidden')
+          } else {
+            warningDiv.classList.add('hidden')
+          }
         }
 
-        // Event listeners para opções
+        const paperHandleSection = document.getElementById('paper-handle-section')
+        if (paperHandleSection) {
+          if (isLargeSize) {
+            paperHandleSection.style.opacity = '0.5'
+            paperHandleSection.style.pointerEvents = 'none'
+            const title = paperHandleSection.querySelector('h3')
+            if (title) title.style.textDecoration = 'line-through'
+          } else {
+            paperHandleSection.style.opacity = '1'
+            paperHandleSection.style.pointerEvents = 'auto'
+            const title = paperHandleSection.querySelector('h3')
+            if (title) title.style.textDecoration = 'none'
+          }
+        }
+
+        if (isLargeSize && ConfiguratorState.handle.type === 'paper') {
+          ConfiguratorState.handle = {
+            type: 'fabric',
+            color: 'preta',
+            colorName: 'Preta',
+            nylonLength: 35
+          }
+          updateActiveStates()
+        }
+
+        document.querySelectorAll('[data-handle-type]').forEach((el) => {
+          if (isLargeSize && el.dataset.handleType === 'paper') {
+            el.style.opacity = '0.4'
+            el.style.cursor = 'not-allowed'
+            el.style.pointerEvents = 'none'
+          } else {
+            el.style.opacity = '1'
+            el.style.cursor = 'pointer'
+            el.style.pointerEvents = 'auto'
+          }
+        })
+      }
+
+      function updateSummary() {
+        document.getElementById('summary-size').textContent = `${ConfiguratorState.size.name} (${ConfiguratorState.size.dimensions})`
+        document.getElementById('summary-paper').textContent = ConfiguratorState.paper.name
+        document.getElementById('summary-finish').textContent = ConfiguratorState.finish.name
+        let printingText = ConfiguratorState.printing.name
+        if (ConfiguratorState.impressaoTipo === '4x4') printingText += ' (ambos lados)'
+        document.getElementById('summary-printing').textContent = printingText
+        document.getElementById('summary-pantone').textContent = ConfiguratorState.pantone || 'Nenhuma'
+        document.getElementById('summary-handle').textContent = getHandleDisplay()
+        document.getElementById('summary-eyelet').textContent = ConfiguratorState.eyelet.name
+
+        const colorSummaryRow = document.getElementById('color-summary-row')
+        const summaryColor = document.getElementById('summary-color')
+        if (ConfiguratorState.selectedColor) {
+          const colorInfo = colorMap[ConfiguratorState.selectedColor.id]
+          summaryColor.innerHTML = `<span class="color-badge-preview" style="background-color: ${ConfiguratorState.selectedColor.id === 'preto' ? '#000' : ConfiguratorState.selectedColor.id === 'cyan' ? '#0ff' : ConfiguratorState.selectedColor.id === 'azul-bic' ? '#0047AB' : ConfiguratorState.selectedColor.id === 'magenta' ? '#FF00FF' : ConfiguratorState.selectedColor.id === 'verde-bandeira' ? '#009C3B' : ConfiguratorState.selectedColor.id === 'amarelo-mcd' ? '#FFC72C' : '#DA291C'};"></span>${colorInfo}`
+          colorSummaryRow.style.display = 'flex'
+        } else {
+          colorSummaryRow.style.display = 'none'
+        }
+
+        saveToLocalStorage()
+      }
+
+      function updateActiveStates() {
         document.querySelectorAll('[data-size]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const sizeId = el.dataset.size
-            ConfiguratorState.size = { id: sizeId, ...Options.sizes[sizeId] }
-            updateUI()
-          })
+          if (el.dataset.size === ConfiguratorState.size.id) el.classList.add('active')
+          else el.classList.remove('active')
         })
-
         document.querySelectorAll('[data-paper]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const paperId = el.dataset.paper
-            ConfiguratorState.paper = { id: paperId, ...Options.papers[paperId] }
-            updateUI()
-          })
+          if (el.dataset.paper === ConfiguratorState.paper.id) el.classList.add('active')
+          else el.classList.remove('active')
         })
-
         document.querySelectorAll('[data-finish]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const finishId = el.dataset.finish
-            ConfiguratorState.finish = { id: finishId, ...Options.finishes[finishId] }
-            updateUI()
-          })
+          if (el.dataset.finish === ConfiguratorState.finish.id) el.classList.add('active')
+          else el.classList.remove('active')
         })
-
         document.querySelectorAll('[data-printing]').forEach((el) => {
-          el.addEventListener('click', () => {
-            const printingId = el.dataset.printing
-            ConfiguratorState.printing = { id: printingId, ...Options.printings[printingId] }
-            updateUI()
-          })
+          if (el.dataset.printing === ConfiguratorState.printing.id) el.classList.add('active')
+          else el.classList.remove('active')
+        })
+        document.querySelectorAll('[data-handle-type]').forEach((el) => {
+          if (el.dataset.handleType === ConfiguratorState.handle.type && el.dataset.handleColor === ConfiguratorState.handle.color) {
+            el.classList.add('active')
+          } else {
+            el.classList.remove('active')
+          }
+        })
+        document.querySelectorAll('[data-eyelet]').forEach((el) => {
+          if (el.dataset.eyelet === ConfiguratorState.eyelet.id) el.classList.add('active')
+          else el.classList.remove('active')
+        })
+        document.querySelectorAll('[data-color]').forEach((el) => {
+          if (ConfiguratorState.selectedColor && el.dataset.color === ConfiguratorState.selectedColor.id) {
+            el.classList.add('active')
+          } else {
+            el.classList.remove('active')
+          }
         })
 
-        document.getElementById('pantone-input').addEventListener('input', (e) => {
-          ConfiguratorState.pantone = e.target.value
+        document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
+        const selectedRadio = document.querySelector(`input[name="impressao-tipo"][value="${ConfiguratorState.impressaoTipo}"]`)
+        if (selectedRadio) selectedRadio.checked = true
+        document.getElementById('print-observations').value = ConfiguratorState.impressaoObservacoes || ''
+        updateQuantityButtons(ConfiguratorState.quantity)
+        updateSummary()
+      }
+
+      function updateQuantityButtons(selectedQty) {
+        document.querySelectorAll('.qty-btn').forEach((btn) => {
+          const btnQty = parseInt(btn.dataset.qty)
+          if (btnQty === selectedQty) {
+            btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_rgba(0,251,251,0.3)]')
+            btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/50')
+          } else {
+            btn.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_rgba(0,251,251,0.3)]')
+            btn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/50')
+          }
+        })
+      }
+
+      function saveToLocalStorage() {
+        localStorage.setItem('industrialAlchemistConfig', JSON.stringify(ConfiguratorState))
+      }
+
+      function loadFromLocalStorage() {
+        const saved = localStorage.getItem('industrialAlchemistConfig')
+        if (saved) {
+          try {
+            const parsed = JSON.parse(saved)
+            ConfiguratorState.size = parsed.size || ConfiguratorState.size
+            ConfiguratorState.paper = parsed.paper || ConfiguratorState.paper
+            ConfiguratorState.finish = parsed.finish || ConfiguratorState.finish
+            ConfiguratorState.printing = parsed.printing || ConfiguratorState.printing
+            ConfiguratorState.handle = parsed.handle || ConfiguratorState.handle
+            ConfiguratorState.eyelet = parsed.eyelet || ConfiguratorState.eyelet
+            ConfiguratorState.pantone = parsed.pantone || ''
+            ConfiguratorState.selectedColor = parsed.selectedColor || null
+            ConfiguratorState.impressaoTipo = parsed.impressaoTipo || '4x0'
+            ConfiguratorState.impressaoObservacoes = parsed.impressaoObservacoes || ''
+            ConfiguratorState.quantity = parsed.quantity || 1000
+            if (ConfiguratorState.handle.type === 'nylon') ConfiguratorState.handle.nylonLength = 35
+          } catch (e) {}
+        }
+        updateActiveStates()
+        updateHandleOptionsBySize()
+        updateSummary()
+      }
+
+      // Event Listeners
+      document.querySelectorAll('[data-size]').forEach((el) => {
+        el.addEventListener('click', () => {
+          ConfiguratorState.size = { id: el.dataset.size, ...sizeMap[el.dataset.size] }
+          updateActiveStates()
+          updateHandleOptionsBySize()
+        })
+      })
+
+      document.querySelectorAll('[data-paper]').forEach((el) => {
+        el.addEventListener('click', () => {
+          ConfiguratorState.paper = { id: el.dataset.paper, ...paperMap[el.dataset.paper] }
+          updateActiveStates()
+        })
+      })
+
+      document.querySelectorAll('[data-finish]').forEach((el) => {
+        el.addEventListener('click', () => {
+          ConfiguratorState.finish = { id: el.dataset.finish, ...finishMap[el.dataset.finish] }
+          updateActiveStates()
+        })
+      })
+
+      document.querySelectorAll('[data-printing]').forEach((el) => {
+        el.addEventListener('click', () => {
+          ConfiguratorState.printing = { id: el.dataset.printing, ...printingMap[el.dataset.printing] }
+          updateActiveStates()
+        })
+      })
+
+      document.querySelectorAll('[data-handle-type]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
+          if (isLargeSize && el.dataset.handleType === 'paper') return
+
+          const handleColor = el.dataset.handleColor
+          const colorName = handleColor === 'branca' ? 'Branca' : handleColor === 'preta' ? 'Preta' : 'Kraft'
+          ConfiguratorState.handle = {
+            type: el.dataset.handleType,
+            color: handleColor,
+            colorName: colorName,
+            nylonLength: 35
+          }
+          updateActiveStates()
+        })
+      })
+
+      document.querySelectorAll('[data-eyelet]').forEach((el) => {
+        el.addEventListener('click', () => {
+          ConfiguratorState.eyelet = { id: el.dataset.eyelet, ...eyeletMap[el.dataset.eyelet] }
+          updateActiveStates()
+        })
+      })
+
+      document.getElementById('pantone-input')?.addEventListener('input', (e) => {
+        ConfiguratorState.pantone = e.target.value
+        updateSummary()
+        saveToLocalStorage()
+      })
+
+      document.querySelectorAll('[data-color]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const colorId = el.dataset.color
+          ConfiguratorState.selectedColor = { id: colorId, name: colorMap[colorId] }
+          updateActiveStates()
+        })
+      })
+
+      document.querySelectorAll('input[name="impressao-tipo"]').forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            ConfiguratorState.impressaoTipo = e.target.value
+            updateSummary()
+            saveToLocalStorage()
+          }
+        })
+      })
+
+      document.getElementById('print-observations')?.addEventListener('input', (e) => {
+        ConfiguratorState.impressaoObservacoes = e.target.value
+        updateSummary()
+        saveToLocalStorage()
+      })
+
+      document.querySelectorAll('.qty-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const selectedQty = parseInt(btn.dataset.qty)
+          ConfiguratorState.quantity = selectedQty
+          updateQuantityButtons(selectedQty)
           updateSummary()
           saveToLocalStorage()
         })
+      })
 
-        document.getElementById('quantity-input').addEventListener('input', (e) => {
-          let val = parseInt(e.target.value)
-          if (val < 500) val = 500
-          ConfiguratorState.quantity = val
-          updateSummary()
-          saveToLocalStorage()
-        })
-
-        // Upload de arte
-        const uploadArea = document.getElementById('upload-area')
-        const artworkInput = document.getElementById('artwork-input')
+      const uploadArea = document.getElementById('upload-area')
+      const artworkInput = document.getElementById('artwork-input')
+      if (uploadArea && artworkInput) {
         uploadArea.addEventListener('click', () => artworkInput.click())
         artworkInput.addEventListener('change', (e) => {
           if (e.target.files.length > 0) {
             ConfiguratorState.artwork = e.target.files[0].name
-            uploadArea.classList.add('neon-glow-cyan')
-            setTimeout(() => uploadArea.classList.remove('neon-glow-cyan'), 1000)
+            uploadArea.classList.add('ring-2', 'ring-primary-container')
+            setTimeout(() => uploadArea.classList.remove('ring-2', 'ring-primary-container'), 1000)
             saveToLocalStorage()
           }
         })
+      }
 
-        // Submit
-        document.getElementById('submit-config').addEventListener('click', () => {
-          saveToLocalStorage()
-          window.location.href = 'review.html'
-        })
-
-        updateUI()
+      document.getElementById('submit-config')?.addEventListener('click', () => {
+        saveToLocalStorage()
+        window.location.href = 'review.html'
       })
-    </script>
-    <script>
-      // Atualização automática do ano no footer
-      ;(function updateFooterYear() {
-        const currentYear = new Date().getFullYear()
-        const yearSpan = document.querySelector('.current-year')
-        if (yearSpan) {
-          yearSpan.textContent = currentYear
-        }
-      })()
-    </script>
-    <script>
-      // Função para abrir WhatsApp com mensagem automática
+
       document.getElementById('whatsapp-btn')?.addEventListener('click', function () {
-        const phoneNumber = '5511994102660' // Número sem espaços ou caracteres especiais
+        const phoneNumber = '5511994102660'
         const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
-        window.open(whatsappUrl, '_blank')
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
       })
+
+      // Footer year
+      const currentYear = new Date().getFullYear()
+      document.querySelectorAll('.current-year').forEach((el) => (el.textContent = currentYear))
+
+      loadFromLocalStorage()
     </script>
   </body>
 </html>

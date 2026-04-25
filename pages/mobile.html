@@ -133,6 +133,51 @@
       .animate-fade {
         animation: fadeInUp 0.4s ease-out forwards;
       }
+
+      /* Estilo dos botões de quantidade - Segmented Control */
+      .qty-btn {
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 800;
+        letter-spacing: 0.05em;
+      }
+
+      .qty-btn:active {
+        transform: scale(0.96);
+      }
+
+      .qty-btn.active {
+        border: 1px solid rgba(0, 251, 251, 0.5);
+        position: relative;
+      }
+
+      .qty-btn.active::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: 0.5rem;
+        padding: 1px;
+        background: linear-gradient(135deg, #00fbfb, #00dddd);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+      }
+
+      /* Aviso para opções indisponíveis */
+      .handle-warning-message {
+        font-size: 11px;
+        color: #ffb4ab;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        background: rgba(255, 180, 171, 0.1);
+        margin-top: 8px;
+      }
     </style>
   </head>
 
@@ -377,8 +422,10 @@
             <span class="font-headline text-primary-container text-2xl font-black">05</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Alças</h3>
           </div>
+
           <div class="space-y-5">
-            <div>
+            <!-- Papel Torcido -->
+            <div id="paper-handle-section">
               <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Papel Torcido</h4>
               <div class="flex gap-2 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
                 <div
@@ -407,6 +454,8 @@
                 </div>
               </div>
             </div>
+
+            <!-- Gorgurão (Tecido) -->
             <div>
               <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Gorgurão (Tecido)</h4>
               <div class="flex gap-2" id="handle-fabric-options">
@@ -428,13 +477,182 @@
                 </div>
               </div>
             </div>
+
+            <!-- Nylon com ponteira -->
+            <div>
+              <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Nylon com Ponteira</h4>
+              <div class="flex flex-col gap-3">
+                <div class="flex gap-2" id="handle-nylon-options">
+                  <div
+                    class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                    data-handle-type="nylon"
+                    data-handle-color="branca"
+                  >
+                    <div class="w-6 h-2 bg-white rounded-sm border border-outline"></div>
+                    <span class="font-label text-[9px] uppercase">Branca</span>
+                  </div>
+                  <div
+                    class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                    data-handle-type="nylon"
+                    data-handle-color="preta"
+                  >
+                    <div class="w-6 h-2 bg-black rounded-sm"></div>
+                    <span class="font-label text-[9px] uppercase">Preta</span>
+                  </div>
+                </div>
+                <!-- Nylon com ponteira -->
+                <div>
+                  <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Nylon com Ponteira</h4>
+                  <div class="flex flex-col gap-3">
+                    <!-- Opções de cor -->
+                    <div class="flex gap-2" id="handle-nylon-options">
+                      <div
+                        class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                        data-handle-type="nylon"
+                        data-handle-color="branca"
+                      >
+                        <div class="w-6 h-2 bg-white rounded-sm border border-outline"></div>
+                        <span class="font-label text-[9px] uppercase">Branca</span>
+                      </div>
+                      <div
+                        class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
+                        data-handle-type="nylon"
+                        data-handle-color="preta"
+                      >
+                        <div class="w-6 h-2 bg-black rounded-sm"></div>
+                        <span class="font-label text-[9px] uppercase">Preta</span>
+                      </div>
+                    </div>
+
+                    <!-- Tamanho fixo 35cm -->
+                    <div class="flex items-center gap-3 bg-surface-container-highest/30 p-2 rounded-lg">
+                      <span class="material-symbols-outlined text-primary-container text-sm">straighten</span>
+                      <div class="flex items-center gap-2">
+                        <span class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Tamanho padrão</span>
+                        <span class="font-headline font-bold text-primary-container text-base">35cm</span>
+                      </div>
+                      <span class="text-[9px] text-on-surface-variant/70 ml-auto">(fixo para todos os pedidos)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Aviso para tamanhos grandes -->
+            <div id="handle-size-warning" class="handle-warning-message hidden">
+              <span class="material-symbols-outlined text-sm">info</span>
+              <span
+                >Para tamanhos <strong>G</strong> e <strong>GG</strong>, alças disponíveis apenas em <strong>Gorgurão</strong> ou
+                <strong>Nylon</strong> (papel torcido não suporta o peso)</span
+              >
+            </div>
           </div>
         </div>
 
-        <!-- Step 6: Eyelets -->
-        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0 mb-6">
+        <!-- SEÇÃO DE CORES -->
+        <div class="flex flex-col gap-5 mt-8">
           <div class="flex items-baseline gap-3">
             <span class="font-headline text-primary-container text-2xl font-black">06</span>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Cores</h3>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="preto"
+            >
+              <div class="w-12 h-12 rounded-full bg-black shadow-md"></div>
+              <span class="font-label text-xs uppercase">Preto</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="cyan"
+            >
+              <div class="w-12 h-12 rounded-full bg-cyan-500 shadow-md"></div>
+              <span class="font-label text-xs uppercase">Cyan</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="azul-bic"
+            >
+              <div class="w-12 h-12 rounded-full bg-[#0047AB] shadow-md"></div>
+              <span class="font-label text-xs uppercase">Azul Bic</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="magenta"
+            >
+              <div class="w-12 h-12 rounded-full bg-[#FF00FF] shadow-md"></div>
+              <span class="font-label text-xs uppercase">Magenta</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="verde-bandeira"
+            >
+              <div class="w-12 h-12 rounded-full bg-[#009C3B] shadow-md"></div>
+              <span class="font-label text-xs uppercase">Verde Bandeira</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="amarelo-mcd"
+            >
+              <div class="w-12 h-12 rounded-full bg-[#FFC72C] shadow-md"></div>
+              <span class="font-label text-xs uppercase">Amarelo Mc</span>
+            </div>
+            <div
+              class="option-card bg-surface-container-highest rounded-lg p-3 flex flex-col items-center gap-2 transition-all cursor-pointer"
+              data-color="vermelho-mcd"
+            >
+              <div class="w-12 h-12 rounded-full bg-[#DA291C] shadow-md"></div>
+              <span class="font-label text-xs uppercase">Vermelho Mc</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SEÇÃO DE IMPRESSÃO 4x CMYK -->
+        <div class="flex flex-col gap-5 mt-8">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">07</span>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Impressão 4x CMYK</h3>
+          </div>
+
+          <div class="bg-surface-container-highest rounded-xl p-5 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 via-magenta-500 to-yellow-500 rounded-lg shadow-md"></div>
+                <div>
+                  <span class="font-label text-sm font-bold uppercase">Impressão Colorida</span>
+                  <p class="text-xs text-on-surface-variant">4 cores CMYK (Full Color)</p>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="impressao-tipo" value="4x0" class="w-4 h-4 accent-primary" checked />
+                  <span class="font-label text-xs uppercase">4x0 (1 lado)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="impressao-tipo" value="4x4" class="w-4 h-4 accent-primary" />
+                  <span class="font-label text-xs uppercase">4x4 (ambos lados)</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="border-t border-outline-variant pt-4">
+              <label class="font-label text-xs text-on-surface-variant uppercase tracking-wider block mb-2">Observações</label>
+              <textarea
+                id="print-observations"
+                rows="2"
+                placeholder="Digite informações específicas sobre a impressão (área, posição, etc.)"
+                class="w-full px-3 py-2 bg-surface rounded-md border border-outline focus:outline-none focus:ring-1 focus:ring-primary text-sm resize-none"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 8: Eyelets -->
+        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0 mb-6">
+          <div class="flex items-baseline gap-3">
+            <span class="font-headline text-primary-container text-2xl font-black">08</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Ilhós</h3>
           </div>
           <div class="grid grid-cols-3 gap-2" id="eyelet-options">
@@ -466,7 +684,7 @@
 
     <!-- Sticky Bottom Bar (Mobile) -->
     <div
-      class="fixed bottom-0 w-full bg-surface-variant/90 backdrop-blur-3xl px-4 py-3 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col gap-2 border-t border-outline-variant/15"
+      class="fixed bottom-0 w-full bg-surface-variant/90 backdrop-blur-3xl px-4 py-3 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col gap-3 border-t border-outline-variant/15"
     >
       <div class="flex flex-col w-full">
         <span class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-0.5">RESUMO ATUAL</span>
@@ -474,31 +692,44 @@
           >Tamanho M • Duplex 190g • Fosca • 4x0 • Alça Preta</span
         >
       </div>
-      <div class="flex items-center gap-2 w-full">
-        <div class="flex flex-col flex-shrink-0">
-          <label class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-0.5" for="qty">QTD</label>
-          <input
-            id="quantity-input"
-            class="input-custom w-16 rounded-lg p-2 text-center font-headline font-bold text-sm"
-            type="number"
-            min="500"
-            step="500"
-            value="1000"
-          />
+
+      <!-- Quantidade - Segmented Control -->
+      <div class="w-full">
+        <label class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-1.5 block">QUANTIDADE (UNIDADES)</label>
+        <div class="flex gap-2 w-full" id="quantity-selector">
+          <button
+            data-qty="250"
+            class="qty-btn flex-1 py-2.5 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant/50"
+          >
+            250 UN
+          </button>
+          <button
+            data-qty="500"
+            class="qty-btn flex-1 py-2.5 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all bg-surface-container-high text-on-surface-variant border border-outline-variant/50"
+          >
+            500 UN
+          </button>
+          <button
+            data-qty="1000"
+            class="qty-btn flex-1 py-2.5 rounded-lg font-headline font-bold text-sm uppercase tracking-wider transition-all active bg-primary-container text-on-primary-container shadow-[0_0_8px_rgba(0,251,251,0.3)]"
+          >
+            1000 UN
+          </button>
         </div>
-        <button
-          id="submit-config"
-          class="flex-1 btn-orcamento rounded-xl py-3 font-black uppercase tracking-wider text-xs flex items-center justify-center gap-1 shadow-lg"
-        >
-          <span class="material-symbols-outlined text-base">receipt_long</span>
-          REVISAR PEDIDO
-        </button>
       </div>
+
+      <button
+        id="submit-config"
+        class="btn-orcamento rounded-xl py-3 font-black uppercase tracking-wider text-xs flex items-center justify-center gap-1 shadow-lg w-full mt-1"
+      >
+        <span class="material-symbols-outlined text-base">receipt_long</span>
+        REVISAR PEDIDO
+      </button>
     </div>
 
     <script>
       // ============================================
-      // CONFIGURADOR DE ESTADO
+      // CONFIGURADOR DE ESTADO COMPLETO
       // ============================================
 
       const ConfiguratorState = {
@@ -506,9 +737,12 @@
         paper: { id: 'duplex', name: 'Duplex 190g' },
         finish: { id: 'matte', name: 'Fosca' },
         printing: { id: 'cmyk', name: '4x0 (CMYK)' },
-        handle: { type: 'paper', color: 'preta', colorName: 'Preta' },
+        handle: { type: 'paper', color: 'preta', colorName: 'Preta', nylonLength: 50 },
         eyelet: { id: 'none', name: 'Nenhum' },
         pantone: '',
+        selectedColor: null,
+        impressaoTipo: '4x0',
+        impressaoObservacoes: '',
         quantity: 1000
       }
 
@@ -542,9 +776,105 @@
         black: { name: 'Preto' }
       }
 
+      const colorMap = {
+        preto: 'Preto',
+        cyan: 'Cyan',
+        'azul-bic': 'Azul Bic',
+        magenta: 'Magenta',
+        'verde-bandeira': 'Verde Bandeira',
+        'amarelo-mcd': "Amarelo McDonald's",
+        'vermelho-mcd': "Vermelho McDonald's"
+      }
+
+      // ============================================
+      // CONTROLE DE ALÇAS BASEADO NO TAMANHO
+      // ============================================
+
+      function updateHandleOptionsBySize() {
+        const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
+
+        // Controle do aviso visual
+        const warningDiv = document.getElementById('handle-size-warning')
+        if (warningDiv) {
+          if (isLargeSize) {
+            warningDiv.classList.remove('hidden')
+          } else {
+            warningDiv.classList.add('hidden')
+          }
+        }
+
+        // Esconder/mostrar seção de papel torcido
+        const paperHandleSection = document.getElementById('paper-handle-section')
+        const paperTitle = paperHandleSection?.querySelector('h4')
+
+        if (isLargeSize) {
+          // Para tamanhos G e GG: desabilitar papel torcido
+          if (paperHandleSection) {
+            paperHandleSection.style.opacity = '0.5'
+            paperHandleSection.style.pointerEvents = 'none'
+            if (paperTitle) {
+              paperTitle.style.textDecoration = 'line-through'
+              paperTitle.title = 'Alça de papel não disponível para tamanhos G e GG'
+            }
+          }
+
+          // Se a alça atual for de papel, mudar automaticamente para gorgurão preta
+          if (ConfiguratorState.handle.type === 'paper') {
+            ConfiguratorState.handle = {
+              type: 'fabric',
+              color: 'preta',
+              colorName: 'Preta',
+              nylonLength: ConfiguratorState.handle.nylonLength || 50
+            }
+            updateActiveStates()
+            updateSummary()
+          }
+        } else {
+          // Para tamanhos P e M: habilitar todas opções
+          if (paperHandleSection) {
+            paperHandleSection.style.opacity = '1'
+            paperHandleSection.style.pointerEvents = 'auto'
+            if (paperTitle) {
+              paperTitle.style.textDecoration = 'none'
+              paperTitle.title = ''
+            }
+          }
+        }
+
+        // Atualizar visual dos cards de alça
+        document.querySelectorAll('[data-handle-type]').forEach((el) => {
+          if (isLargeSize && el.dataset.handleType === 'paper') {
+            el.style.opacity = '0.4'
+            el.style.cursor = 'not-allowed'
+            el.style.pointerEvents = 'none'
+          } else {
+            el.style.opacity = '1'
+            el.style.cursor = 'pointer'
+            el.style.pointerEvents = 'auto'
+          }
+        })
+      }
+
       function updateSummary() {
-        const handleText = `${ConfiguratorState.handle.type === 'paper' ? 'Papel Torcido' : 'Gorgurão'} ${ConfiguratorState.handle.colorName}`
-        const summaryText = `${ConfiguratorState.size.name} • ${ConfiguratorState.paper.name} • ${ConfiguratorState.finish.name} • ${ConfiguratorState.printing.name} • ${handleText}`
+        let handleText = ''
+        if (ConfiguratorState.handle.type === 'nylon') {
+          handleText = `Nylon ${ConfiguratorState.handle.colorName} (${ConfiguratorState.handle.nylonLength}cm)`
+        } else if (ConfiguratorState.handle.type === 'paper') {
+          handleText = `Papel Torcido ${ConfiguratorState.handle.colorName}`
+        } else {
+          handleText = `Gorgurão ${ConfiguratorState.handle.colorName}`
+        }
+
+        let summaryText = `${ConfiguratorState.size.name} • ${ConfiguratorState.paper.name} • ${ConfiguratorState.finish.name} • ${ConfiguratorState.printing.name} • ${handleText}`
+
+        if (ConfiguratorState.selectedColor) {
+          summaryText += ` • Cor: ${ConfiguratorState.selectedColor.name}`
+        }
+
+        if (ConfiguratorState.impressaoTipo === '4x4') {
+          summaryText += ` • Impressão ambos lados`
+        }
+
         document.getElementById('summary-text').textContent = summaryText
         localStorage.setItem('industrialAlchemistConfig', JSON.stringify(ConfiguratorState))
       }
@@ -566,6 +896,7 @@
           if (el.dataset.printing === ConfiguratorState.printing.id) el.classList.add('active')
           else el.classList.remove('active')
         })
+
         document.querySelectorAll('[data-handle-type]').forEach((el) => {
           if (el.dataset.handleType === ConfiguratorState.handle.type && el.dataset.handleColor === ConfiguratorState.handle.color) {
             el.classList.add('active')
@@ -573,12 +904,39 @@
             el.classList.remove('active')
           }
         })
+
         document.querySelectorAll('[data-eyelet]').forEach((el) => {
           if (el.dataset.eyelet === ConfiguratorState.eyelet.id) el.classList.add('active')
           else el.classList.remove('active')
         })
+
+        document.querySelectorAll('[data-color]').forEach((el) => {
+          if (ConfiguratorState.selectedColor && el.dataset.color === ConfiguratorState.selectedColor.id) {
+            el.classList.add('active')
+          } else {
+            el.classList.remove('active')
+          }
+        })
+
         document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
-        document.getElementById('quantity-input').value = ConfiguratorState.quantity
+        document.getElementById('nylon-length').value = ConfiguratorState.handle.nylonLength || 50
+
+        const selectedRadio = document.querySelector(`input[name="impressao-tipo"][value="${ConfiguratorState.impressaoTipo}"]`)
+        if (selectedRadio) selectedRadio.checked = true
+        document.getElementById('print-observations').value = ConfiguratorState.impressaoObservacoes || ''
+      }
+
+      function updateQuantityButtons(selectedQty) {
+        document.querySelectorAll('.qty-btn').forEach((btn) => {
+          const btnQty = parseInt(btn.dataset.qty)
+          if (btnQty === selectedQty) {
+            btn.classList.add('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_rgba(0,251,251,0.3)]')
+            btn.classList.remove('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/50')
+          } else {
+            btn.classList.remove('active', 'bg-primary-container', 'text-on-primary-container', 'shadow-[0_0_8px_rgba(0,251,251,0.3)]')
+            btn.classList.add('bg-surface-container-high', 'text-on-surface-variant', 'border-outline-variant/50')
+          }
+        })
       }
 
       function loadFromStorage() {
@@ -593,10 +951,15 @@
             ConfiguratorState.handle = parsed.handle || ConfiguratorState.handle
             ConfiguratorState.eyelet = parsed.eyelet || ConfiguratorState.eyelet
             ConfiguratorState.pantone = parsed.pantone || ''
+            ConfiguratorState.selectedColor = parsed.selectedColor || null
+            ConfiguratorState.impressaoTipo = parsed.impressaoTipo || '4x0'
+            ConfiguratorState.impressaoObservacoes = parsed.impressaoObservacoes || ''
             ConfiguratorState.quantity = parsed.quantity || 1000
           } catch (e) {}
         }
         updateActiveStates()
+        updateQuantityButtons(ConfiguratorState.quantity)
+        updateHandleOptionsBySize()
         updateSummary()
       }
 
@@ -605,6 +968,7 @@
         el.addEventListener('click', () => {
           ConfiguratorState.size = { id: el.dataset.size, ...sizeMap[el.dataset.size] }
           updateActiveStates()
+          updateHandleOptionsBySize()
           updateSummary()
         })
       })
@@ -635,12 +999,32 @@
 
       document.querySelectorAll('[data-handle-type]').forEach((el) => {
         el.addEventListener('click', () => {
+          // Verificar se é permitido clicar (se for papel em tamanho grande, não permite)
+          const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
+          if (isLargeSize && el.dataset.handleType === 'paper') {
+            return // Não permite selecionar papel em tamanhos grandes
+          }
+
           const handleColor = el.dataset.handleColor
           const colorName = handleColor === 'branca' ? 'Branca' : handleColor === 'preta' ? 'Preta' : 'Kraft'
-          ConfiguratorState.handle = { type: el.dataset.handleType, color: handleColor, colorName: colorName }
+          ConfiguratorState.handle = {
+            type: el.dataset.handleType,
+            color: handleColor,
+            colorName: colorName,
+            nylonLength: ConfiguratorState.handle.nylonLength || 50
+          }
           updateActiveStates()
           updateSummary()
         })
+      })
+
+      document.getElementById('nylon-length')?.addEventListener('input', (e) => {
+        let val = parseInt(e.target.value)
+        if (isNaN(val)) val = 50
+        if (val < 10) val = 10
+        if (val > 150) val = 150
+        ConfiguratorState.handle.nylonLength = val
+        updateSummary()
       })
 
       document.querySelectorAll('[data-eyelet]').forEach((el) => {
@@ -656,13 +1040,36 @@
         updateSummary()
       })
 
-      document.getElementById('quantity-input').addEventListener('input', (e) => {
-        let val = parseInt(e.target.value)
-        if (isNaN(val)) val = 500
-        if (val < 500) val = 500
-        ConfiguratorState.quantity = val
-        document.getElementById('quantity-input').value = val
+      document.querySelectorAll('[data-color]').forEach((el) => {
+        el.addEventListener('click', () => {
+          const colorId = el.dataset.color
+          ConfiguratorState.selectedColor = { id: colorId, name: colorMap[colorId] }
+          updateActiveStates()
+          updateSummary()
+        })
+      })
+
+      document.querySelectorAll('input[name="impressao-tipo"]').forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          if (e.target.checked) {
+            ConfiguratorState.impressaoTipo = e.target.value
+            updateSummary()
+          }
+        })
+      })
+
+      document.getElementById('print-observations')?.addEventListener('input', (e) => {
+        ConfiguratorState.impressaoObservacoes = e.target.value
         updateSummary()
+      })
+
+      document.querySelectorAll('.qty-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const selectedQty = parseInt(btn.dataset.qty)
+          ConfiguratorState.quantity = selectedQty
+          updateQuantityButtons(selectedQty)
+          updateSummary()
+        })
       })
 
       document.getElementById('submit-config').addEventListener('click', () => {
@@ -671,7 +1078,6 @@
         window.location.href = 'review.html'
       })
 
-      // Botão WhatsApp
       document.getElementById('whatsapp-btn-mobile')?.addEventListener('click', function () {
         const phoneNumber = '5511994102660'
         const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')

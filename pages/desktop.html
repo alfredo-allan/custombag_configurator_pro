@@ -6,21 +6,14 @@
     <meta name="theme-color" content="#131313" />
     <title>Industria Gráfica Alquimista - Custom Paper Bags</title>
 
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome 6 (gratuito) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <!-- Tailwind Config -->
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: 'class',
@@ -59,7 +52,6 @@
       }
     </script>
 
-    <!-- CSS Global -->
     <link href="../css/global.css" rel="stylesheet" />
 
     <style>
@@ -139,7 +131,6 @@
   <body
     class="bg-surface text-on-surface font-body antialiased min-h-screen flex flex-col selection:bg-surface-tint selection:text-on-primary"
   >
-    <!-- TopNavBar -->
     <nav class="fixed top-0 w-full z-50 bg-zinc-950/60 backdrop-blur-2xl shadow-2xl">
       <div class="flex justify-between items-center px-6 md:px-10 h-20 w-full">
         <div class="text-xl md:text-2xl font-black tracking-tighter text-white italic">Industria Gráfica Alquimista</div>
@@ -178,7 +169,6 @@
     </nav>
 
     <main class="flex-grow pt-20">
-      <!-- Hero Section -->
       <section class="relative w-full min-h-[500px] md:min-h-[600px] flex items-center overflow-hidden">
         <div class="absolute inset-0 z-0">
           <img
@@ -210,20 +200,18 @@
         </div>
       </section>
 
-      <!-- Configurator Section -->
       <section class="container mx-auto px-6 md:px-10 py-12 md:py-20" id="configurator">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
-          <!-- Left Column: Steps -->
           <div class="lg:col-span-8 flex flex-col gap-8 lg:gap-12">
-            <!-- Step 1: Tamanho -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl relative overflow-hidden group">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl relative overflow-hidden group">
               <div
                 class="absolute top-0 left-0 w-1 md:w-2 h-full bg-surface-tint opacity-50 group-hover:opacity-100 transition-opacity"
               ></div>
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">straighten</span>1. Tamanho (Size)
+                <span class="material-symbols-outlined text-surface-tint">straighten</span>
+                <span><span class="section-number">1</span>. Tamanho (Size)</span>
               </h2>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="size-options">
                 <div
@@ -269,12 +257,12 @@
               </div>
             </div>
 
-            <!-- Step 2: Papel -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">description</span>2. Papel (Paper)
+                <span class="material-symbols-outlined text-surface-tint">description</span>
+                <span><span class="section-number">2</span>. Papel (Paper)</span>
               </h2>
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="paper-options">
                 <div
@@ -298,18 +286,18 @@
                   class="option-card bg-surface-container-highest p-4 md:p-6 rounded-lg cursor-pointer transition-all shadow-lg"
                   data-paper="kraft"
                 >
-                  <span class="font-label text-xs md:text-sm uppercase tracking-widest text-primary block mb-2">Reciclato Kraft 180g</span>
+                  <span class="font-label text-xs md:text-sm uppercase tracking-widest text-primary block mb-2">Reciclato Kraft 110g</span>
                   <p class="text-[11px] md:text-xs text-on-surface-variant">Rústico, ecológico. Impressão em cores escuras.</p>
                 </div>
               </div>
             </div>
 
-            <!-- Step 3: Acabamento -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">texture</span>3. Acabamento (Finish)
+                <span class="material-symbols-outlined text-surface-tint">texture</span>
+                <span><span class="section-number">3</span>. Acabamento (Finish)</span>
               </h2>
               <div class="grid grid-cols-3 gap-3 md:gap-4" id="finish-options">
                 <div
@@ -336,12 +324,12 @@
               </div>
             </div>
 
-            <!-- Step 4: Cores de Impressão -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">palette</span>4. Cores de Impressão
+                <span class="material-symbols-outlined text-surface-tint">palette</span>
+                <span><span class="section-number">4</span>. Cores de Impressão</span>
               </h2>
               <div class="grid grid-cols-2 gap-4" id="printing-options">
                 <div
@@ -377,15 +365,14 @@
               </div>
             </div>
 
-            <!-- Step 5: Alças -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">shopping_cart</span>5. Alças (Handles)
+                <span class="material-symbols-outlined text-surface-tint">shopping_cart</span>
+                <span><span class="section-number">5</span>. Alças (Handles)</span>
               </h2>
               <div class="space-y-6">
-                <!-- Papel Torcido -->
                 <div id="paper-handle-section">
                   <div class="mb-3">
                     <h3 class="font-label text-sm text-on-surface-variant uppercase tracking-wider">Papel Torcido</h3>
@@ -432,7 +419,6 @@
                   </div>
                 </div>
 
-                <!-- Gorgurão -->
                 <div>
                   <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Gorgurão (Tecido)</h3>
                   <div class="flex gap-3" id="handle-fabric-options">
@@ -455,7 +441,6 @@
                   </div>
                 </div>
 
-                <!-- Nylon com ponteira (35cm fixo) -->
                 <div>
                   <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Nylon com Ponteira</h3>
                   <div class="flex flex-col gap-3">
@@ -486,7 +471,6 @@
                   </div>
                 </div>
 
-                <!-- Aviso para tamanhos grandes -->
                 <div id="handle-size-warning" class="handle-warning-message hidden">
                   <span class="material-symbols-outlined text-sm">info</span>
                   <span
@@ -497,12 +481,12 @@
               </div>
             </div>
 
-            <!-- Step 6: Cores da Sacola -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl" id="section-06-colors">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">format_paint</span>6. Cor da Sacola
+                <span class="material-symbols-outlined text-surface-tint">format_paint</span>
+                <span><span class="section-number">6</span>. Cor da Sacola</span>
               </h2>
               <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" id="color-options">
                 <div
@@ -557,53 +541,12 @@
               </div>
             </div>
 
-            <!-- Step 7: Impressão CMYK -->
-            <!-- <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
+            <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl">
               <h2
                 class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
               >
-                <span class="material-symbols-outlined text-surface-tint">local_printshop</span>7. Impressão 4x CMYK
-              </h2>
-              <div class="space-y-4">
-                <div class="flex items-center justify-between flex-wrap gap-3">
-                  <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 via-magenta-500 to-yellow-500 rounded-lg shadow-md"></div>
-                    <div>
-                      <span class="font-label text-sm font-bold uppercase">Impressão Colorida</span>
-                      <p class="text-xs text-on-surface-variant">4 cores CMYK (Full Color)</p>
-                    </div>
-                  </div>
-                  <div class="flex gap-3">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="impressao-tipo" value="4x0" class="w-4 h-4 accent-primary" checked />
-                      <span class="font-label text-xs uppercase">4x0 (1 lado)</span>
-                    </label>
-                    <label class="flex items-center gap-2 cursor-pointer">
-                      <input type="radio" name="impressao-tipo" value="4x4" class="w-4 h-4 accent-primary" />
-                      <span class="font-label text-xs uppercase">4x4 (ambos lados)</span>
-                    </label>
-                  </div>
-                </div>
-                <div class="border-t border-outline-variant pt-4">
-                  <label class="font-label text-xs text-on-surface-variant uppercase tracking-wider block mb-2"
-                    >Observações da Impressão</label
-                  >
-                  <textarea
-                    id="print-observations"
-                    rows="2"
-                    placeholder="Digite informações específicas sobre a impressão (área, posição, etc.)"
-                    class="w-full px-3 py-2 bg-surface rounded-md border border-outline focus:outline-none focus:ring-1 focus:ring-primary text-sm resize-none"
-                  ></textarea>
-                </div>
-              </div>
-            </div> -->
-
-            <!-- Step 8: Ilhós -->
-            <div class="bg-surface-container-low p-6 md:p-8 rounded-xl">
-              <h2
-                class="font-headline text-lg md:text-xl font-bold text-primary mb-4 md:mb-6 uppercase tracking-widest flex items-center gap-2 md:gap-3"
-              >
-                <span class="material-symbols-outlined text-surface-tint">circle</span>7. Ilhós (Eyelets)
+                <span class="material-symbols-outlined text-surface-tint">circle</span>
+                <span><span class="section-number">7</span>. Ilhós (Eyelets)</span>
               </h2>
               <div class="grid grid-cols-3 gap-3" id="eyelet-options">
                 <div
@@ -631,7 +574,6 @@
             </div>
           </div>
 
-          <!-- Right Column: Summary Sidebar -->
           <div class="lg:col-span-4 relative">
             <div
               class="desktop-sidebar-sticky bg-surface-variant/60 backdrop-blur-2xl p-6 md:p-8 rounded-2xl shadow-2xl border border-outline-variant/10"
@@ -676,7 +618,6 @@
                 </li>
               </ul>
 
-              <!-- Quantidade - Segmented Control -->
               <div class="mb-6">
                 <label class="block font-label text-[10px] md:text-[11px] uppercase tracking-widest text-on-surface-variant mb-2"
                   >Quantidade (UN)</label
@@ -724,7 +665,6 @@
       </section>
     </main>
 
-    <!-- Footer -->
     <footer
       class="w-full py-8 md:py-12 px-6 md:px-10 bg-zinc-950 flex flex-col md:flex-row justify-between items-center border-t border-zinc-800/30 gap-4"
     >
@@ -753,7 +693,7 @@
 
     <script>
       // ============================================
-      // CONFIGURATOR STATE (idêntico à versão mobile)
+      // CONFIGURATOR STATE
       // ============================================
 
       const ConfiguratorState = {
@@ -781,7 +721,7 @@
       const paperMap = {
         offset: { name: 'Offset 180g' },
         duplex: { name: 'Duplex 190g' },
-        kraft: { name: 'Reciclato Kraft 180g' }
+        kraft: { name: 'Reciclato Kraft 110g' }
       }
 
       const finishMap = {
@@ -809,6 +749,39 @@
         'verde-bandeira': 'Verde Bandeira',
         'amarelo-mcd': "Amarelo McDonald's",
         'vermelho-mcd': "Vermelho McDonald's"
+      }
+
+      // ============================================
+      // CONTROLES VISUAIS E NUMERAÇÃO DINÂMICA
+      // ============================================
+
+      function updateSectionNumbers() {
+        let currentNum = 1
+        const sections = document.querySelectorAll('.config-section')
+
+        sections.forEach((sec) => {
+          if (window.getComputedStyle(sec).display !== 'none') {
+            const numSpan = sec.querySelector('.section-number')
+            if (numSpan) {
+              numSpan.textContent = currentNum // No desktop a formatação tá só o número (1, 2, 3...)
+              currentNum++
+            }
+          }
+        })
+      }
+
+      function updateColorSectionVisibility() {
+        const colorSection = document.getElementById('section-06-colors')
+        if (!colorSection) return
+
+        if (ConfiguratorState.printing.id === 'cmyk') {
+          colorSection.style.display = 'block'
+        } else {
+          colorSection.style.display = 'none'
+          ConfiguratorState.selectedColor = null
+        }
+
+        updateSectionNumbers()
       }
 
       function getHandleDisplay() {
@@ -889,7 +862,7 @@
 
         const colorSummaryRow = document.getElementById('color-summary-row')
         const summaryColor = document.getElementById('summary-color')
-        if (ConfiguratorState.selectedColor) {
+        if (ConfiguratorState.selectedColor && ConfiguratorState.printing.id === 'cmyk') {
           const colorInfo = colorMap[ConfiguratorState.selectedColor.id]
           summaryColor.innerHTML = `<span class="color-badge-preview" style="background-color: ${ConfiguratorState.selectedColor.id === 'preto' ? '#000' : ConfiguratorState.selectedColor.id === 'cyan' ? '#0ff' : ConfiguratorState.selectedColor.id === 'azul-bic' ? '#0047AB' : ConfiguratorState.selectedColor.id === 'magenta' ? '#FF00FF' : ConfiguratorState.selectedColor.id === 'verde-bandeira' ? '#009C3B' : ConfiguratorState.selectedColor.id === 'amarelo-mcd' ? '#FFC72C' : '#DA291C'};"></span>${colorInfo}`
           colorSummaryRow.style.display = 'flex'
@@ -936,10 +909,15 @@
           }
         })
 
-        document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
+        const pantoneInput = document.getElementById('pantone-input')
+        if (pantoneInput) pantoneInput.value = ConfiguratorState.pantone || ''
+
         const selectedRadio = document.querySelector(`input[name="impressao-tipo"][value="${ConfiguratorState.impressaoTipo}"]`)
         if (selectedRadio) selectedRadio.checked = true
-        document.getElementById('print-observations').value = ConfiguratorState.impressaoObservacoes || ''
+
+        const printObservations = document.getElementById('print-observations')
+        if (printObservations) printObservations.value = ConfiguratorState.impressaoObservacoes || ''
+
         updateQuantityButtons(ConfiguratorState.quantity)
         updateSummary()
       }
@@ -982,6 +960,7 @@
         }
         updateActiveStates()
         updateHandleOptionsBySize()
+        updateColorSectionVisibility()
         updateSummary()
       }
 
@@ -1012,6 +991,7 @@
         el.addEventListener('click', () => {
           ConfiguratorState.printing = { id: el.dataset.printing, ...printingMap[el.dataset.printing] }
           updateActiveStates()
+          updateColorSectionVisibility()
         })
       })
 

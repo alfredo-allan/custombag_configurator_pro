@@ -6,17 +6,14 @@
     <meta name="theme-color" content="#131313" />
     <title>Industria Gráfica Alquimista | Configuração de Sacolas</title>
 
-    <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
-    <!-- Tailwind Config (unificado) -->
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: 'class',
@@ -55,7 +52,6 @@
       }
     </script>
 
-    <!-- CSS Global -->
     <link href="../css/global.css" rel="stylesheet" />
 
     <style>
@@ -79,10 +75,6 @@
       .input-custom::placeholder {
         color: #839493 !important;
         opacity: 0.6 !important;
-      }
-      .input-custom.error {
-        border-color: #ffb4ab !important;
-        box-shadow: 0 0 0 2px rgba(255, 180, 171, 0.2) !important;
       }
 
       /* Remove setas do input number */
@@ -108,7 +100,6 @@
         transform: scale(0.98);
       }
 
-      /* Botão de orçamento melhorado - contraste excelente */
       .btn-orcamento {
         background: linear-gradient(135deg, #00dddd 0%, #00fbfb 100%);
         color: #003737 !important;
@@ -120,21 +111,6 @@
         transform: scale(0.97);
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-      .animate-fade {
-        animation: fadeInUp 0.4s ease-out forwards;
-      }
-
-      /* Estilo dos botões de quantidade - Segmented Control */
       .qty-btn {
         cursor: pointer;
         transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -166,7 +142,6 @@
         pointer-events: none;
       }
 
-      /* Aviso para opções indisponíveis */
       .handle-warning-message {
         font-size: 11px;
         color: #ffb4ab;
@@ -184,7 +159,6 @@
   <body
     class="bg-surface text-on-surface font-body antialiased min-h-screen selection:bg-primary-container selection:text-on-primary-container"
   >
-    <!-- TopAppBar - Mobile com links -->
     <header class="fixed top-0 w-full bg-[#131313]/90 backdrop-blur-3xl shadow-2xl shadow-black/40 z-50 border-b border-outline-variant/20">
       <div class="flex justify-between items-center px-4 py-3">
         <button class="text-white transition-colors scale-95 active:scale-90 flex items-center justify-center p-2" aria-label="Menu">
@@ -205,7 +179,6 @@
         </button>
       </div>
 
-      <!-- Navegação Mobile -->
       <div class="flex justify-around items-center px-4 py-2 border-t border-outline-variant/20 bg-surface/80">
         <a
           href="#"
@@ -238,9 +211,7 @@
       </div>
     </header>
 
-    <!-- Main Content -->
     <main class="w-full pt-28">
-      <!-- Hero Section -->
       <section
         class="relative w-full h-[500px] flex flex-col justify-end p-6 bg-surface-container-low overflow-hidden"
         style="
@@ -272,12 +243,10 @@
         </div>
       </section>
 
-      <!-- Configurator Section -->
       <section class="w-full max-w-3xl mx-auto px-4 py-10 flex flex-col gap-10" id="configurator">
-        <!-- Step 1: Size -->
-        <div class="flex flex-col gap-5">
+        <div class="config-section flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">01</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">01</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Tamanho da Sacola</h3>
           </div>
           <div class="grid grid-cols-2 gap-3" id="size-options">
@@ -312,11 +281,10 @@
           </div>
         </div>
 
-        <!-- Step 2: Paper Type -->
-        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
+        <div class="config-section flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">02</span>
-            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Papel &amp; Gramatura</h3>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">02</span>
+            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Papel & Gramatura</h3>
           </div>
           <div class="flex flex-col gap-3" id="paper-options">
             <div
@@ -352,10 +320,9 @@
           </div>
         </div>
 
-        <!-- Step 3: Finish -->
-        <div class="flex flex-col gap-5">
+        <div class="config-section flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">03</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">03</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Acabamento</h3>
           </div>
           <div class="grid grid-cols-3 gap-2" id="finish-options">
@@ -383,10 +350,9 @@
           </div>
         </div>
 
-        <!-- Step 4: Printing Colors -->
-        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
+        <div class="config-section flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">04</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">04</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Cores de Impressão</h3>
           </div>
           <div class="grid grid-cols-2 gap-3" id="printing-options">
@@ -411,9 +377,7 @@
             </div>
           </div>
           <div class="mt-2 flex flex-col gap-2">
-            <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest hidden"
-              >Cor Especial (Pantone) Opcional</label
-            >
+            <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
             <input
               type="text"
               id="pantone-input"
@@ -423,59 +387,57 @@
           </div>
         </div>
 
-        <!-- Step 5: Handles -->
-        <div class="flex flex-col gap-5">
+        <div class="config-section flex flex-col gap-5">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">05</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">05</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Alças</h3>
           </div>
 
           <div class="space-y-5">
-            <!-- Papel Torcido -->
             <div id="paper-handle-section">
-              <div class="mb-2">
-                <h4 class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Papel Torcido</h4>
-                <span class="font-label text-[10px] text-secondary-container uppercase tracking-widest mt-1 flex items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
+              <div class="mb-3">
+                <h3 class="font-label text-sm text-on-surface-variant uppercase tracking-wider">Papel Torcido</h3>
+
+                <div class="bg-surface-container-low/80 p-2 rounded text-[10px] text-tertiary-container flex items-start gap-2 mt-2 w-max">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 shrink-0 mt-[1px]">
                     <path
                       fill-rule="evenodd"
                       d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
                       clip-rule="evenodd"
                     />
                   </svg>
-                  Disponível apenas para tamanhos p e m.
-                </span>
+                  <span class="uppercase tracking-widest">Disponível apenas para tamanhos p e m.</span>
+                </div>
               </div>
 
-              <div class="flex gap-2 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
+              <div class="flex gap-3 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
                 <div
-                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
+                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
                   data-handle-type="paper"
                   data-handle-color="branca"
                 >
-                  <div class="w-6 h-6 rounded-full border border-outline bg-white"></div>
-                  <span class="font-label text-[9px] uppercase">Branca</span>
+                  <div class="w-8 h-8 rounded-full border border-outline bg-white"></div>
+                  <span class="font-label text-[10px] uppercase">Branca</span>
                 </div>
                 <div
-                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start active"
+                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start active"
                   data-handle-type="paper"
                   data-handle-color="preta"
                 >
-                  <div class="w-6 h-6 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
-                  <span class="font-label text-[9px] uppercase text-primary">Preta</span>
+                  <div class="w-8 h-8 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
+                  <span class="font-label text-[10px] uppercase text-primary">Preta</span>
                 </div>
                 <div
-                  class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
+                  class="option-card shrink-0 w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
                   data-handle-type="paper"
                   data-handle-color="kraft"
                 >
-                  <div class="w-6 h-6 rounded-full bg-[#d2b48c] shadow-inner"></div>
-                  <span class="font-label text-[9px] uppercase">Kraft</span>
+                  <div class="w-8 h-8 rounded-full bg-[#d2b48c] shadow-inner"></div>
+                  <span class="font-label text-[10px] uppercase">Kraft</span>
                 </div>
               </div>
             </div>
 
-            <!-- Gorgurão (Tecido) -->
             <div>
               <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Gorgurão (Tecido)</h4>
               <div class="flex gap-2" id="handle-fabric-options">
@@ -498,7 +460,6 @@
               </div>
             </div>
 
-            <!-- Nylon com ponteira -->
             <div>
               <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Nylon com Ponteira</h4>
               <div class="flex flex-col gap-3">
@@ -523,7 +484,6 @@
               </div>
             </div>
 
-            <!-- Aviso para tamanhos grandes -->
             <div id="handle-size-warning" class="handle-warning-message hidden">
               <span class="material-symbols-outlined text-sm">info</span>
               <span
@@ -534,10 +494,9 @@
           </div>
         </div>
 
-        <!-- SEÇÃO DE CORES -->
-        <div class="flex flex-col gap-5 mt-8">
+        <div class="config-section flex flex-col gap-5 mt-8" id="section-06-colors">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">06</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">06</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Cores</h3>
           </div>
 
@@ -594,50 +553,9 @@
           </div>
         </div>
 
-        <!-- SEÇÃO DE IMPRESSÃO 4x CMYK -->
-        <!-- <div class="flex flex-col gap-5 mt-8">
+        <div class="config-section flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0 mb-6">
           <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">07</span>
-            <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Impressão 4x CMYK</h3>
-          </div>
-
-          <div class="bg-surface-container-highest rounded-xl p-5 space-y-4">
-            <div class="flex items-center justify-between flex-wrap gap-3">
-              <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 via-magenta-500 to-yellow-500 rounded-lg shadow-md"></div>
-                <div>
-                  <span class="font-label text-sm font-bold uppercase">Impressão Colorida</span>
-                  <p class="text-xs text-on-surface-variant">4 cores CMYK (Full Color)</p>
-                </div>
-              </div>
-              <div class="flex gap-2">
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="impressao-tipo" value="4x0" class="w-4 h-4 accent-primary" checked />
-                  <span class="font-label text-xs uppercase">4x0 (1 lado)</span>
-                </label>
-                <label class="flex items-center gap-2 cursor-pointer">
-                  <input type="radio" name="impressao-tipo" value="4x4" class="w-4 h-4 accent-primary" />
-                  <span class="font-label text-xs uppercase">4x4 (ambos lados)</span>
-                </label>
-              </div>
-            </div>
-
-            <div class="border-t border-outline-variant pt-4">
-              <label class="font-label text-xs text-on-surface-variant uppercase tracking-wider block mb-2">Observações</label>
-              <textarea
-                id="print-observations"
-                rows="2"
-                placeholder="Digite informações específicas sobre a impressão (área, posição, etc.)"
-                class="w-full px-3 py-2 bg-surface rounded-md border border-outline focus:outline-none focus:ring-1 focus:ring-primary text-sm resize-none"
-              ></textarea>
-            </div>
-          </div>
-        </div> -->
-
-        <!-- Step 8: Eyelets -->
-        <div class="flex flex-col gap-5 bg-surface-container-low p-5 rounded-2xl -mx-4 md:mx-0 mb-6">
-          <div class="flex items-baseline gap-3">
-            <span class="font-headline text-primary-container text-2xl font-black">07</span>
+            <span class="section-number font-headline text-primary-container text-2xl font-black">07</span>
             <h3 class="font-headline text-lg font-bold uppercase tracking-wide">Ilhós</h3>
           </div>
           <div class="grid grid-cols-3 gap-2" id="eyelet-options">
@@ -667,7 +585,6 @@
       </section>
     </main>
 
-    <!-- Sticky Bottom Bar (Mobile) -->
     <div
       class="fixed bottom-0 w-full bg-surface-variant/90 backdrop-blur-3xl px-4 py-3 rounded-t-2xl z-50 shadow-[0_-20px_40px_rgba(0,0,0,0.6)] flex flex-col gap-3 border-t border-outline-variant/15"
     >
@@ -678,7 +595,6 @@
         >
       </div>
 
-      <!-- Quantidade - Segmented Control -->
       <div class="w-full">
         <label class="font-label text-[9px] text-on-surface-variant uppercase tracking-widest mb-1.5 block">QUANTIDADE (UNIDADES)</label>
         <div class="flex gap-2 w-full" id="quantity-selector">
@@ -741,7 +657,7 @@
       const paperMap = {
         offset: { name: 'Offset 180g' },
         duplex: { name: 'Duplex 190g' },
-        kraft: { name: 'Reciclato Kraft 180g' }
+        kraft: { name: 'Reciclato Kraft 110g' }
       }
 
       const finishMap = {
@@ -772,13 +688,48 @@
       }
 
       // ============================================
+      // CONTROLES VISUAIS (NUMERAÇÃO DINÂMICA)
+      // ============================================
+
+      function updateSectionNumbers() {
+        let currentNum = 1
+        const sections = document.querySelectorAll('.config-section')
+
+        sections.forEach((sec) => {
+          // Verifica se a seção NÃO está oculta pelo display none
+          if (window.getComputedStyle(sec).display !== 'none') {
+            const numSpan = sec.querySelector('.section-number')
+            if (numSpan) {
+              numSpan.textContent = currentNum.toString().padStart(2, '0')
+              currentNum++
+            }
+          }
+        })
+      }
+
+      function updateColorSectionVisibility() {
+        const colorSection = document.getElementById('section-06-colors')
+        if (!colorSection) return
+
+        // Se for CMYK mostra a seção, se for 1x0 oculta.
+        if (ConfiguratorState.printing.id === 'cmyk') {
+          colorSection.style.display = 'flex'
+        } else {
+          colorSection.style.display = 'none'
+          ConfiguratorState.selectedColor = null // Zera a cor
+        }
+
+        // Atualiza a numeração de todas as seções visíveis
+        updateSectionNumbers()
+      }
+
+      // ============================================
       // CONTROLE DE ALÇAS BASEADO NO TAMANHO
       // ============================================
 
       function updateHandleOptionsBySize() {
         const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
 
-        // Controle do aviso visual
         const warningDiv = document.getElementById('handle-size-warning')
         if (warningDiv) {
           if (isLargeSize) {
@@ -788,12 +739,10 @@
           }
         }
 
-        // Esconder/mostrar seção de papel torcido
         const paperHandleSection = document.getElementById('paper-handle-section')
-        const paperTitle = paperHandleSection?.querySelector('h4')
+        const paperTitle = paperHandleSection?.querySelector('h3')
 
         if (isLargeSize) {
-          // Para tamanhos G e GG: desabilitar papel torcido
           if (paperHandleSection) {
             paperHandleSection.style.opacity = '0.5'
             paperHandleSection.style.pointerEvents = 'none'
@@ -803,7 +752,6 @@
             }
           }
 
-          // Se a alça atual for de papel, mudar automaticamente para gorgurão preta
           if (ConfiguratorState.handle.type === 'paper') {
             ConfiguratorState.handle = {
               type: 'fabric',
@@ -815,7 +763,6 @@
             updateSummary()
           }
         } else {
-          // Para tamanhos P e M: habilitar todas opções
           if (paperHandleSection) {
             paperHandleSection.style.opacity = '1'
             paperHandleSection.style.pointerEvents = 'auto'
@@ -826,7 +773,6 @@
           }
         }
 
-        // Atualizar visual dos cards de alça
         document.querySelectorAll('[data-handle-type]').forEach((el) => {
           if (isLargeSize && el.dataset.handleType === 'paper') {
             el.style.opacity = '0.4'
@@ -852,7 +798,7 @@
 
         let summaryText = `${ConfiguratorState.size.name} • ${ConfiguratorState.paper.name} • ${ConfiguratorState.finish.name} • ${ConfiguratorState.printing.name} • ${handleText}`
 
-        if (ConfiguratorState.selectedColor) {
+        if (ConfiguratorState.selectedColor && ConfiguratorState.printing.id === 'cmyk') {
           summaryText += ` • Cor: ${ConfiguratorState.selectedColor.name}`
         }
 
@@ -904,13 +850,20 @@
         })
 
         document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
+
+        // Correção do Bug Silencioso com o optional chaining e if
         const nylonInput = document.getElementById('nylon-length')
         if (nylonInput) {
           nylonInput.value = ConfiguratorState.handle.nylonLength || 50
         }
+
         const selectedRadio = document.querySelector(`input[name="impressao-tipo"][value="${ConfiguratorState.impressaoTipo}"]`)
         if (selectedRadio) selectedRadio.checked = true
-        document.getElementById('print-observations').value = ConfiguratorState.impressaoObservacoes || ''
+
+        const printObs = document.getElementById('print-observations')
+        if (printObs) {
+          printObs.value = ConfiguratorState.impressaoObservacoes || ''
+        }
       }
 
       function updateQuantityButtons(selectedQty) {
@@ -947,6 +900,7 @@
         updateActiveStates()
         updateQuantityButtons(ConfiguratorState.quantity)
         updateHandleOptionsBySize()
+        updateColorSectionVisibility() // Carrega a visibilidade inicial
         updateSummary()
       }
 
@@ -980,16 +934,16 @@
         el.addEventListener('click', () => {
           ConfiguratorState.printing = { id: el.dataset.printing, ...printingMap[el.dataset.printing] }
           updateActiveStates()
+          updateColorSectionVisibility() // Atualiza UI de cores na hora!
           updateSummary()
         })
       })
 
       document.querySelectorAll('[data-handle-type]').forEach((el) => {
         el.addEventListener('click', () => {
-          // Verificar se é permitido clicar (se for papel em tamanho grande, não permite)
           const isLargeSize = ConfiguratorState.size.id === 'g' || ConfiguratorState.size.id === 'gg'
           if (isLargeSize && el.dataset.handleType === 'paper') {
-            return // Não permite selecionar papel em tamanhos grandes
+            return
           }
 
           const handleColor = el.dataset.handleColor
@@ -1022,7 +976,7 @@
         })
       })
 
-      document.getElementById('pantone-input').addEventListener('input', (e) => {
+      document.getElementById('pantone-input')?.addEventListener('input', (e) => {
         ConfiguratorState.pantone = e.target.value
         updateSummary()
       })
@@ -1071,6 +1025,7 @@
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
       })
 
+      // Inicia a aplicação
       loadFromStorage()
     </script>
   </body>

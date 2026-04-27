@@ -79,7 +79,7 @@ const Options = {
       requiresLamination: true,
     },
     kraft: {
-      name: "Reciclato Kraft 180g",
+      name: "Reciclato Kraft 110g",
       details:
         "Rústico, ecológico. Impressão recomenda-se em cores escuras ou preto.",
       requiresLamination: false,

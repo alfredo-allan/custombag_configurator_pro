@@ -711,16 +711,19 @@
         const colorSection = document.getElementById('section-06-colors')
         if (!colorSection) return
 
-        // Se for CMYK mostra a seção, se for 1x0 oculta.
-        if (ConfiguratorState.printing.id === 'cmyk') {
-          colorSection.style.display = 'flex'
+        // Se a impressão for 1x0 (Uma Cor), exibe a seção de Cores da Sacola
+        if (ConfiguratorState.printing.id === 'onecolor') {
+          colorSection.style.display = '' // Deixa o CSS do Tailwind agir naturalmente
         } else {
+          // Se for 4x0 (CMYK), oculta a seção e "limpa" qualquer cor que estava selecionada
           colorSection.style.display = 'none'
-          ConfiguratorState.selectedColor = null // Zera a cor
+          ConfiguratorState.selectedColor = null
         }
 
-        // Atualiza a numeração de todas as seções visíveis
-        updateSectionNumbers()
+        // Atualiza a numeração visual das etapas apenas se a função existir
+        if (typeof updateSectionNumbers === 'function') {
+          updateSectionNumbers()
+        }
       }
 
       // ============================================

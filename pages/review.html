@@ -577,10 +577,17 @@
           ? `${state.quantity.toLocaleString('pt-BR')} unidades`
           : '1.000 unidades'
 
+        // --------------------------------------------------
+        // LÓGICA ATUALIZADA: Verifica se a impressão é 1x0
+        // --------------------------------------------------
+        const isOneColor = state.printing?.id === 'onecolor'
+
         // Cor selecionada
         const colorRow = document.getElementById('color-row')
         const reviewColor = document.getElementById('review-color')
-        if (state.selectedColor && colorDisplayMap[state.selectedColor.id]) {
+
+        // Só mostra a cor se for 1x0 E tiver uma cor selecionada no state
+        if (isOneColor && state.selectedColor && colorDisplayMap[state.selectedColor.id]) {
           const colorInfo = colorDisplayMap[state.selectedColor.id]
           reviewColor.innerHTML = `<span class="color-badge" style="background-color: ${colorInfo.color}; border: 1px solid rgba(255,255,255,0.2);"></span>${colorInfo.name}`
           colorRow.style.display = 'flex'

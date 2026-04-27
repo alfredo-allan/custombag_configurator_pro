@@ -345,7 +345,7 @@
               data-paper="kraft"
             >
               <div class="flex flex-col">
-                <span class="font-headline font-bold text-primary">Reciclato Kraft 180g</span>
+                <span class="font-headline font-bold text-primary">Reciclato Kraft 110g</span>
                 <span class="font-body text-xs text-on-surface-variant">Aspecto rústico e sustentável.</span>
               </div>
             </div>
@@ -412,7 +412,12 @@
           </div>
           <div class="mt-2 flex flex-col gap-2">
             <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
-            <input type="text" id="pantone-input" class="input-custom w-full rounded-xl p-3 text-sm" placeholder="Ex: Pantone 213 C" />
+            <input
+              type="text"
+              id="pantone-input"
+              class="input-custom w-full rounded-xl p-3 text-sm hidden"
+              placeholder="Ex: Pantone 213 C"
+            />
           </div>
         </div>
 
@@ -426,7 +431,20 @@
           <div class="space-y-5">
             <!-- Papel Torcido -->
             <div id="paper-handle-section">
-              <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Papel Torcido</h4>
+              <div class="mb-2">
+                <h4 class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Papel Torcido</h4>
+                <span class="font-label text-[10px] text-secondary-container uppercase tracking-widest mt-1 flex items-center gap-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3">
+                    <path
+                      fill-rule="evenodd"
+                      d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                  Disponível apenas para tamanhos p e m.
+                </span>
+              </div>
+
               <div class="flex gap-2 overflow-x-auto pb-2 snap-x" id="handle-paper-options">
                 <div
                   class="option-card shrink-0 w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all snap-start"
@@ -498,41 +516,6 @@
                   >
                     <div class="w-6 h-2 bg-black rounded-sm"></div>
                     <span class="font-label text-[9px] uppercase">Preta</span>
-                  </div>
-                </div>
-                <!-- Nylon com ponteira -->
-                <div>
-                  <h4 class="font-label text-xs text-on-surface-variant mb-2 uppercase tracking-wider">Nylon com Ponteira</h4>
-                  <div class="flex flex-col gap-3">
-                    <!-- Opções de cor -->
-                    <div class="flex gap-2" id="handle-nylon-options">
-                      <div
-                        class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
-                        data-handle-type="nylon"
-                        data-handle-color="branca"
-                      >
-                        <div class="w-6 h-2 bg-white rounded-sm border border-outline"></div>
-                        <span class="font-label text-[9px] uppercase">Branca</span>
-                      </div>
-                      <div
-                        class="option-card w-20 h-20 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
-                        data-handle-type="nylon"
-                        data-handle-color="preta"
-                      >
-                        <div class="w-6 h-2 bg-black rounded-sm"></div>
-                        <span class="font-label text-[9px] uppercase">Preta</span>
-                      </div>
-                    </div>
-
-                    <!-- Tamanho fixo 35cm -->
-                    <div class="flex items-center gap-3 bg-surface-container-highest/30 p-2 rounded-lg">
-                      <span class="material-symbols-outlined text-primary-container text-sm">straighten</span>
-                      <div class="flex items-center gap-2">
-                        <span class="font-label text-xs text-on-surface-variant uppercase tracking-wider">Tamanho padrão</span>
-                        <span class="font-headline font-bold text-primary-container text-base">35cm</span>
-                      </div>
-                      <span class="text-[9px] text-on-surface-variant/70 ml-auto">(fixo para todos os pedidos)</span>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -919,8 +902,10 @@
         })
 
         document.getElementById('pantone-input').value = ConfiguratorState.pantone || ''
-        document.getElementById('nylon-length').value = ConfiguratorState.handle.nylonLength || 50
-
+        const nylonInput = document.getElementById('nylon-length')
+        if (nylonInput) {
+          nylonInput.value = ConfiguratorState.handle.nylonLength || 50
+        }
         const selectedRadio = document.querySelector(`input[name="impressao-tipo"][value="${ConfiguratorState.impressaoTipo}"]`)
         if (selectedRadio) selectedRadio.checked = true
         document.getElementById('print-observations').value = ConfiguratorState.impressaoObservacoes || ''

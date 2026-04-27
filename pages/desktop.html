@@ -365,11 +365,13 @@
                 </div>
               </div>
               <div class="mt-4">
-                <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
+                <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest hidden"
+                  >Cor Especial (Pantone) Opcional</label
+                >
                 <input
                   type="text"
                   id="pantone-input"
-                  class="w-full bg-surface-container-highest text-on-surface border-none p-3 rounded-lg mt-1 focus:border-b-primary-container focus:ring-0"
+                  class="w-full bg-surface-container-highest text-on-surface border-none p-3 rounded-lg mt-1 focus:border-b-primary-container focus:ring-0 hidden"
                   placeholder="Ex: Pantone 213 C"
                 />
               </div>
@@ -385,7 +387,23 @@
               <div class="space-y-6">
                 <!-- Papel Torcido -->
                 <div id="paper-handle-section">
-                  <h3 class="font-label text-sm text-on-surface-variant mb-3 uppercase tracking-wider">Papel Torcido</h3>
+                  <div class="mb-3">
+                    <h3 class="font-label text-sm text-on-surface-variant uppercase tracking-wider">Papel Torcido</h3>
+
+                    <div
+                      class="bg-surface-container-low/80 p-2 rounded text-[10px] text-tertiary-container flex items-start gap-2 mt-2 w-max"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 shrink-0 mt-[1px]">
+                        <path
+                          fill-rule="evenodd"
+                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      <span class="uppercase tracking-widest">Disponível apenas para tamanhos p e m.</span>
+                    </div>
+                  </div>
+
                   <div class="flex gap-3" id="handle-paper-options">
                     <div
                       class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
@@ -686,7 +704,7 @@
               </div>
 
               <div
-                class="mb-6 p-4 md:p-6 border border-dashed border-outline-variant/50 rounded-lg text-center cursor-pointer hover:bg-surface-container-highest transition-colors"
+                class="mb-6 p-4 md:p-6 border border-dashed border-outline-variant/50 rounded-lg text-center cursor-pointer hover:bg-surface-container-highest transition-colors hidden"
                 id="upload-area"
               >
                 <span class="material-symbols-outlined text-outline mb-2 text-2xl md:text-3xl">upload_file</span>

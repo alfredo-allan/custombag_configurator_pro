@@ -156,12 +156,12 @@
         </div>
         <button
           id="whatsapp-btn"
-          class="px-5 md:px-6 py-2 md:py-2.5 rounded-full bg-transparent hover:bg-primary-container/10 border border-outline-variant/30 hover:border-primary-container transition-all duration-300 group cursor-pointer"
+          class="px-6 md:px-8 py-3 md:py-3.5 rounded-full bg-transparent hover:bg-primary-container/10 border border-outline-variant/30 hover:border-primary-container transition-all duration-300 group cursor-pointer"
         >
           <span
-            class="text-xs md:text-sm font-medium uppercase tracking-wide text-on-surface-variant group-hover:text-primary-container transition-colors flex items-center gap-2"
+            class="text-sm md:text-base font-medium uppercase tracking-wide text-on-surface-variant group-hover:text-primary-container transition-colors flex items-center gap-3"
           >
-            <i class="fab fa-whatsapp text-primary-container text-sm"></i>
+            <i class="fab fa-whatsapp text-primary-container text-lg md:text-xl"></i>
             Contato
           </span>
         </button>
@@ -1081,7 +1081,7 @@
       })
 
       document.getElementById('whatsapp-btn')?.addEventListener('click', function () {
-        const phoneNumber = '5511994102660'
+        const phoneNumber = '5511917112529'
         const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
       })

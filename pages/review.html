@@ -381,8 +381,8 @@
         <!-- Coluna Direita - Formulário de Contato -->
         <div class="review-card rounded-2xl p-6 md:p-8 animate-fade-delay-2">
           <div class="flex items-center gap-3 mb-6 pb-4 border-b border-outline-variant/20">
-            <span class="material-symbols-outlined text-primary-container text-2xl">mail</span>
-            <h2 class="font-bold text-xl text-primary">Dados para Contato</h2>
+            <i class="fab fa-whatsapp text-primary-container text-2xl"></i>
+            <h2 class="font-bold text-xl text-primary">Solicitar Orçamento via WhatsApp</h2>
           </div>
 
           <form id="contact-form" class="space-y-5">
@@ -402,21 +402,7 @@
 
             <div>
               <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold"
-                >E-mail <span class="text-primary-container">*</span></label
-              >
-              <input
-                type="email"
-                id="client-email"
-                required
-                class="input-modern w-full rounded-xl p-3 text-primary placeholder:text-on-surface-variant/50"
-                placeholder="seu@email.com"
-              />
-              <p class="text-xs text-error hidden mt-1" id="email-error">Digite um e-mail válido</p>
-            </div>
-
-            <div>
-              <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold"
-                >WhatsApp <span class="text-primary-container">*</span></label
+                >Seu WhatsApp <span class="text-primary-container">*</span></label
               >
               <input
                 type="tel"
@@ -431,13 +417,27 @@
 
             <div>
               <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold"
-                >Observações Adicionais</label
+                >E-mail <span class="text-primary-container">*</span></label
+              >
+              <input
+                type="email"
+                id="client-email"
+                required
+                class="input-modern w-full rounded-xl p-3 text-primary placeholder:text-on-surface-variant/50"
+                placeholder="seu@email.com"
+              />
+              <p class="text-xs text-error hidden mt-1" id="email-error">Digite um e-mail válido</p>
+            </div>
+
+            <div>
+              <label class="block text-xs uppercase tracking-wider text-on-surface-variant mb-2 font-semibold"
+                >Mensagem / Observações</label
               >
               <textarea
                 id="client-notes"
                 rows="4"
                 class="input-modern w-full rounded-xl p-3 text-primary placeholder:text-on-surface-variant/50 resize-none"
-                placeholder="Informações adicionais sobre sua arte, prazo de entrega, etc..."
+                placeholder="Ex: Prazo de entrega, personalizações especiais, dúvidas sobre o produto..."
               ></textarea>
             </div>
 
@@ -446,10 +446,10 @@
               id="submit-btn"
               class="btn-primary w-full rounded-xl py-4 font-black uppercase tracking-wider text-on-primary text-sm flex items-center justify-center gap-2 transition-all"
             >
-              <span class="material-symbols-outlined text-lg">send</span> Enviar Orçamento
+              <i class="fab fa-whatsapp text-lg"></i> Enviar via WhatsApp
             </button>
 
-            <p class="text-center text-[10px] text-on-surface-variant/60">Ao enviar, você concorda com nossa política de privacidade</p>
+            <p class="text-center text-[10px] text-on-surface-variant/60">Ao enviar, você será redirecionado ao WhatsApp</p>
           </form>
         </div>
       </div>
@@ -775,7 +775,7 @@
 
         const submitBtn = document.getElementById('submit-btn')
         const originalText = submitBtn.innerHTML
-        submitBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Enviando...'
+        submitBtn.innerHTML = '<span class="animate-spin">⌛</span> Enviando...'
         submitBtn.disabled = true
 
         const nome = document.getElementById('client-name').value.trim()
@@ -791,51 +791,45 @@
           } catch (e) {}
         }
 
-        const subject = `[ORÇAMENTO] Gráfica alquimista - ${nome}`
-        const body = `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-         🏭 INDUSTRIA GRÁFICA ALQUIMISTA
-              NOVO ORÇAMENTO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        // Número do WhatsApp da empresa (apenas números)
+        const whatsappNumber = '5511917112529'
 
-📋 DADOS DO CLIENTE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Nome: ${nome}
-E-mail: ${email}
-WhatsApp: ${telefone}
+        // Montar a mensagem para o WhatsApp
+        let message = `*INDUSTRIA GRÁFICA ALQUIMISTA*%0a%0a *NOVO ORÇAMENTO*%0a%0a`
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📦 CONFIGURAÇÃO DO PEDIDO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Tamanho: ${state.size?.name || '-'} (${state.size?.dimensions || '-'})
-Papel: ${state.paper?.name || '-'}
-Acabamento: ${state.finish?.name || '-'}
-Impressão: ${state.printing?.name || '-'}${state.impressaoTipo === '4x4' ? ' (ambos lados)' : ''}
-Cor Especial: ${state.pantone || 'Nenhuma'}
-Alça: ${getHandleDisplay(state.handle)}
-Cor da Sacola: ${state.selectedColor ? colorDisplayMap[state.selectedColor.id]?.name || 'Nenhuma' : 'Nenhuma'}
-Ilhós: ${getEyeletDisplay(state.eyelet)}
-Quantidade: ${state.quantity?.toLocaleString('pt-BR') || '1.000'} unidades
+        message += `* DADOS DO CLIENTE*%0a`
+        message += `Nome: ${nome}%0a`
+        message += `E-mail: ${email}%0a`
+        message += `WhatsApp: ${telefone}%0a%0a`
 
-${
-  state.impressaoObservacoes
-    ? `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📝 OBSERVAÇÕES DA IMPRESSÃO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${state.impressaoObservacoes}
-`
-    : ''
-}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💬 OBSERVAÇÕES ADICIONAIS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-${observacoes || 'Nenhuma observação adicional'}
+        message += `* CONFIGURAÇÃO DO PEDIDO*%0a`
+        message += `Tamanho: ${state.size?.name || '-'} (${state.size?.dimensions || '-'})%0a`
+        message += `Papel: ${state.paper?.name || '-'}%0a`
+        message += `Acabamento: ${state.finish?.name || '-'}%0a`
+        message += `Impressão: ${state.printing?.name || '-'}${state.impressaoTipo === '4x4' ? ' (ambos lados)' : ''}%0a`
+        message += `Cor Especial: ${state.pantone || 'Nenhuma'}%0a`
+        message += `Alça: ${getHandleDisplay(state.handle)}%0a`
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📅 ${new Date().toLocaleString('pt-BR')}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  `.trim()
+        if (state.printing?.id === 'onecolor' && state.selectedColor && colorDisplayMap[state.selectedColor.id]) {
+          message += `Cor da Sacola: ${colorDisplayMap[state.selectedColor.id]?.name || 'Nenhuma'}%0a`
+        }
 
+        message += `Ilhós: ${getEyeletDisplay(state.eyelet)}%0a`
+        message += `Quantidade: ${state.quantity?.toLocaleString('pt-BR') || '1.000'} unidades%0a`
+
+        if (state.impressaoObservacoes && state.impressaoObservacoes.trim() !== '') {
+          message += `%0a* OBSERVAÇÕES DA IMPRESSÃO*%0a`
+          message += `${state.impressaoObservacoes}%0a`
+        }
+
+        if (observacoes) {
+          message += `%0a* OBSERVAÇÕES ADICIONAIS*%0a`
+          message += `${observacoes}%0a`
+        }
+
+        message += `%0a *${new Date().toLocaleString('pt-BR')}*`
+
+        // Salvar no histórico
         const orderHistory = JSON.parse(localStorage.getItem('orderHistory') || '[]')
         orderHistory.push({
           id: Date.now(),
@@ -846,14 +840,19 @@ ${observacoes || 'Nenhuma observação adicional'}
         })
         localStorage.setItem('orderHistory', JSON.stringify(orderHistory))
 
+        // Abrir WhatsApp com a mensagem
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`
+
         setTimeout(() => {
-          window.location.href = `mailto:leap.technology.sp@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-          showToast('success', 'Orçamento preparado! Seu email será aberto.')
+          window.open(whatsappUrl, '_blank')
+          showToast('success', 'Redirecionando para o WhatsApp!')
           submitBtn.innerHTML = originalText
           submitBtn.disabled = false
+
+          // Opcional: limpar formulário
+          // document.getElementById('contact-form').reset()
         }, 500)
       }
-
       // ============================================
       // INITIALIZATION
       // ============================================

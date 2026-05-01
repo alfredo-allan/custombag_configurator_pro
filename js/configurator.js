@@ -62,7 +62,7 @@ const Options = {
     },
     gg: {
       name: "Tamanho GG",
-      dimensions: "50 x 30 x 16 cm",
+      dimensions: "30 x 50 x 16 cm",
       details: "Grandes volumes. Suporta até 7kg.",
       weight: "7kg",
     },

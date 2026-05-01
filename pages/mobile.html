@@ -255,28 +255,28 @@
               data-size="p"
             >
               <span class="font-headline text-2xl font-black text-primary">P</span>
-              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">18x23,5x8cm</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">L 18 x A 25 x P 8 cm</span>
             </div>
             <div
               class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left active"
               data-size="m"
             >
               <span class="font-headline text-2xl font-black text-primary">M</span>
-              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">23x32x8cm</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">L 20 x A 30 x P 10 cm</span>
             </div>
             <div
               class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left"
               data-size="g"
             >
               <span class="font-headline text-2xl font-black text-primary">G</span>
-              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">35x24x14cm</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">L 35 x A 24 x P 14 cm</span>
             </div>
             <div
               class="option-card bg-surface-container-highest p-4 rounded-lg flex flex-col items-center justify-center gap-1 transition-all text-left"
               data-size="gg"
             >
               <span class="font-headline text-2xl font-black text-primary">GG</span>
-              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">45,5x35x12cm</span>
+              <span class="font-label text-on-surface-variant text-[11px] tracking-wider">L 50 x A 30 x P 16 cm</span>
             </div>
           </div>
         </div>
@@ -377,7 +377,7 @@
             </div>
           </div>
           <div class="mt-2 flex flex-col gap-2">
-            <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Cor Especial (Pantone) Opcional</label>
+            <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest"></label>
             <input
               type="text"
               id="pantone-input"
@@ -648,10 +648,10 @@
       }
 
       const sizeMap = {
-        p: { name: 'Tamanho P', dimensions: '18x23,5x8cm' },
-        m: { name: 'Tamanho M', dimensions: '23x32x8cm' },
+        p: { name: 'Tamanho P', dimensions: '18x25x8cm' },
+        m: { name: 'Tamanho M', dimensions: '20x30x10cm' },
         g: { name: 'Tamanho G', dimensions: '35x24x14cm' },
-        gg: { name: 'Tamanho GG', dimensions: '45,5x35x12cm' }
+        gg: { name: 'Tamanho GG', dimensions: '50x30x16cm' }
       }
 
       const paperMap = {
@@ -1018,7 +1018,7 @@
       })
 
       document.getElementById('whatsapp-btn-mobile')?.addEventListener('click', function () {
-        const phoneNumber = '5511917112529'
+        const phoneNumber = '5511982987512'
         const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
       })

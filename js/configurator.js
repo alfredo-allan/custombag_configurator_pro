@@ -6,7 +6,7 @@ const ConfiguratorState = {
   size: {
     id: "m",
     name: "Tamanho M",
-    dimensions: "23 x 32 x 8cm",
+    dimensions: "20 x 30 x 10cm",
     details: "Padrão vestuário. Suporta até 4kg.",
   },
   paper: {
@@ -44,13 +44,13 @@ const Options = {
   sizes: {
     p: {
       name: "Tamanho P",
-      dimensions: "18 x 23,5 x 8cm",
+      dimensions: "18 x 25 x 8cm",
       details: "Ideal para joias e pequenos acessórios. Suporta até 2kg.",
       weight: "2kg",
     },
     m: {
       name: "Tamanho M",
-      dimensions: "23 x 32 x 8cm",
+      dimensions: "20 x 30 x 10cm",
       details: "Padrão vestuário. Suporta até 4kg.",
       weight: "4kg",
     },
@@ -62,7 +62,7 @@ const Options = {
     },
     gg: {
       name: "Tamanho GG",
-      dimensions: "45,5 x 35 x 12 cm",
+      dimensions: "50 x 30 x 16 cm",
       details: "Grandes volumes. Suporta até 7kg.",
       weight: "7kg",
     },

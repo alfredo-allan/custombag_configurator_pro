@@ -219,7 +219,7 @@
                   data-size="p"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho P</span>
-                  <span class="font-bold text-base md:text-lg text-primary">18 x 23,5 x 8cm</span>
+                  <span class="font-bold text-base md:text-lg text-primary">L 18 x A 25 x P 8 cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-outline-variant/30 pt-2"
                     >Ideal para joias. Suporta até 2kg.</span
                   >
@@ -229,7 +229,7 @@
                   data-size="m"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-surface-tint">Tamanho M</span>
-                  <span class="font-bold text-base md:text-lg text-primary">23 x 32 x 8cm</span>
+                  <span class="font-bold text-base md:text-lg text-primary">L 20 x A 30 x P 10 cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-surface-tint/30 pt-2"
                     >Padrão vestuário. Suporta até 4kg.</span
                   >
@@ -239,7 +239,7 @@
                   data-size="g"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho G</span>
-                  <span class="font-bold text-base md:text-lg text-primary">35 x 24 x 14 cm</span>
+                  <span class="font-bold text-base md:text-lg text-primary">L 35 x A 24 x P 14 cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-outline-variant/30 pt-2"
                     >Caixas de sapato. Suporta até 5kg.</span
                   >
@@ -249,7 +249,7 @@
                   data-size="gg"
                 >
                   <span class="font-label text-xs md:text-sm uppercase tracking-widest text-on-surface-variant">Tamanho GG</span>
-                  <span class="font-bold text-base md:text-lg text-primary">45,5 x 35 x 12 cm</span>
+                  <span class="font-bold text-base md:text-lg text-primary">L 50 x A 30 x P 16 cm</span>
                   <span class="text-[11px] md:text-xs text-on-surface-variant mt-2 border-t border-outline-variant/30 pt-2"
                     >Grandes volumes. Suporta até 7kg.</span
                   >
@@ -352,7 +352,7 @@
                   <span class="font-headline font-bold text-primary text-sm">4x0 (CMYK)</span>
                 </div>
               </div>
-              <div class="mt-4">
+              <!-- <div class="mt-4">
                 <label class="font-label text-xs text-on-surface-variant uppercase tracking-widest hidden"
                   >Cor Especial (Pantone) Opcional</label
                 >
@@ -362,7 +362,7 @@
                   class="w-full bg-surface-container-highest text-on-surface border-none p-3 rounded-lg mt-1 focus:border-b-primary-container focus:ring-0 hidden"
                   placeholder="Ex: Pantone 213 C"
                 />
-              </div>
+              </div> -->
             </div>
 
             <div class="config-section bg-surface-container-low p-6 md:p-8 rounded-xl" id="section-05-colors">
@@ -586,7 +586,7 @@
               <ul class="space-y-3 md:space-y-4 mb-6 md:mb-8">
                 <li class="flex justify-between items-center text-xs md:text-sm">
                   <span class="text-on-surface-variant uppercase tracking-wider">Tamanho</span>
-                  <span class="font-bold text-primary" id="summary-size">M (23 x 32 x 8cm)</span>
+                  <span class="font-bold text-primary" id="summary-size">M (20 x 30 x 10cm)</span>
                 </li>
                 <li class="flex justify-between items-center text-xs md:text-sm">
                   <span class="text-on-surface-variant uppercase tracking-wider">Papel</span>
@@ -712,10 +712,10 @@
       }
 
       const sizeMap = {
-        p: { name: 'Tamanho P', dimensions: '18x23,5x8cm' },
-        m: { name: 'Tamanho M', dimensions: '23x32x8cm' },
+        p: { name: 'Tamanho P', dimensions: '18x25x8cm' },
+        m: { name: 'Tamanho M', dimensions: '20x30x10cm' },
         g: { name: 'Tamanho G', dimensions: '35x24x14cm' },
-        gg: { name: 'Tamanho GG', dimensions: '45,5x35x12cm' }
+        gg: { name: 'Tamanho GG', dimensions: '50x30x16cm' }
       }
 
       const paperMap = {
@@ -1081,7 +1081,7 @@
       })
 
       document.getElementById('whatsapp-btn')?.addEventListener('click', function () {
-        const phoneNumber = '5511917112529'
+        const phoneNumber = '5511982987512'
         const message = encodeURIComponent('Gostaria de entrar em contato para tirar algumas dúvidas.')
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
       })

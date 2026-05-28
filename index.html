@@ -38,20 +38,16 @@
       gtag('config', 'G-XXXXXXXXXX')
     </script>
 
-    <!-- GOOGLE ADS CONVERSION TRACKING (adicione seu ID) -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18110007036"></script>
     <script>
-      function gtag_report_conversion(url) {
-        var callback = function () {
-          if (typeof url != 'undefined') {
-            window.location = url
-          }
-        }
-        gtag('event', 'conversion', {
-          send_to: 'AW-XXXXXXXXXX/XXXXXXXXXX',
-          event_callback: callback
-        })
-        return false
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
       }
+      gtag('js', new Date())
+
+      gtag('config', 'AW-18110007036')
     </script>
 
     <title>Industria Gráfica Alquimista | Sacolas Personalizadas</title>

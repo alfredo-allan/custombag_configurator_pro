@@ -26,6 +26,24 @@
     <meta name="twitter:title" content="Industria Gráfica Alquimista - Sacolas Personalizadas" />
     <meta name="twitter:description" content="Configure sua sacola ideal. Orçamento grátis!" />
     <meta name="twitter:image" content="https://seudominio.com/assets/images/ads-square-1080x1080.png" />
+    <!-- Event snippet for Enviar formulário de lead conversion page
+In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof url != 'undefined') {
+            window.location = url
+          }
+        }
+        gtag('event', 'conversion', {
+          send_to: 'AW-18110007036/uBATCIz5kKAcEPyNw7tD',
+          value: 1.0,
+          currency: 'BRL',
+          event_callback: callback
+        })
+        return false
+      }
+    </script>
 
     <!-- GOOGLE ANALYTICS (adicione seu ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>

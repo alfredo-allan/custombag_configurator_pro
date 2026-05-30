@@ -328,3 +328,75 @@ input[type='number']::-webkit-outer-spin-button {
   appearance: none !important;
   margin: 0 !important;
 }
+
+/* ========================================= */
+/* CARROSSEL SACOLAS */
+/* ========================================= */
+
+.bags-track {
+  width: max-content;
+  animation: bagsScroll 30s linear infinite;
+}
+
+.bag-item {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin: 0 40px;
+  transition: transform 0.4s ease;
+}
+
+.bag-item:hover {
+  transform: translateY(-10px) scale(1.04);
+}
+
+@keyframes bagsScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========================================= */
+/* FAIXA INFERIOR */
+/* ========================================= */
+
+.warning-track {
+  display: flex;
+  width: max-content;
+  animation: warningScroll 20s linear infinite;
+
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+
+  color: #00dddd;
+
+  padding: 14px 0;
+}
+
+.warning-track span {
+  margin-right: 80px;
+  white-space: nowrap;
+}
+
+@keyframes warningScroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .bag-item {
+    width: 140px;
+    margin: 0 20px;
+  }
+}

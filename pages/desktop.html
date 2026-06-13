@@ -156,6 +156,9 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="../js/contact-modal.js"></script>
+    <script src="../css/contact-modal.css"></script>
   </head>
 
   <body
@@ -516,49 +519,7 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
               </h2>
               <div class="space-y-6">
                 <div id="paper-handle-section">
-                  <div class="mb-3">
-                    <h3 class="font-label text-sm text-on-surface-variant uppercase tracking-wider">Papel Torcido</h3>
-
-                    <div
-                      class="bg-surface-container-low/80 p-2 rounded text-[10px] text-tertiary-container flex items-start gap-2 mt-2 w-max"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5 shrink-0 mt-[1px]">
-                        <path
-                          fill-rule="evenodd"
-                          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                      <span class="uppercase tracking-widest">Disponível apenas para tamanhos p e m.</span>
-                    </div>
-                  </div>
-
-                  <div class="flex gap-3" id="handle-paper-options">
-                    <div
-                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
-                      data-handle-type="paper"
-                      data-handle-color="branca"
-                    >
-                      <div class="w-8 h-8 rounded-full border border-outline bg-white"></div>
-                      <span class="font-label text-[10px] uppercase">Branca</span>
-                    </div>
-                    <div
-                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all active"
-                      data-handle-type="paper"
-                      data-handle-color="preta"
-                    >
-                      <div class="w-8 h-8 rounded-full bg-black shadow-[0_2px_10px_rgba(0,0,0,0.5)]"></div>
-                      <span class="font-label text-[10px] uppercase text-primary">Preta</span>
-                    </div>
-                    <div
-                      class="option-card w-24 h-24 bg-surface-container-highest rounded-lg flex flex-col items-center justify-center gap-1 transition-all"
-                      data-handle-type="paper"
-                      data-handle-color="kraft"
-                    >
-                      <div class="w-8 h-8 rounded-full bg-[#d2b48c] shadow-inner"></div>
-                      <span class="font-label text-[10px] uppercase">Kraft</span>
-                    </div>
-                  </div>
+                  <!-- Conteúdo do Papel Torcido removido -->
                 </div>
 
                 <div>
@@ -745,6 +706,73 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
           </div>
         </div>
       </section>
+      <div
+        id="contact-side-modal"
+        class="hidden md:flex fixed top-0 right-0 h-full w-[380px] z-[100] translate-x-full bg-surface-container-high/95 backdrop-blur-xl border-l border-outline-variant/30 shadow-2xl flex-col transition-transform duration-300"
+      >
+        <div class="p-6 flex justify-between items-center border-b border-outline-variant/20">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary-container pulse-glow"></span>
+            <h3 class="font-headline font-black text-xs uppercase tracking-widest text-primary-fixed-dim">Suporte Alquimista</h3>
+          </div>
+          <button id="close-side-modal" class="text-on-surface-variant hover:text-primary-container transition-colors p-1">
+            <span class="material-symbols-outlined text-xl">close</span>
+          </button>
+        </div>
+
+        <div class="flex-grow p-6 flex flex-col gap-6 overflow-y-auto">
+          <div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border border-outline-variant/10">
+            <div
+              class="relative w-16 h-16 rounded-full bg-surface-container-highest border border-surface-tint/30 flex-shrink-0 overflow-hidden flex items-center justify-center"
+            >
+              <img
+                src="../assets/images/avatar_alquimista.png"
+                alt="Operador Alquimista"
+                class="w-full h-full object-cover"
+                onerror="
+                  this.style.display = 'none'
+                  document.getElementById('avatar-placeholder').style.display = 'flex'
+                "
+              />
+              <div
+                id="avatar-placeholder"
+                class="hidden absolute inset-0 flex-col items-center justify-center bg-zinc-900 text-[9px] font-black tracking-tighter text-surface-tint"
+              >
+                <i class="fa-solid fa-user-gear text-base mb-0.5"></i>PLASMA
+              </div>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-primary uppercase tracking-wider">Consultor Técnico</p>
+              <p class="text-[11px] text-on-surface-variant">Impressão Offset & Desenvolvimento</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/20 font-mono text-xs leading-relaxed text-on-surface select-none relative min-h-[140px]"
+          >
+            <span id="typewriter-text" class="whitespace-pre-line text-slate-200"></span
+            ><span class="animate-pulse text-primary-container font-black">|</span>
+          </div>
+
+          <div class="flex items-start gap-3 bg-surface-container-low p-4 rounded-lg border-l-2 border-surface-tint">
+            <span class="material-symbols-outlined text-surface-tint text-lg mt-0.5">location_on</span>
+            <div>
+              <p class="text-xs font-bold text-primary uppercase tracking-wider">São Paulo - SP</p>
+              <p class="text-[11px] text-on-surface-variant mt-0.5">Produção centralizada. Frete FOB (por conta do contratante/cliente).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 border-t border-outline-variant/20 bg-surface-container-lowest/50">
+          <button
+            id="modal-whatsapp-btn"
+            class="w-full bg-gradient-to-r from-surface-tint to-primary text-on-primary rounded-xl py-3.5 font-black uppercase tracking-widest text-xs hover:scale-[0.98] transition-transform flex items-center justify-center gap-3 shadow-lg shadow-surface-tint/10 group"
+          >
+            <i class="fab fa-whatsapp text-sm md:text-base transition-transform group-hover:rotate-12"></i>
+            Iniciar Conversa no WhatsApp
+          </button>
+        </div>
+      </div>
     </main>
 
     <footer

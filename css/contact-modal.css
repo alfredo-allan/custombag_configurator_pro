@@ -1,0 +1,20 @@
+/* ==========================================================================
+   COMPONENT: CONTACT MODAL MOBILE (FULLSCREEN BOTTOM-UP)
+   ========================================================================== */
+
+#contact-mobile-modal {
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.9);
+}
+
+/* Letras tratadas individualmente para digitação fluida pelo Anime.js */
+.letter-mobile {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(1px);
+}
+
+/* Suavização de renderização */
+#typewriter-text-mobile {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
